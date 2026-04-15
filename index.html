@@ -384,13 +384,13 @@ td.bold{font-weight:600;}
             <thead><tr><th>Mes</th><th>Ingreso</th><th>Fijos</th><th>Tarjetas</th><th class="num">Saldo</th><th>Estado</th></tr></thead>
             <tbody>
               <tr><td>Abril</td><td>$5,300</td><td>$1,331.73</td><td>$1,599.67</td><td class="num" style="color:var(--accent)">+$568.60</td><td><span class="badge badge-green">Sano</span></td></tr>
-              <tr><td>Mayo</td><td>$2,900</td><td>$1,331.46</td><td>$1,666.53</td><td class="num" style="color:var(--warn)">-$28.51*</td><td><span class="badge badge-yellow">Cubierto</span></td></tr>
+              <tr><td>Mayo</td><td>$2,900</td><td>$1,331.46</td><td>$1,666.53</td><td class="num" style="color:var(--accent)">$0.00*</td><td><span class="badge badge-green">Cubierto</span></td></tr>
               <tr><td>Junio</td><td>$4,100</td><td>$1,331.46</td><td>$1,546.53</td><td class="num" style="color:var(--accent)">+$822.01</td><td><span class="badge badge-green">Sano</span></td></tr>
               <tr><td>Julio</td><td>$4,100</td><td>$1,331.46</td><td>$1,546.53</td><td class="num" style="color:var(--accent)">+$822.01</td><td><span class="badge badge-green">Sano</span></td></tr>
               <tr><td>Agosto</td><td>$4,100</td><td>$1,331.46</td><td>$1,546.53</td><td class="num" style="color:var(--accent)">+$822.01</td><td><span class="badge badge-green">Sano</span></td></tr>
             </tbody>
           </table>
-          <div style="font-size:.7rem;color:var(--text-muted);margin-top:6px;">* Déficit de Mayo (-$428.51) cubierto con $400 extra cobrados en Abril. Descuadre real: -$28.51.</div>
+          <div style="font-size:.7rem;color:var(--text-muted);margin-top:6px;">* Déficit de Mayo (-$428.51) cubierto al 100% con reserva de Abril. Regla: el saldo de cada mes cubre el déficit del siguiente.</div>
         </div>
       </div>
       <div class="col">
@@ -421,7 +421,7 @@ td.bold{font-weight:600;}
           <div class="card-title">Semáforo</div>
           <div style="display:flex;flex-direction:column;gap:6px;font-size:.8rem;">
             <div style="display:flex;align-items:center;gap:8px;"><span class="semaforo s-green"></span><span>Abril — Saldo positivo $568.60</span></div>
-            <div style="display:flex;align-items:center;gap:8px;"><span class="semaforo s-yellow"></span><span><strong>Mayo — Déficit -$28.51 (cubierto con extra Abril ✓)</strong></span></div>
+            <div style="display:flex;align-items:center;gap:8px;"><span class="semaforo s-green"></span><span><strong>Mayo — Déficit $0 (cubierto al 100% con reserva de Abril ✓)</strong></span></div>
             <div style="display:flex;align-items:center;gap:8px;"><span class="semaforo s-green"></span><span>Junio — Normaliza con $4,100</span></div>
             <div style="display:flex;align-items:center;gap:8px;"><span class="semaforo s-green"></span><span>Julio — Estable $821.74</span></div>
             <div style="display:flex;align-items:center;gap:8px;"><span class="semaforo s-green"></span><span>Agosto — Estable $821.74</span></div>
@@ -483,11 +483,11 @@ td.bold{font-weight:600;}
           <div class="card-title">Resumen semanas restantes</div>
           <div style="font-size:.78rem;display:flex;flex-direction:column;gap:6px;">
             <div style="display:flex;justify-content:space-between;"><span>Sem 1–2 (ya pasó)</span><span style="color:var(--text-muted)">Completadas ✓</span></div>
-            <div style="display:flex;justify-content:space-between;"><span>Sem 3 (15–21 abr)</span><span style="color:var(--warn)">$74 disponibles</span></div>
-            <div style="display:flex;justify-content:space-between;"><span>Sem 4 (22–30 abr)</span><span style="color:var(--warn)">$94.60 disponibles</span></div>
+            <div style="display:flex;justify-content:space-between;"><span>Sem 3 (15–21 abr)</span><span style="color:var(--warn)">$70 disponibles</span></div>
+            <div style="display:flex;justify-content:space-between;"><span>Sem 4 (22–30 abr)</span><span style="color:var(--warn)">$70.09 disponibles</span></div>
             <div class="sep"></div>
-            <div style="display:flex;justify-content:space-between;"><span>Gasto diario real</span><span style="color:var(--warn)">$10.54/día (16 días)</span></div>
-            <div style="display:flex;justify-content:space-between;font-size:.7rem;color:var(--danger);"><span>🔒 $400 bloqueados para cubrir Mayo</span><span>Intocables</span></div>
+            <div style="display:flex;justify-content:space-between;"><span>Gasto diario real</span><span style="color:var(--warn)">$8.76/día (16 días)</span></div>
+            <div style="display:flex;justify-content:space-between;font-size:.7rem;color:var(--danger);"><span>🔒 $428.51 reservados para Mayo → déficit $0</span><span>Intocables</span></div>
           </div>
         </div>
       </div>
@@ -527,9 +527,9 @@ td.bold{font-weight:600;}
         <div class="card" style="border-color:var(--danger);">
           <div class="card-title" style="color:var(--danger);">Plan de contingencia Mayo</div>
           <div style="display:flex;flex-direction:column;gap:8px;font-size:.8rem;margin-top:4px;">
-            <div class="tip"><span class="tip-icon">✅</span><span>Los $400 cobrados en Abril ya están en cuenta corriente y cubren casi todo el déficit de Mayo.</span></div>
-            <div class="tip"><span class="tip-icon">📊</span><span>Déficit real de Mayo: -$428.51. Con los $400 de Abril el descuadre baja a -$28.51 — mínimo y manejable.</span></div>
-            <div class="tip"><span class="tip-icon">💰</span><span>No tocar inversiones ni ahorro — el saldo de cuenta corriente absorbe el mes.</span></div>
+            <div class="tip"><span class="tip-icon">✅</span><span>Déficit de Mayo cubierto al 100% — $428.51 reservados desde Abril. Saldo de Mayo: $0.</span></div>
+            <div class="tip"><span class="tip-icon">🔒</span><span>Regla aplicada: el saldo libre de cada mes cubre el déficit del siguiente, garantizando $0 de descuadre.</span></div>
+            <div class="tip"><span class="tip-icon">💰</span><span>No tocar inversiones ni ahorro — la reserva ya está en cuenta corriente.</span></div>
             <div class="tip"><span class="tip-icon">📱</span><span>Revisar suscripciones y eliminar las que no uses este mes.</span></div>
             <div class="tip"><span class="tip-icon">🏦</span><span>Junio normaliza: sueldo sube a $4,100 y el saldo será +$821.74.</span></div>
           </div>
@@ -718,7 +718,7 @@ td.bold{font-weight:600;}
           <table>
             <thead><tr><th>Mes</th><th class="num">Bolsa/sem</th><th class="num">Diario</th><th>Estado</th></tr></thead>
             <tbody>
-              <tr><td>Abril (16 días)*</td><td class="num" style="color:var(--warn)">$84</td><td class="num" style="color:var(--warn)">$10.54</td><td><span class="badge badge-yellow">Ajuste</span></td></tr>
+              <tr><td>Abril (16 días)*</td><td class="num" style="color:var(--warn)">$70</td><td class="num" style="color:var(--warn)">$8.76</td><td><span class="badge badge-yellow">Ajuste</span></td></tr>
               <tr><td>Mayo Sem 1</td><td class="num" style="color:var(--danger)">$0</td><td class="num" style="color:var(--danger)">$0</td><td><span class="badge badge-red">CRÍTICO</span></td></tr>
               <tr><td>Mayo Sem 2–4</td><td class="num" style="color:var(--warn)">$56</td><td class="num" style="color:var(--warn)">$8</td><td><span class="badge badge-yellow">Ajuste</span></td></tr>
               <tr><td>Junio</td><td class="num">$200.44</td><td class="num">$28.63</td><td><span class="badge badge-green">OK</span></td></tr>
@@ -726,7 +726,7 @@ td.bold{font-weight:600;}
               <tr><td>Agosto</td><td class="num">$205.44</td><td class="num">$29.35</td><td><span class="badge badge-green">OK</span></td></tr>
             </tbody>
           </table>
-          <div style="font-size:.7rem;color:var(--text-muted);margin-top:6px;">* Bolsa Abril descontando $400 reservados para Mayo. Saldo libre real: $168.60 ÷ 16 días = $10.54/día.</div>
+          <div style="font-size:.7rem;color:var(--text-muted);margin-top:6px;">* Bolsa Abril descontando $428.51 reservados para cubrir déficit de Mayo ($0). Saldo libre real: $140.09 ÷ 16 días = $8.76/día.</div>
         </div>
         <div class="card">
           <div class="card-title">Sobres de alimentación sugeridos</div>
@@ -966,7 +966,7 @@ new Chart(document.getElementById('chartFlujo'), {
       {
         type: 'line',
         label: 'Saldo',
-        data: [568.6, -28.51, 821.74, 821.74, 821.74],
+        data: [568.6, 0, 821.74, 821.74, 821.74],
         borderColor: '#38bdf8', borderWidth: 2.5, tension: 0.35,
         pointBackgroundColor: ctx => ctx.parsed.y < 0 ? '#ef4444' : '#22c55e',
         pointRadius: 5, fill: false,
