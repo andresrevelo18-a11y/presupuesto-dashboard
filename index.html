@@ -384,12 +384,13 @@ td.bold{font-weight:600;}
             <thead><tr><th>Mes</th><th>Ingreso</th><th>Fijos</th><th>Tarjetas</th><th class="num">Saldo</th><th>Estado</th></tr></thead>
             <tbody>
               <tr><td>Abril</td><td>$5,300</td><td>$1,331.73</td><td>$1,599.67</td><td class="num" style="color:var(--accent)">+$568.60</td><td><span class="badge badge-green">Sano</span></td></tr>
-              <tr><td>Mayo</td><td>$2,900</td><td>$1,331.46</td><td>$1,666.53</td><td class="num" style="color:var(--danger)">-$497.99</td><td><span class="badge badge-red">Crítico</span></td></tr>
+              <tr><td>Mayo</td><td>$2,900</td><td>$1,331.46</td><td>$1,666.53</td><td class="num" style="color:var(--warn)">-$28.51*</td><td><span class="badge badge-yellow">Cubierto</span></td></tr>
               <tr><td>Junio</td><td>$4,100</td><td>$1,331.46</td><td>$1,546.53</td><td class="num" style="color:var(--accent)">+$822.01</td><td><span class="badge badge-green">Sano</span></td></tr>
               <tr><td>Julio</td><td>$4,100</td><td>$1,331.46</td><td>$1,546.53</td><td class="num" style="color:var(--accent)">+$822.01</td><td><span class="badge badge-green">Sano</span></td></tr>
               <tr><td>Agosto</td><td>$4,100</td><td>$1,331.46</td><td>$1,546.53</td><td class="num" style="color:var(--accent)">+$822.01</td><td><span class="badge badge-green">Sano</span></td></tr>
             </tbody>
           </table>
+          <div style="font-size:.7rem;color:var(--text-muted);margin-top:6px;">* Déficit de Mayo (-$428.51) cubierto con $400 extra cobrados en Abril. Descuadre real: -$28.51.</div>
         </div>
       </div>
       <div class="col">
@@ -420,7 +421,7 @@ td.bold{font-weight:600;}
           <div class="card-title">Semáforo</div>
           <div style="display:flex;flex-direction:column;gap:6px;font-size:.8rem;">
             <div style="display:flex;align-items:center;gap:8px;"><span class="semaforo s-green"></span><span>Abril — Saldo positivo $568.60</span></div>
-            <div style="display:flex;align-items:center;gap:8px;"><span class="semaforo s-red"></span><span><strong>Mayo — Déficit $498.26 (¡Cuidado!)</strong></span></div>
+            <div style="display:flex;align-items:center;gap:8px;"><span class="semaforo s-yellow"></span><span><strong>Mayo — Déficit -$28.51 (cubierto con extra Abril ✓)</strong></span></div>
             <div style="display:flex;align-items:center;gap:8px;"><span class="semaforo s-green"></span><span>Junio — Normaliza con $4,100</span></div>
             <div style="display:flex;align-items:center;gap:8px;"><span class="semaforo s-green"></span><span>Julio — Estable $821.74</span></div>
             <div style="display:flex;align-items:center;gap:8px;"><span class="semaforo s-green"></span><span>Agosto — Estable $821.74</span></div>
@@ -525,9 +526,9 @@ td.bold{font-weight:600;}
         <div class="card" style="border-color:var(--danger);">
           <div class="card-title" style="color:var(--danger);">Plan de contingencia Mayo</div>
           <div style="display:flex;flex-direction:column;gap:8px;font-size:.8rem;margin-top:4px;">
-            <div class="tip"><span class="tip-icon">🎯</span><span>El déficit de $498.26 debe cubrirse con el saldo de Abril o reduciendo variables. No tocar inversiones.</span></div>
-            <div class="tip"><span class="tip-icon">🛒</span><span>Eliminar Tipti ($400) y cocinar en casa reduce el déficit a $98.26 — manejable.</span></div>
-            <div class="tip"><span class="tip-icon">💡</span><span>Los $400 extra de Abril ya fueron cobrados ✓ — Mayo queda equilibrado ($-98).</span></div>
+            <div class="tip"><span class="tip-icon">✅</span><span>Los $400 cobrados en Abril ya están en cuenta corriente y cubren casi todo el déficit de Mayo.</span></div>
+            <div class="tip"><span class="tip-icon">📊</span><span>Déficit real de Mayo: -$428.51. Con los $400 de Abril el descuadre baja a -$28.51 — mínimo y manejable.</span></div>
+            <div class="tip"><span class="tip-icon">💰</span><span>No tocar inversiones ni ahorro — el saldo de cuenta corriente absorbe el mes.</span></div>
             <div class="tip"><span class="tip-icon">📱</span><span>Revisar suscripciones y eliminar las que no uses este mes.</span></div>
             <div class="tip"><span class="tip-icon">🏦</span><span>Junio normaliza: sueldo sube a $4,100 y el saldo será +$821.74.</span></div>
           </div>
@@ -963,7 +964,7 @@ new Chart(document.getElementById('chartFlujo'), {
       {
         type: 'line',
         label: 'Saldo',
-        data: [568.6, -498.26, 821.74, 821.74, 821.74],
+        data: [568.6, -28.51, 821.74, 821.74, 821.74],
         borderColor: '#38bdf8', borderWidth: 2.5, tension: 0.35,
         pointBackgroundColor: ctx => ctx.parsed.y < 0 ? '#ef4444' : '#22c55e',
         pointRadius: 5, fill: false,
