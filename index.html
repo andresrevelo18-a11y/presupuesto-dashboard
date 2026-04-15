@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang=\"es\" class=\"dark\">
+<head>
+  <meta charset=\"UTF-8\" />
+  <title>Dashboard Presupuesto Personal</title>
+  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />
+  <script src=\"https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.js\" integrity=\"sha512-kcFjJkQ/kb2hu0G7BwNw4l9UX8d6HDN0r3mCR3xpkFhUO5F9N1jgp9QeS0jW2oEJzBUNF0s8OJvFWsW+Fwh0Q==\" crossorigin=\"anonymous\" referrerpolicy=\"no-referrer\"></script>
+  <style>
+    :root {
+      --bg-dark: #070b10;
+      --bg-dark-elevated: #111827;
+      --bg-light: #f5f5f7;
+      --bg-light-elevated: #ffffff;
+      --text-dark: #e5e7eb;
+      --text-light: #111827;
+      --accent-green: #22c55e;
+      --accent-yellow: #eab308;
+      --accent-red: #ef4444;
+      --accent-blue: #38bdf8;
+      --card-radius: 14px;
+      --transition-fast: 0.2s ease;
+      --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.35);
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    html.dark body {
+      background: radial-gradient(circle at top, #111827 0, #020617 55%);
+      color: var(--text-dark);
+    }
+    html:not(.dark) body {
+      background: radial-gradient(circle at top, #e5e7eb 0, #f9fafb 55%);
+      color: var(--text-light);
+    }
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, \"SF Pro Text\", \"Segoe UI\", sans-serif;
+      min-height: 100vh;
+      padding: 24px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+    }
+    .app {
+      width: 100%;
+      max-width: 1300px;
+      background-color: rgba(15, 23, 42, 0.9);
+      border-radius: 24px;
+      padding: 22px 22px 18px 22px;
+      backdrop-filter: blur(20px);
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+    }
+    html:not(.dark) .app {
+      background-color: rgba(255, 255, 255, 0.96);
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.22);
+    }
+    .app-inner {
+      position: relative;
+      z-index: 1;
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 18px;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .title-block h1 {
+      font-size: 1.4rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .pill {
+      font-size: 0.72rem;
+      padding: 2px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      text-transform: uppercase;
+      color: #9ca3af;
+    }
+    .toggle-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.8rem;
+      color: #9ca3af;
+    }
+    .theme-toggle {
+      position: relative;
+      width: 44px;
+      height: 22px;
+    }
+    .theme-toggle input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      inset: 0;
+      background-color: #374151;
+      transition: var(--transition-fast);
+      border-radius: 999px;
+    }
+    .slider::before {
+      position: absolute;
+      content: \"\";
+      height: 18px;
+      width: 18px;
+      left: 2px;
+      bottom: 2px;
+      background-color: #f9fafb;
+      transition: var(--transition-fast);
+      border-radius: 50%;
+    }
+    input:checked + .slider {
+      background: linear-gradient(135deg, var(--accent-blue), var(--accent-green));
+    }
+    input:checked + .slider::before {
+      transform: translateX(22px);
+    }
+    .top-metrics {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .card {
+      border-radius: var(--card-radius);
+      padding: 10px 12px;
+      background: radial-gradient(circle at top left, rgba(148, 163, 184, 0.18), transparent 55%);
+      border: 1px solid rgba(148, 163, 184, 0.45);
+    }
+    .card-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      color: #9ca3af;
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 4px;
+    }
+    .card-value {
+      font-size: 1.05rem;
+      font-weight: 600;
+    }
+    .badge {
+      font-size: 0.68rem;
+      padding: 2px 7px;
+      border-radius: 6px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+    }
+    .badge-green {
+      color: var(--accent-green);
+      background-color: rgba(22, 163, 74, 0.1);
+    }
+    .tab-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 10px;
+    }
+    .tab-button {
+      border-radius: 999px;
+      font-size: 0.76rem;
+      padding: 5px 11px;
+      border: 1px solid transparent;
+      background-color: rgba(15, 23, 42, 0.85);
+      color: #9ca3af;
+      cursor: pointer;
+    }
+    .tab-button.active {
+      color: #f9fafb;
+      background: linear-gradient(135deg, #0ea5e9, #22c55e);
+    }
+    .tab-panels {
+      border-radius: var(--card-radius);
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      padding: 12px;
+      background: radial-gradient(circle at top left, rgba(15, 23, 42, 0.85), #020617);
+      min-height: 220px;
+    }
+    .tab-panel {
+      display: none;
+    }
+    .tab-panel.active {
+      display: block;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.78rem;
+    }
+    th, td {
+      padding: 4px 6px;
+      text-align: left;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.3);
+    }
+    th {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      color: #9ca3af;
+    }
+    .status-text {
+      font-size: 0.72rem;
+      padding: 1px 7px;
+      border-radius: 999px;
+    }
+    .status-ok-text {
+      color: var(--accent-green);
+      background-color: rgba(22, 163, 74, 0.08);
+      border: 1px solid rgba(34, 197, 94, 0.7);
+    }
+  </style>
+</head>
+<body>
+  <div class=\"app\">
+    <div class=\"app-inner\">
+      <header class=\"header\">
+        <div class=\"title-block\">
+          <h1>Control de presupuesto <span class=\"pill\">Abr–Ago 2026</span></h1>
+        </div>
+        <div class=\"toggle-wrapper\">
+          <span>Modo oscuro</span>
+          <label class=\"theme-toggle\"><input type=\"checkbox\" id=\"themeToggle\" checked /><span class=\"slider\"></span></label>
+        </div>
+      </header>
+      <section class=\"top-metrics\">
+        <div class=\"card\"><div class=\"card-label\"><span>Ingresos 5M</span><span class=\"badge badge-green\">OK</span></div><div class=\"card-value\">$20,500</div></div>
+        <div class=\"card\"><div class=\"card-label\"><span>Promedio Saldo</span></div><div class=\"card-value\">$501.51</div></div>
+        <div class=\"card\"><div class=\"card-label\"><span>Deuda Total</span></div><div class=\"card-value\">$71,841</div></div>
+        <div class=\"card\"><div class=\"card-label\"><span>Activos</span></div><div class=\"card-value\">$3,180</div></div>
+      </section>
+      <section class=\"tabs\">
+        <div class=\"tab-list\">
+          <button class=\"tab-button active\" data-tab=\"proyeccion\">Proyección</button>
+          <button class=\"tab-button\" data-tab=\"abril\">Abril</button>
+          <button class=\"tab-button\" data-tab=\"mayo\">Mayo</button>
+        </div>
+        <div class=\"tab-panels\">
+          <div class=\"tab-panel active\" id=\"proyeccion\">
+            <table>
+              <thead><tr><th>Mes</th><th>Saldo</th><th>Estado</th></tr></thead>
+              <tbody>
+                <tr><td>Abril</td><td>$568.60</td><td><span class=\"status-text status-ok-text\">Sano</span></td></tr>
+                <tr><td>Mayo</td><td>-$498.26</td><td><span class=\"status-text\" style=\"color:orange;\">Crítico</span></td></tr>
+              </tbody>
+            </table>
+            <canvas id=\"cashflowChart\" height=\"120\"></canvas>
+          </div>
+          <div class=\"tab-panel\" id=\"abril\">Contenido Abril...</div>
+          <div class=\"tab-panel\" id=\"mayo\">Contenido Mayo...</div>
+        </div>
+      </section>
+    </div>
+  </div>
+  <script>
+    const themeToggle = document.getElementById('themeToggle');
+    themeToggle.addEventListener('change', () => {
+      document.documentElement.classList.toggle('dark');
+    });
+    const ctx = document.getElementById('cashflowChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['Abr', 'May', 'Jun', 'Jul', 'Ago'],
+        datasets: [{ label: 'Saldo', data: [568.6, -498.26, 801.74, 811.74, 821.74], backgroundColor: '#0ea5e9' }]
+      },
+      options: { responsive: true, maintainAspectRatio: false }
+    });
+  </script>
+</body>
+</html>
