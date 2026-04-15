@@ -1,514 +1,1116 @@
 <!DOCTYPE html>
-<html lang=\"es\" class=\"dark\">
+<html lang="es" data-theme="dark">
 <head>
-  <meta charset=\"UTF-8\" />
-  <title>Dashboard Presupuesto Personal</title>
-  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />
-  <script src=\"https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.js\" integrity=\"sha512-kcFjJkQ/kb2hu0G7BwNw4l9UX8d6HDN0r3mCR3xpkFhUO5F9N1jgp9QeS0jW2oEJzBUNF0s8OJvFWsW+Fwh0Q==\" crossorigin=\"anonymous\" referrerpolicy=\"no-referrer\"></script>
-  <style>
-    :root {
-      --bg-dark: #070b10;
-      --bg-dark-elevated: #111827;
-      --bg-light: #f5f5f7;
-      --bg-light-elevated: #ffffff;
-      --text-dark: #e5e7eb;
-      --text-light: #111827;
-      --accent-green: #22c55e;
-      --accent-yellow: #eab308;
-      --accent-red: #ef4444;
-      --accent-blue: #38bdf8;
-      --card-radius: 14px;
-      --transition-fast: 0.2s ease;
-      --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.35);
-    }
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-    html.dark body {
-      background: radial-gradient(circle at top, #111827 0, #020617 55%);
-      color: var(--text-dark);
-    }
-    html:not(.dark) body {
-      background: radial-gradient(circle at top, #e5e7eb 0, #f9fafb 55%);
-      color: var(--text-light);
-    }
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, \"SF Pro Text\", \"Segoe UI\", sans-serif;
-      min-height: 100vh;
-      padding: 24px;
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-    }
-    .app {
-      width: 100%;
-      max-width: 1300px;
-      background-color: rgba(15, 23, 42, 0.9);
-      border-radius: 24px;
-      padding: 22px 22px 18px 22px;
-      backdrop-filter: blur(20px);
-      box-shadow: var(--shadow-soft);
-      position: relative;
-      overflow: hidden;
-    }
-    html:not(.dark) .app {
-      background-color: rgba(255, 255, 255, 0.96);
-      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.22);
-    }
-    .app::before {
-      content: \"\";
-      position: absolute;
-      inset: -40%;
-      background: radial-gradient(circle at 0% 0%, rgba(34, 197, 94, 0.16), transparent 60%), radial-gradient(circle at 100% 0%, rgba(250, 204, 21, 0.16), transparent 60%);
-      opacity: 0.6;
-      pointer-events: none;
-    }
-    .app-inner {
-      position: relative;
-      z-index: 1;
-    }
-    .header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 18px;
-      gap: 14px;
-      flex-wrap: wrap;
-    }
-    .title-block h1 {
-      font-size: 1.4rem;
-      letter-spacing: 0.03em;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .pill {
-      font-size: 0.72rem;
-      padding: 2px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.4);
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: #9ca3af;
-    }
-    .subtitle {
-      font-size: 0.8rem;
-      margin-top: 4px;
-      color: #9ca3af;
-    }
-    .toggle-wrapper {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 0.8rem;
-      color: #9ca3af;
-    }
-    .theme-toggle {
-      position: relative;
-      width: 44px;
-      height: 22px;
-    }
-    .theme-toggle input {
-      opacity: 0;
-      width: 0;
-      height: 0;
-    }
-    .slider {
-      position: absolute;
-      cursor: pointer;
-      inset: 0;
-      background-color: #374151;
-      transition: var(--transition-fast);
-      border-radius: 999px;
-    }
-    .slider::before {
-      position: absolute;
-      content: \"\";
-      height: 18px;
-      width: 18px;
-      left: 2px;
-      bottom: 2px;
-      background-color: #f9fafb;
-      transition: var(--transition-fast);
-      border-radius: 50%;
-      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.4);
-    }
-    input:checked + .slider {
-      background: linear-gradient(135deg, var(--accent-blue), var(--accent-green));
-    }
-    input:checked + .slider::before {
-      transform: translateX(22px);
-    }
-    .top-metrics {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 10px;
-      margin-bottom: 14px;
-    }
-    .card {
-      border-radius: var(--card-radius);
-      padding: 10px 12px;
-      background: radial-gradient(circle at top left, rgba(148, 163, 184, 0.18), transparent 55%);
-      border: 1px solid rgba(148, 163, 184, 0.45);
-    }
-    .card-label {
-      font-size: 0.7rem;
-      text-transform: uppercase;
-      letter-spacing: 0.11em;
-      color: #9ca3af;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 4px;
-    }
-    .card-value {
-      font-size: 1.05rem;
-      font-weight: 600;
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-    }
-    .badge {
-      font-size: 0.68rem;
-      padding: 2px 7px;
-      border-radius: 6px;
-      border: 1px solid rgba(148, 163, 184, 0.5);
-      color: #9ca3af;
-    }
-    .badge-green {
-      border-color: rgba(34, 197, 94, 0.6);
-      color: var(--accent-green);
-      background-color: rgba(22, 163, 74, 0.1);
-    }
-    .badge-yellow {
-      border-color: rgba(234, 179, 8, 0.7);
-      color: var(--accent-yellow);
-      background-color: rgba(234, 179, 8, 0.08);
-    }
-    .badge-red {
-      border-color: rgba(248, 113, 113, 0.7);
-      color: var(--accent-red);
-      background-color: rgba(248, 113, 113, 0.08);
-    }
-    .tabs {
-      margin-top: 8px;
-    }
-    .tab-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-bottom: 10px;
-    }
-    .tab-button {
-      border-radius: 999px;
-      font-size: 0.76rem;
-      padding: 5px 11px;
-      border: 1px solid transparent;
-      background-color: rgba(15, 23, 42, 0.85);
-      color: #9ca3af;
-      cursor: pointer;
-      transition: var(--transition-fast);
-      display: flex;
-      align-items: center;
-      gap: 4px;
-    }
-    .tab-button span.indicator-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 999px;
-      background-color: #6b7280;
-    }
-    .tab-button.active {
-      color: #f9fafb;
-      background: linear-gradient(135deg, #0ea5e9, #22c55e);
-      border-color: rgba(148, 163, 184, 0.4);
-      box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.5);
-    }
-    .tab-button.active span.indicator-dot {
-      background-color: #fefce8;
-    }
-    .chip-critical {
-      font-size: 0.7rem;
-      padding: 1px 8px;
-      border-radius: 999px;
-      border: 1px solid rgba(248, 113, 113, 0.6);
-      color: var(--accent-red);
-      background-color: rgba(248, 113, 113, 0.08);
-    }
-    .tab-panels {
-      border-radius: var(--card-radius);
-      border: 1px solid rgba(148, 163, 184, 0.5);
-      padding: 12px;
-      background: radial-gradient(circle at top left, rgba(15, 23, 42, 0.85), #020617);
-      min-height: 220px;
-    }
-    .tab-panel {
-      display: none;
-      animation: fadeIn 0.18s ease-out;
-    }
-    .tab-panel.active {
-      display: block;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(4px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .panel-grid {
-      display: grid;
-      grid-template-columns: 2.2fr 1.2fr;
-      gap: 10px;
-    }
-    .panel-title {
-      font-size: 0.9rem;
-      margin-bottom: 4px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .panel-sub {
-      font-size: 0.75rem;
-      color: #9ca3af;
-      margin-bottom: 6px;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 0.78rem;
-      margin-top: 4px;
-    }
-    th, td {
-      padding: 4px 6px;
-      text-align: left;
-      border-bottom: 1px solid rgba(148, 163, 184, 0.3);
-    }
-    th {
-      font-size: 0.7rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: #9ca3af;
-    }
-    .status-text {
-      font-size: 0.72rem;
-      padding: 1px 7px;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.45);
-    }
-    .status-ok-text {
-      border-color: rgba(34, 197, 94, 0.7);
-      color: var(--accent-green);
-      background-color: rgba(22, 163, 74, 0.08);
-    }
-    .status-warn-text {
-      border-color: rgba(234, 179, 8, 0.7);
-      color: var(--accent-yellow);
-      background-color: rgba(234, 179, 8, 0.05);
-    }
-    .status-bad-text {
-      border-color: rgba(248, 113, 113, 0.7);
-      color: var(--accent-red);
-      background-color: rgba(248, 113, 113, 0.05);
-    }
-    .text-muted {
-      font-size: 0.74rem;
-      color: #9ca3af;
-    }
-    .tips-list {
-      margin-top: 4px;
-      font-size: 0.74rem;
-      display: grid;
-      gap: 3px;
-    }
-    .tips-list li { margin-left: 16px; }
-    .grid-2 {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 6px;
-      margin-top: 4px;
-    }
-    .mini-card {
-      border-radius: 10px;
-      border: 1px dashed rgba(148, 163, 184, 0.6);
-      padding: 6px 8px;
-      font-size: 0.75rem;
-    }
-    .roadmap-step { font-size: 0.75rem; margin-bottom: 3px; }
-    .calendar-list {
-      font-size: 0.75rem;
-      display: grid;
-      gap: 3px;
-      margin-top: 4px;
-    }
-    .calendar-item { display: flex; justify-content: space-between; }
-    .pill-day {
-      font-size: 0.7rem;
-      padding: 1px 7px;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.6);
-    }
-    .pill-day-green { border-color: rgba(34, 197, 94, 0.7); color: var(--accent-green); }
-    .pill-day-yellow { border-color: rgba(234, 179, 8, 0.7); color: var(--accent-yellow); }
-    .pill-day-red { border-color: rgba(248, 113, 113, 0.8); color: var(--accent-red); }
-    .assets-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 6px;
-      margin-top: 6px;
-    }
-    .asset-card {
-      border-radius: 10px;
-      padding: 8px 9px;
-      border: 1px solid rgba(148, 163, 184, 0.6);
-      font-size: 0.78rem;
-    }
-    .asset-label {
-      font-size: 0.7rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: #9ca3af;
-      margin-bottom: 3px;
-    }
-    .asset-value { font-size: 0.9rem; font-weight: 600; }
-    .ratio-tag {
-      font-size: 0.72rem;
-      padding: 1px 8px;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.6);
-    }
-    .ratio-tag-bad { border-color: rgba(248, 113, 113, 0.8); color: var(--accent-red); }
-    .legend { display: flex; gap: 10px; font-size: 0.72rem; margin-top: 2px; flex-wrap: wrap; }
-    .legend span { display: inline-flex; align-items: center; gap: 4px; }
-    .legend-color { width: 10px; height: 10px; border-radius: 4px; }
-  </style>
+<meta charset="UTF-8" />
+<title>Dashboard Presupuesto Personal — Andrés 2026</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+/* ─── TOKENS ─── */
+:root, [data-theme="light"] {
+  --bg:            #f5f7fb;
+  --bg-elevated:   #ffffff;
+  --bg-surface:    #f0f2f8;
+  --border:        #d9dde8;
+  --text:          #111827;
+  --text-muted:    #6b7280;
+  --text-faint:    #9ca3af;
+  --accent:        #22c55e;
+  --accent-soft:   rgba(34,197,94,0.12);
+  --warn:          #eab308;
+  --warn-soft:     rgba(234,179,8,0.10);
+  --danger:        #ef4444;
+  --danger-soft:   rgba(239,68,68,0.10);
+  --blue:          #38bdf8;
+  --blue-soft:     rgba(56,189,248,0.10);
+  --shadow:        0 4px 20px rgba(15,23,42,0.08);
+  --shadow-lg:     0 12px 40px rgba(15,23,42,0.12);
+  --radius:        12px;
+  --radius-sm:     8px;
+  --radius-xs:     5px;
+  --transition:    0.18s cubic-bezier(0.16,1,0.3,1);
+}
+[data-theme="dark"] {
+  --bg:            #060d19;
+  --bg-elevated:   #0f1928;
+  --bg-surface:    #162035;
+  --border:        #1e2d44;
+  --text:          #e2e8f0;
+  --text-muted:    #94a3b8;
+  --text-faint:    #64748b;
+  --accent:        #22c55e;
+  --accent-soft:   rgba(34,197,94,0.12);
+  --warn:          #facc15;
+  --warn-soft:     rgba(250,204,21,0.10);
+  --danger:        #f87171;
+  --danger-soft:   rgba(248,113,113,0.10);
+  --blue:          #38bdf8;
+  --blue-soft:     rgba(56,189,248,0.12);
+  --shadow:        0 4px 24px rgba(0,0,0,0.4);
+  --shadow-lg:     0 12px 48px rgba(0,0,0,0.5);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) { --bg:#060d19;--bg-elevated:#0f1928;--bg-surface:#162035;--border:#1e2d44;--text:#e2e8f0;--text-muted:#94a3b8;--text-faint:#64748b;--accent:#22c55e;--accent-soft:rgba(34,197,94,0.12);--warn:#facc15;--warn-soft:rgba(250,204,21,0.10);--danger:#f87171;--danger-soft:rgba(248,113,113,0.10);--blue:#38bdf8;--blue-soft:rgba(56,189,248,0.12);--shadow:0 4px 24px rgba(0,0,0,0.4);--shadow-lg:0 12px 48px rgba(0,0,0,0.5); }
+}
+
+/* ─── BASE ─── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
+body{
+  font-family:'Inter',sans-serif;
+  font-size:14px;line-height:1.5;
+  background:var(--bg);
+  color:var(--text);
+  min-height:100dvh;
+  padding:20px 16px 40px;
+  display:flex;justify-content:center;align-items:flex-start;
+}
+.shell{width:100%;max-width:1280px;}
+
+/* ─── HEADER ─── */
+.hdr{
+  display:flex;justify-content:space-between;align-items:center;
+  flex-wrap:wrap;gap:12px;
+  padding:20px 24px;
+  background:var(--bg-elevated);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  margin-bottom:16px;
+}
+.hdr-left{display:flex;align-items:center;gap:12px;}
+.logo{
+  width:36px;height:36px;flex-shrink:0;
+}
+.hdr-title{font-size:1rem;font-weight:700;letter-spacing:-0.01em;}
+.hdr-sub{font-size:0.72rem;color:var(--text-muted);margin-top:2px;}
+.hdr-right{display:flex;align-items:center;gap:12px;}
+.date-badge{
+  font-size:0.7rem;color:var(--text-muted);
+  padding:4px 10px;border-radius:999px;
+  border:1px solid var(--border);
+  background:var(--bg-surface);
+}
+.theme-btn{
+  width:32px;height:32px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--bg-surface);border:1px solid var(--border);
+  cursor:pointer;transition:var(--transition);color:var(--text-muted);
+}
+.theme-btn:hover{background:var(--accent-soft);color:var(--accent);}
+
+/* ─── KPI ROW ─── */
+.kpi-row{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;margin-bottom:16px;
+}
+.kpi{
+  background:var(--bg-elevated);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:14px 16px;
+  box-shadow:var(--shadow);
+  position:relative;overflow:hidden;
+}
+.kpi::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(circle at top right,var(--kpi-color,var(--accent-soft)),transparent 65%);
+  opacity:.7;pointer-events:none;
+}
+.kpi-label{font-size:0.68rem;text-transform:uppercase;letter-spacing:.1em;color:var(--text-faint);margin-bottom:6px;}
+.kpi-value{font-size:1.3rem;font-weight:700;font-variant-numeric:tabular-nums lining-nums;letter-spacing:-0.02em;}
+.kpi-meta{font-size:0.7rem;color:var(--text-muted);margin-top:4px;}
+
+/* ─── TABS ─── */
+.tab-bar{
+  display:flex;flex-wrap:wrap;gap:6px;
+  padding:10px 14px;
+  background:var(--bg-elevated);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  margin-bottom:12px;
+  box-shadow:var(--shadow);
+}
+.tab{
+  padding:5px 13px;font-size:0.74rem;font-weight:500;
+  border-radius:999px;border:1px solid transparent;
+  cursor:pointer;transition:var(--transition);
+  color:var(--text-muted);background:transparent;
+  display:flex;align-items:center;gap:5px;
+}
+.tab:hover{background:var(--bg-surface);color:var(--text);}
+.tab.active{
+  background:linear-gradient(135deg,#0ea5e9,#22c55e);
+  color:#fff;border-color:transparent;
+  box-shadow:0 0 0 1px rgba(0,0,0,.15);
+}
+.chip{
+  font-size:.62rem;padding:1px 6px;border-radius:999px;
+  background:var(--danger-soft);color:var(--danger);border:1px solid var(--danger);
+  font-weight:600;
+}
+.chip-ok{background:var(--accent-soft);color:var(--accent);border-color:var(--accent);}
+
+/* ─── PANEL ─── */
+.panel{display:none;animation:fadeIn .18s ease-out;}
+.panel.active{display:block;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+
+/* ─── CARDS / GRID ─── */
+.card{
+  background:var(--bg-elevated);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:16px;
+  box-shadow:var(--shadow);
+}
+.card-title{
+  font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;
+  font-weight:600;color:var(--text-faint);margin-bottom:10px;
+  display:flex;align-items:center;gap:6px;
+}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;}
+.grid-main{display:grid;grid-template-columns:2fr 1fr;gap:12px;}
+.col{display:flex;flex-direction:column;gap:12px;}
+
+/* ─── TABLE ─── */
+table{width:100%;border-collapse:collapse;font-size:.8rem;}
+th,td{padding:7px 8px;text-align:left;border-bottom:1px solid var(--border);}
+th{font-size:.67rem;text-transform:uppercase;letter-spacing:.08em;color:var(--text-faint);font-weight:600;}
+tr:last-child td{border-bottom:none;}
+td.num{font-family:'JetBrains Mono',monospace;font-variant-numeric:tabular-nums;text-align:right;}
+th.num{text-align:right;}
+td.bold{font-weight:600;}
+
+/* ─── BADGES ─── */
+.badge{
+  display:inline-flex;align-items:center;
+  font-size:.67rem;padding:2px 8px;border-radius:999px;
+  border:1px solid;font-weight:500;
+}
+.badge-green{color:var(--accent);border-color:var(--accent);background:var(--accent-soft);}
+.badge-yellow{color:var(--warn);border-color:var(--warn);background:var(--warn-soft);}
+.badge-red{color:var(--danger);border-color:var(--danger);background:var(--danger-soft);}
+.badge-blue{color:var(--blue);border-color:var(--blue);background:var(--blue-soft);}
+.badge-neutral{color:var(--text-muted);border-color:var(--border);background:var(--bg-surface);}
+
+/* ─── PROGRESS BAR ─── */
+.prog-wrap{margin-top:8px;}
+.prog-label{display:flex;justify-content:space-between;font-size:.7rem;color:var(--text-muted);margin-bottom:4px;}
+.prog-bar{height:6px;border-radius:999px;background:var(--bg-surface);overflow:hidden;}
+.prog-fill{height:100%;border-radius:999px;transition:width .6s ease;}
+.prog-green{background:var(--accent);}
+.prog-yellow{background:var(--warn);}
+.prog-red{background:var(--danger);}
+.prog-blue{background:var(--blue);}
+
+/* ─── CALENDAR ROW ─── */
+.cal-item{
+  display:flex;align-items:center;gap:8px;
+  padding:6px 0;border-bottom:1px solid var(--border);font-size:.78rem;
+}
+.cal-item:last-child{border-bottom:none;}
+.cal-day{
+  min-width:28px;height:28px;border-radius:var(--radius-xs);
+  display:flex;align-items:center;justify-content:center;
+  font-size:.68rem;font-weight:700;font-family:'JetBrains Mono',monospace;
+  background:var(--bg-surface);color:var(--text-muted);flex-shrink:0;
+}
+.cal-desc{flex:1;color:var(--text);}
+.cal-amt{font-family:'JetBrains Mono',monospace;font-size:.78rem;font-weight:600;color:var(--text-muted);}
+.cal-day.paid{background:var(--accent-soft);color:var(--accent);}
+.cal-day.pending{background:var(--warn-soft);color:var(--warn);}
+.cal-day.danger{background:var(--danger-soft);color:var(--danger);}
+
+/* ─── SEMÁFORO ─── */
+.semaforo{
+  width:14px;height:14px;border-radius:50%;display:inline-block;flex-shrink:0;
+}
+.s-green{background:var(--accent);}
+.s-yellow{background:var(--warn);}
+.s-red{background:var(--danger);}
+
+/* ─── DEUDA CARD ─── */
+.debt-card{
+  background:var(--bg-elevated);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:14px 16px;
+}
+.debt-name{font-weight:600;font-size:.85rem;margin-bottom:4px;}
+.debt-meta{font-size:.72rem;color:var(--text-muted);margin-bottom:8px;}
+
+/* ─── CONSEJOS ─── */
+.tip{
+  display:flex;gap:10px;align-items:flex-start;
+  padding:8px 12px;border-radius:var(--radius-sm);
+  background:var(--bg-surface);border:1px solid var(--border);
+  font-size:.78rem;line-height:1.5;
+}
+.tip-icon{font-size:1rem;flex-shrink:0;margin-top:1px;}
+
+/* ─── ACTIVO ─── */
+.asset-card{
+  background:var(--bg-elevated);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:16px;
+  display:flex;flex-direction:column;gap:8px;
+}
+.asset-lbl{font-size:.68rem;text-transform:uppercase;letter-spacing:.1em;color:var(--text-faint);}
+.asset-val{font-size:1.4rem;font-weight:700;font-variant-numeric:tabular-nums;}
+.asset-bar{height:5px;border-radius:999px;background:var(--bg-surface);margin-top:4px;overflow:hidden;}
+.asset-fill{height:100%;border-radius:999px;}
+
+/* ─── ROADMAP ─── */
+.roadmap{display:flex;flex-direction:column;gap:6px;margin-top:8px;}
+.rm-step{
+  display:flex;gap:10px;align-items:flex-start;
+  font-size:.78rem;padding:8px 12px;
+  background:var(--bg-surface);border-radius:var(--radius-sm);
+  border:1px solid var(--border);
+}
+.rm-num{
+  min-width:22px;height:22px;border-radius:50%;
+  background:linear-gradient(135deg,#0ea5e9,#22c55e);
+  color:#fff;font-size:.68rem;font-weight:700;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+
+/* ─── CHART CONTAINER ─── */
+.chart-box{position:relative;}
+.chart-box canvas{max-height:220px;}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width:900px){
+  .kpi-row{grid-template-columns:repeat(2,1fr);}
+  .grid-main,.grid-2,.grid-3{grid-template-columns:1fr;}
+}
+@media (max-width:600px){
+  .kpi-row{grid-template-columns:1fr 1fr;}
+  body{padding:12px 8px 32px;}
+}
+
+/* ─── SEPARATOR ─── */
+.sep{height:1px;background:var(--border);margin:10px 0;}
+.section-title{font-size:.78rem;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px;}
+
+</style>
 </head>
 <body>
-  <div class=\"app\">
-    <div class=\"app-inner\">
-      <header class=\"header\">
-        <div class=\"title-block\">
-          <h1>Control de presupuesto <span class=\"pill\">Abr–Ago 2026</span></h1>
-          <div class=\"subtitle\">Estrategia avalancha + semáforo mensual.</div>
+<div class="shell">
+
+  <!-- HEADER -->
+  <header class="hdr">
+    <div class="hdr-left">
+      <!-- Logo SVG -->
+      <svg class="logo" viewBox="0 0 36 36" fill="none" aria-label="Budget Logo">
+        <rect width="36" height="36" rx="9" fill="url(#g1)"/>
+        <path d="M11 18h14M18 11v14" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
+        <circle cx="18" cy="18" r="6.5" stroke="#fff" stroke-width="1.5" opacity=".5"/>
+        <defs>
+          <linearGradient id="g1" x1="0" y1="0" x2="36" y2="36" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#0ea5e9"/>
+            <stop offset="1" stop-color="#22c55e"/>
+          </linearGradient>
+        </defs>
+      </svg>
+      <div>
+        <div class="hdr-title">Presupuesto Personal 2026</div>
+        <div class="hdr-sub">Estrategia Avalancha · Abr–Ago · Ecuador</div>
+      </div>
+    </div>
+    <div class="hdr-right">
+      <span class="date-badge" id="liveClock">14 ABR 2026</span>
+      <button class="theme-btn" id="themeToggle" aria-label="Cambiar tema" title="Cambiar tema">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- KPI ROW -->
+  <section class="kpi-row">
+    <div class="kpi" style="--kpi-color:var(--accent-soft)">
+      <div class="kpi-label">Ingresos Totales (5M)</div>
+      <div class="kpi-value" style="color:var(--accent)">$20,500</div>
+      <div class="kpi-meta">Abr $5,300 · May $2,900 · Jun/Jul/Ago $4,100 c/u</div>
+    </div>
+    <div class="kpi" style="--kpi-color:var(--danger-soft)">
+      <div class="kpi-label">Deuda Total</div>
+      <div class="kpi-value" style="color:var(--danger)">$71,841</div>
+      <div class="kpi-meta">Tarjetas + préstamos activos</div>
+    </div>
+    <div class="kpi" style="--kpi-color:var(--blue-soft)">
+      <div class="kpi-label">Activos Líquidos</div>
+      <div class="kpi-value" style="color:var(--blue)">$3,180</div>
+      <div class="kpi-meta">Inversión $3,000 · Corriente $180</div>
+    </div>
+    <div class="kpi" style="--kpi-color:var(--warn-soft)">
+      <div class="kpi-label">Ratio Deuda/Ingreso</div>
+      <div class="kpi-value" style="color:var(--warn)">63.6%</div>
+      <div class="kpi-meta">Fijos $1,831.73 / Ingreso $2,900</div>
+    </div>
+  </section>
+
+  <!-- TABS -->
+  <nav class="tab-bar" role="tablist">
+    <button class="tab active" data-tab="proyeccion" role="tab">📊 Proyección</button>
+    <button class="tab" data-tab="abril" role="tab">Abril <span class="chip chip-ok">SANO</span></button>
+    <button class="tab" data-tab="mayo" role="tab">Mayo <span class="chip">CRÍTICO</span></button>
+    <button class="tab" data-tab="junio" role="tab">Junio</button>
+    <button class="tab" data-tab="julio" role="tab">Julio</button>
+    <button class="tab" data-tab="agosto" role="tab">Agosto</button>
+    <button class="tab" data-tab="semanal" role="tab">📅 Semanal</button>
+    <button class="tab" data-tab="deudas" role="tab">💳 Deudas</button>
+    <button class="tab" data-tab="activos" role="tab">🏦 Activos</button>
+  </nav>
+
+  <!-- ══════════ TAB: PROYECCIÓN ══════════ -->
+  <div class="panel active" id="panel-proyeccion" role="tabpanel">
+    <div class="grid-main">
+      <div class="col">
+        <div class="card">
+          <div class="card-title">Flujo mensual Abril–Agosto</div>
+          <div class="chart-box"><canvas id="chartFlujo"></canvas></div>
         </div>
-        <div class=\"toggle-wrapper\">
-          <span>Modo oscuro</span>
-          <label class=\"theme-toggle\"><input type=\"checkbox\" id=\"themeToggle\" checked /><span class=\"slider\"></span></label>
+        <div class="card">
+          <div class="card-title">Mapa de saldos mensuales</div>
+          <table>
+            <thead><tr><th>Mes</th><th>Ingreso</th><th>Fijos</th><th>Tarjetas</th><th class="num">Saldo</th><th>Estado</th></tr></thead>
+            <tbody>
+              <tr><td>Abril</td><td>$5,300</td><td>$1,331.73</td><td>$1,599.67</td><td class="num" style="color:var(--accent)">+$568.60</td><td><span class="badge badge-green">Sano</span></td></tr>
+              <tr><td>Mayo</td><td>$2,900</td><td>$1,331.73</td><td>$1,666.53</td><td class="num" style="color:var(--danger)">-$498.26</td><td><span class="badge badge-red">Crítico</span></td></tr>
+              <tr><td>Junio</td><td>$4,100</td><td>$1,331.73</td><td>$1,546.53</td><td class="num" style="color:var(--accent)">+$821.74</td><td><span class="badge badge-green">Sano</span></td></tr>
+              <tr><td>Julio</td><td>$4,100</td><td>$1,331.73</td><td>$1,546.53</td><td class="num" style="color:var(--accent)">+$821.74</td><td><span class="badge badge-green">Sano</span></td></tr>
+              <tr><td>Agosto</td><td>$4,100</td><td>$1,331.73</td><td>$1,546.53</td><td class="num" style="color:var(--accent)">+$821.74</td><td><span class="badge badge-green">Sano</span></td></tr>
+            </tbody>
+          </table>
         </div>
-      </header>
-      <section class=\"top-metrics\">
-        <div class=\"card\"><div class=\"card-label\"><span>Ingresos Totales</span><span class=\"badge badge-green\">OK</span></div><div class=\"card-value\">$20,500</div></div>
-        <div class=\"card\"><div class=\"card-label\"><span>Promedio Saldo</span></div><div class=\"card-value\">$501.51</div></div>
-        <div class=\"card\"><div class=\"card-label\"><span>Deuda Total</span></div><div class=\"card-value\">$71,841</div></div>
-        <div class=\"card\"><div class=\"card-label\"><span>Activos Líquidos</span></div><div class=\"card-value\">$3,180</div></div>
-      </section>
-      <section class=\"tabs\">
-        <div class=\"tab-list\">
-          <button class=\"tab-button active\" data-tab=\"proyeccion\"><span class=\"indicator-dot\"></span> Proyección</button>
-          <button class=\"tab-button\" data-tab=\"abril\"><span class=\"indicator-dot\"></span> Abril</button>
-          <button class=\"tab-button\" data-tab=\"mayo\"><span class=\"indicator-dot\"></span> Mayo <span class=\"chip-critical\">Crítico</span></button>
-          <button class=\"tab-button\" data-tab=\"junio\"><span class=\"indicator-dot\"></span> Junio</button>
-          <button class=\"tab-button\" data-tab=\"julio\"><span class=\"indicator-dot\"></span> Julio</button>
-          <button class=\"tab-button\" data-tab=\"agosto\"><span class=\"indicator-dot\"></span> Agosto</button>
-          <button class=\"tab-button\" data-tab=\"semanal\"><span class=\"indicator-dot\"></span> Semanal</button>
-          <button class=\"tab-button\" data-tab=\"deudas\"><span class=\"indicator-dot\"></span> Deudas</button>
-          <button class=\"tab-button\" data-tab=\"activos\"><span class=\"indicator-dot\"></span> Activos</button>
+      </div>
+      <div class="col">
+        <div class="card">
+          <div class="card-title">Calendario de pagos fijos</div>
+          <div class="cal-item"><span class="cal-day">01</span><span class="cal-desc">Arriendo + Austro</span><span class="cal-amt">$1,100</span></div>
+          <div class="cal-item"><span class="cal-day">01</span><span class="cal-desc">Produbanco cuota</span><span class="cal-amt">$509</span></div>
+          <div class="cal-item"><span class="cal-day">02</span><span class="cal-desc">Diners Club</span><span class="cal-amt">$346.53</span></div>
+          <div class="cal-item"><span class="cal-day">08</span><span class="cal-desc">PacifiCard Mastercard</span><span class="cal-amt">$438.59</span></div>
+          <div class="cal-item"><span class="cal-day">15</span><span class="cal-desc">Banco Guayaquil</span><span class="cal-amt">$370</span></div>
+          <div class="cal-item"><span class="cal-day">28</span><span class="cal-desc">💰 SUELDO</span><span class="cal-amt" style="color:var(--accent)">+$2,900</span></div>
+          <div class="cal-item"><span class="cal-day">30</span><span class="cal-desc">Banco Pichincha PRECISO</span><span class="cal-amt">$222.73</span></div>
         </div>
-        <div class=\"tab-panels\">
-          <div class=\"tab-panel active\" id=\"proyeccion\">
-            <div class=\"panel-grid\">
-              <div>
-                <div class=\"panel-title\">Flujo mensual Abril–Agosto</div>
-                <canvas id=\"cashflowChart\" height=\"140\"></canvas>
-              </div>
-              <div>
-                <table>
-                  <thead><tr><th>Mes</th><th>Saldo</th><th>Estado</th></tr></thead>
-                  <tbody>
-                    <tr><td>Abril</td><td>$568.60</td><td><span class=\"status-text status-ok-text\">Sano</span></td></tr>
-                    <tr><td>Mayo</td><td>-$498.26</td><td><span class=\"status-text status-warn-text\">Aviso</span></td></tr>
-                    <tr><td>Junio</td><td>$801.74</td><td><span class=\"status-text status-ok-text\">Sano</span></td></tr>
-                    <tr><td>Julio</td><td>$811.74</td><td><span class=\"status-text status-ok-text\">Sano</span></td></tr>
-                    <tr><td>Agosto</td><td>$821.74</td><td><span class=\"status-text status-ok-text\">Sano</span></td></tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
+        <div class="card">
+          <div class="card-title">Proyección ahorro/inversión (Escenario A)</div>
+          <table>
+            <thead><tr><th>Mes</th><th class="num">Ahorro</th><th class="num">Inversión</th></tr></thead>
+            <tbody>
+              <tr><td>Hoy</td><td class="num">$2,000</td><td class="num">$1,000</td></tr>
+              <tr><td>Mayo</td><td class="num" style="color:var(--accent)">$2,334</td><td class="num" style="color:var(--accent)">$1,200</td></tr>
+              <tr><td>Junio</td><td class="num" style="color:var(--accent)">$2,668</td><td class="num" style="color:var(--accent)">$1,400</td></tr>
+              <tr><td>Julio</td><td class="num" style="color:var(--accent)">$3,002</td><td class="num" style="color:var(--accent)">$1,601</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card">
+          <div class="card-title">Semáforo</div>
+          <div style="display:flex;flex-direction:column;gap:6px;font-size:.8rem;">
+            <div style="display:flex;align-items:center;gap:8px;"><span class="semaforo s-green"></span><span>Abril — Saldo positivo $568.60</span></div>
+            <div style="display:flex;align-items:center;gap:8px;"><span class="semaforo s-red"></span><span><strong>Mayo — Déficit $498.26 (¡Cuidado!)</strong></span></div>
+            <div style="display:flex;align-items:center;gap:8px;"><span class="semaforo s-green"></span><span>Junio — Normaliza con $4,100</span></div>
+            <div style="display:flex;align-items:center;gap:8px;"><span class="semaforo s-green"></span><span>Julio — Estable $821.74</span></div>
+            <div style="display:flex;align-items:center;gap:8px;"><span class="semaforo s-green"></span><span>Agosto — Estable $821.74</span></div>
           </div>
-          <div class=\"tab-panel\" id=\"abril\">
-            <div class=\"panel-grid\">
-              <div>
-                <div class=\"panel-title\">Abril 2026</div>
-                <table>
-                  <tbody>
-                    <tr><td>Ingresos</td><td>$5,300</td></tr>
-                    <tr><td>Gastos fijos</td><td>$1,331.73</td></tr>
-                    <tr><td>Tarjetas</td><td>$1,599.67</td></tr>
-                    <tr><td>Reembolsos</td><td>$1,800</td></tr>
-                    <tr><td><strong>Saldo</strong></td><td><strong>$568.60</strong></td></tr>
-                  </tbody>
-                </table>
-              </div>
-              <div>
-                <div class=\"panel-title\">Calendario Abril</div>
-                <div class=\"calendar-list\">
-                  <div class=\"calendar-item\"><span>01 - Arriendo+Préstamo</span><span>$1,108.73</span></div>
-                  <div class=\"calendar-item\"><span>02 - Diners</span><span>$346.53</span></div>
-                  <div class=\"calendar-item\"><span>08 - PacifiCard</span><span>$438.59</span></div>
-                  <div class=\"calendar-item\"><span>15 - Guayaquil</span><span>$370</span></div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class=\"tab-panel\" id=\"mayo\">
-             <div class=\"panel-grid\">
-              <div>
-                <div class=\"panel-title\">Mayo 2026 - Crítico</div>
-                <table>
-                  <tbody>
-                    <tr><td>Ingreso</td><td>$2,900</td></tr>
-                    <tr><td>Fijos</td><td>$1,331.73</td></tr>
-                    <tr><td>Tipti</td><td>$400</td></tr>
-                    <tr><td>Tarjetas</td><td>$1,666.53</td></tr>
-                    <tr><td><strong>Saldo</strong></td><td><strong style=\"color:red;\">-$498.26</strong></td></tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
         </div>
-      </section>
+      </div>
     </div>
   </div>
-  <script>
-    const htmlEl = document.documentElement;
-    const themeToggle = document.getElementById('themeToggle');
-    themeToggle.addEventListener('change', () => {
-      htmlEl.classList.toggle('dark');
-    });
-    const tabButtons = document.querySelectorAll('.tab-button');
-    const tabPanels = document.querySelectorAll('.tab-panel');
-    tabButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const tab = btn.getAttribute('data-tab');
-        tabButtons.forEach(b => b.classList.remove('active'));
-        tabPanels.forEach(p => p.classList.remove('active'));
-        btn.classList.add('active');
-        const target = document.getElementById(tab);
-        if (target) target.classList.add('active');
-      });
-    });
-    const cashflowCtx = document.getElementById('cashflowChart').getContext('2d');
-    new Chart(cashflowCtx, {
-      type: 'bar',
-      data: {
-        labels: ['Abr', 'May', 'Jun', 'Jul', 'Ago'],
-        datasets: [
-          { label: 'Ingresos', data: [5300, 2900, 4100, 4100, 4100], backgroundColor: '#22c55e' },
-          { label: 'Saldo', data: [568.6, -498.26, 801.74, 811.74, 821.74], type: 'line', borderColor: '#0ea5e9', tension: 0.3 }
-        ]
+
+  <!-- ══════════ TAB: ABRIL ══════════ -->
+  <div class="panel" id="panel-abril" role="tabpanel">
+    <div class="grid-main">
+      <div class="col">
+        <div class="card">
+          <div class="card-title">Flujo Abril 2026</div>
+          <div class="chart-box"><canvas id="chartAbril"></canvas></div>
+        </div>
+        <div class="card">
+          <div class="card-title">Detalle ingresos y gastos</div>
+          <table>
+            <thead><tr><th>Concepto</th><th class="num">Monto</th><th>Estado</th></tr></thead>
+            <tbody>
+              <tr><td colspan="3" style="font-size:.7rem;color:var(--text-faint);padding-top:6px;">INGRESOS</td></tr>
+              <tr><td>Sueldo (día 28)</td><td class="num" style="color:var(--accent)">+$2,900</td><td><span class="badge badge-green">Recibido</span></td></tr>
+              <tr><td>Reembolso empresa</td><td class="num" style="color:var(--accent)">+$2,000</td><td><span class="badge badge-green">Recibido</span></td></tr>
+              <tr><td>Extra viernes</td><td class="num" style="color:var(--warn)">+$400</td><td><span class="badge badge-yellow">Pendiente</span></td></tr>
+              <tr><td colspan="3" style="font-size:.7rem;color:var(--text-faint);padding-top:6px;">GASTOS FIJOS</td></tr>
+              <tr><td>Arriendo (día 1)</td><td class="num">-$600</td><td><span class="badge badge-green">✓ Pagado</span></td></tr>
+              <tr><td>Banco del Austro (día 1)</td><td class="num">-$500</td><td><span class="badge badge-green">✓ Pagado</span></td></tr>
+              <tr><td>Produbanco (día 1)</td><td class="num">-$509</td><td><span class="badge badge-green">✓ Pagado</span></td></tr>
+              <tr><td>Banco Pichincha (día 30)</td><td class="num">-$222.73</td><td><span class="badge badge-yellow">Pendiente</span></td></tr>
+              <tr><td colspan="3" style="font-size:.7rem;color:var(--text-faint);padding-top:6px;">TARJETAS</td></tr>
+              <tr><td>Diners Club (día 2)</td><td class="num">-$346.53</td><td><span class="badge badge-green">✓ Pagado</span></td></tr>
+              <tr><td>PacifiCard (día 8)</td><td class="num">-$438.59</td><td><span class="badge badge-green">✓ Pagado</span></td></tr>
+              <tr><td>Banco Guayaquil (día 15)</td><td class="num">-$370</td><td><span class="badge badge-yellow">Mañana!</span></td></tr>
+              <tr><td colspan="3" style="font-size:.7rem;color:var(--text-faint);padding-top:6px;">ALIMENTACIÓN</td></tr>
+              <tr><td>Tipti / Alimentación</td><td class="num">-$400</td><td><span class="badge badge-neutral">Variable</span></td></tr>
+              <tr style="border-top:2px solid var(--border)"><td class="bold">Saldo Proyectado</td><td class="num bold" style="color:var(--accent)">+$568.60</td><td><span class="badge badge-green">SANO</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card">
+          <div class="card-title">Calendario Abril — Estado a hoy 14/04</div>
+          <div class="cal-item"><span class="cal-day paid">01</span><span class="cal-desc">Arriendo $600</span><span class="cal-amt" style="color:var(--accent)">✓</span></div>
+          <div class="cal-item"><span class="cal-day paid">01</span><span class="cal-desc">Banco Austro $500</span><span class="cal-amt" style="color:var(--accent)">✓</span></div>
+          <div class="cal-item"><span class="cal-day paid">01</span><span class="cal-desc">Produbanco $509</span><span class="cal-amt" style="color:var(--accent)">✓</span></div>
+          <div class="cal-item"><span class="cal-day paid">02</span><span class="cal-desc">Diners $346.53</span><span class="cal-amt" style="color:var(--accent)">✓</span></div>
+          <div class="cal-item"><span class="cal-day paid">08</span><span class="cal-desc">PacifiCard $438.59</span><span class="cal-amt" style="color:var(--accent)">✓</span></div>
+          <div class="cal-item"><span class="cal-day danger">15</span><span class="cal-desc">Guayaquil $370 ⚠️ HOY</span><span class="cal-amt" style="color:var(--warn)">Pagar hoy</span></div>
+          <div class="cal-item"><span class="cal-day">24</span><span class="cal-desc">Corte PacifiCard</span><span class="cal-amt">—</span></div>
+          <div class="cal-item"><span class="cal-day">27</span><span class="cal-desc">Corte Guayaquil</span><span class="cal-amt">—</span></div>
+          <div class="cal-item"><span class="cal-day">28</span><span class="cal-desc">💰 SUELDO</span><span class="cal-amt" style="color:var(--accent)">+$2,900</span></div>
+          <div class="cal-item"><span class="cal-day pending">30</span><span class="cal-desc">Pichincha $222.73</span><span class="cal-amt" style="color:var(--warn)">Pendiente</span></div>
+        </div>
+        <div class="card" style="--kpi-color:var(--accent-soft)">
+          <div class="card-title">Resumen semanas restantes</div>
+          <div style="font-size:.78rem;display:flex;flex-direction:column;gap:6px;">
+            <div style="display:flex;justify-content:space-between;"><span>Sem 1–2 (ya pasó)</span><span style="color:var(--text-muted)">Completadas ✓</span></div>
+            <div style="display:flex;justify-content:space-between;"><span>Sem 3 (15–21 abr)</span><span style="color:var(--warn)">$167 disponibles</span></div>
+            <div style="display:flex;justify-content:space-between;"><span>Sem 4 (22–30 abr)</span><span style="color:var(--accent)">$401.60 disponibles</span></div>
+            <div class="sep"></div>
+            <div style="display:flex;justify-content:space-between;"><span>Gasto diario estimado</span><span>$35.54/día (16 días)</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════ TAB: MAYO ══════════ -->
+  <div class="panel" id="panel-mayo" role="tabpanel">
+    <div class="grid-main">
+      <div class="col">
+        <div class="card" style="border-color:var(--danger);">
+          <div class="card-title" style="color:var(--danger);">⚠️ Mayo 2026 — Mes Crítico</div>
+          <table>
+            <thead><tr><th>Concepto</th><th class="num">Monto</th></tr></thead>
+            <tbody>
+              <tr><td>Sueldo base</td><td class="num" style="color:var(--accent)">+$2,900</td></tr>
+              <tr><td colspan="2" style="font-size:.7rem;color:var(--text-faint);padding-top:6px;">GASTOS FIJOS</td></tr>
+              <tr><td>Arriendo</td><td class="num">-$600</td></tr>
+              <tr><td>Banco del Austro</td><td class="num">-$500</td></tr>
+              <tr><td>Produbanco</td><td class="num">-$509</td></tr>
+              <tr><td>Pichincha PRECISO</td><td class="num">-$222.73</td></tr>
+              <tr><td colspan="2" style="font-size:.7rem;color:var(--text-faint);padding-top:6px;">TARJETAS</td></tr>
+              <tr><td>Diners Club</td><td class="num">-$346.53</td></tr>
+              <tr><td>PacifiCard</td><td class="num">-$438.59</td></tr>
+              <tr><td>Banco Guayaquil</td><td class="num">-$370</td></tr>
+              <tr><td>Tipti / Alimentación</td><td class="num">-$400</td></tr>
+              <tr><td>Gastos variables</td><td class="num">-$11.41</td></tr>
+              <tr style="border-top:2px solid var(--danger)"><td class="bold">SALDO</td><td class="num bold" style="color:var(--danger)">-$498.26</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card">
+          <div class="card-title">Gráfico Mayo</div>
+          <div class="chart-box"><canvas id="chartMayo"></canvas></div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card" style="border-color:var(--danger);">
+          <div class="card-title" style="color:var(--danger);">Plan de contingencia Mayo</div>
+          <div style="display:flex;flex-direction:column;gap:8px;font-size:.8rem;margin-top:4px;">
+            <div class="tip"><span class="tip-icon">🎯</span><span>El déficit de $498.26 debe cubrirse con el saldo de Abril o reduciendo variables. No tocar inversiones.</span></div>
+            <div class="tip"><span class="tip-icon">🛒</span><span>Eliminar Tipti ($400) y cocinar en casa reduce el déficit a $98.26 — manejable.</span></div>
+            <div class="tip"><span class="tip-icon">💡</span><span>Si cobras los $400 extra de viernes de Abril, Mayo queda equilibrado ($-98).</span></div>
+            <div class="tip"><span class="tip-icon">📱</span><span>Revisar suscripciones y eliminar las que no uses este mes.</span></div>
+            <div class="tip"><span class="tip-icon">🏦</span><span>Junio normaliza: sueldo sube a $4,100 y el saldo será +$821.74.</span></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title">Gasto semanal Mayo</div>
+          <table>
+            <thead><tr><th>Semana</th><th class="num">Disponible</th><th>Nota</th></tr></thead>
+            <tbody>
+              <tr><td>Sem 1 (1–7)</td><td class="num" style="color:var(--danger)">-$667</td><td style="font-size:.7rem;color:var(--text-faint)">Todos los fijos caen</td></tr>
+              <tr><td>Sem 2 (8–14)</td><td class="num" style="color:var(--warn)">$61.41</td><td style="font-size:.7rem;color:var(--text-faint)">PacifiCard el 8</td></tr>
+              <tr><td>Sem 3 (15–21)</td><td class="num" style="color:var(--warn)">$37</td><td style="font-size:.7rem;color:var(--text-faint)">Guayaquil el 15</td></tr>
+              <tr><td>Sem 4 (22–28)</td><td class="num" style="color:var(--accent)">$70</td><td style="font-size:.7rem;color:var(--text-faint)">Llega sueldo el 28</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════ TAB: JUNIO ══════════ -->
+  <div class="panel" id="panel-junio" role="tabpanel">
+    <div class="grid-main">
+      <div class="col">
+        <div class="card">
+          <div class="card-title">Junio 2026 — Sueldo normalizado $4,100</div>
+          <table>
+            <thead><tr><th>Concepto</th><th class="num">Monto</th></tr></thead>
+            <tbody>
+              <tr><td>Sueldo estimado</td><td class="num" style="color:var(--accent)">+$4,100</td></tr>
+              <tr><td>Arriendo</td><td class="num">-$600</td></tr>
+              <tr><td>Banco del Austro</td><td class="num">-$500</td></tr>
+              <tr><td>Produbanco</td><td class="num">-$509</td></tr>
+              <tr><td>Pichincha PRECISO</td><td class="num">-$222.73</td></tr>
+              <tr><td>Diners Club</td><td class="num">-$346.53</td></tr>
+              <tr><td>PacifiCard</td><td class="num">-$438.59</td></tr>
+              <tr><td>Banco Guayaquil</td><td class="num">-$370</td></tr>
+              <tr><td>Alimentación</td><td class="num">-$400</td></tr>
+              <tr style="border-top:2px solid var(--border)"><td class="bold">Saldo</td><td class="num bold" style="color:var(--accent)">+$713.15</td></tr>
+              <tr><td>Dest. ahorro (Esc. A)</td><td class="num">+$334</td></tr>
+              <tr><td>Dest. inversión (Esc. A)</td><td class="num">+$200</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card"><div class="card-title">Flujo Junio</div><div class="chart-box"><canvas id="chartJunio"></canvas></div></div>
+      </div>
+      <div class="col">
+        <div class="card">
+          <div class="card-title">Semana tipo Junio</div>
+          <table>
+            <thead><tr><th>Semana</th><th class="num">Bolsa</th></tr></thead>
+            <tbody>
+              <tr><td>Sem 1 (1–7)</td><td class="num" style="color:var(--warn)">$169</td></tr>
+              <tr><td>Sem 2 (8–14)</td><td class="num" style="color:var(--accent)">$200.44</td></tr>
+              <tr><td>Sem 3 (15–21)</td><td class="num" style="color:var(--accent)">$200.44</td></tr>
+              <tr><td>Sem 4 (22–30)</td><td class="num" style="color:var(--accent)">$200.44</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card">
+          <div class="card-title">Distribución sueldo Junio</div>
+          <div style="display:flex;flex-direction:column;gap:8px;font-size:.8rem;margin-top:4px;">
+            <div style="display:flex;justify-content:space-between;"><span>Fijos (día 1–2)</span><span>$1,609</span></div>
+            <div style="display:flex;justify-content:space-between;"><span>Tarjetas (día 8, 15)</span><span>$808.59</span></div>
+            <div style="display:flex;justify-content:space-between;"><span>Pichincha (día 30)</span><span>$222.73</span></div>
+            <div style="display:flex;justify-content:space-between;"><span>Alimentación</span><span>$400</span></div>
+            <div style="display:flex;justify-content:space-between;"><span>→ Ahorro</span><span style="color:var(--accent)">$334</span></div>
+            <div style="display:flex;justify-content:space-between;"><span>→ Inversión</span><span style="color:var(--blue)">$200</span></div>
+            <div style="display:flex;justify-content:space-between;font-weight:600;"><span>→ Libre</span><span style="color:var(--warn)">$279.15</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════ TAB: JULIO ══════════ -->
+  <div class="panel" id="panel-julio" role="tabpanel">
+    <div class="grid-main">
+      <div class="col">
+        <div class="card">
+          <div class="card-title">Julio 2026</div>
+          <table>
+            <thead><tr><th>Concepto</th><th class="num">Monto</th></tr></thead>
+            <tbody>
+              <tr><td>Sueldo estimado</td><td class="num" style="color:var(--accent)">+$4,100</td></tr>
+              <tr><td>Fijos (=Junio)</td><td class="num">-$1,831.73</td></tr>
+              <tr><td>Tarjetas</td><td class="num">-$1,155.12</td></tr>
+              <tr><td>Alimentación</td><td class="num">-$400</td></tr>
+              <tr style="border-top:2px solid var(--border)"><td class="bold">Saldo</td><td class="num bold" style="color:var(--accent)">+$713.15</td></tr>
+              <tr><td>Ahorro acumulado</td><td class="num" style="color:var(--accent)">$3,002</td></tr>
+              <tr><td>Inversión acumulada</td><td class="num" style="color:var(--blue)">$1,601</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card"><div class="card-title">Flujo Julio</div><div class="chart-box"><canvas id="chartJulio"></canvas></div></div>
+      </div>
+      <div class="col">
+        <div class="card">
+          <div class="card-title">Semana tipo Julio</div>
+          <table>
+            <thead><tr><th>Semana</th><th class="num">Bolsa</th></tr></thead>
+            <tbody>
+              <tr><td>Sem 1</td><td class="num" style="color:var(--warn)">$169</td></tr>
+              <tr><td>Sem 2</td><td class="num" style="color:var(--accent)">$202.94</td></tr>
+              <tr><td>Sem 3</td><td class="num" style="color:var(--accent)">$202.94</td></tr>
+              <tr><td>Sem 4</td><td class="num" style="color:var(--accent)">$202.94</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card">
+          <div class="card-title">Hoja de ruta 6 meses</div>
+          <div class="roadmap">
+            <div class="rm-step"><div class="rm-num">1</div><div>Abril: cubrir Guayaquil mañana (15/04). Esperar extra $400.</div></div>
+            <div class="rm-step"><div class="rm-num">2</div><div>Mayo: reducir variables al mínimo. No nuevas deudas.</div></div>
+            <div class="rm-step"><div class="rm-num">3</div><div>Junio: primer mes estable con $4,100. Reiniciar ahorro sistemático.</div></div>
+            <div class="rm-step"><div class="rm-num">4</div><div>Jul–Ago: aportar $334/mes ahorro + $200 inversión sin falta.</div></div>
+            <div class="rm-step"><div class="rm-num">5</div><div>Ago: evaluar pago adelantado de Diners (deuda más pequeña — avalancha).</div></div>
+            <div class="rm-step"><div class="rm-num">6</div><div>Sep: revisar PacifiCard rotativo ($3,514). Mayor prioridad por tasa.</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════ TAB: AGOSTO ══════════ -->
+  <div class="panel" id="panel-agosto" role="tabpanel">
+    <div class="grid-main">
+      <div class="col">
+        <div class="card">
+          <div class="card-title">Agosto 2026</div>
+          <table>
+            <thead><tr><th>Concepto</th><th class="num">Monto</th></tr></thead>
+            <tbody>
+              <tr><td>Sueldo estimado</td><td class="num" style="color:var(--accent)">+$4,100</td></tr>
+              <tr><td>Fijos</td><td class="num">-$1,831.73</td></tr>
+              <tr><td>Tarjetas</td><td class="num">-$1,155.12</td></tr>
+              <tr><td>Alimentación</td><td class="num">-$400</td></tr>
+              <tr style="border-top:2px solid var(--border)"><td class="bold">Saldo</td><td class="num bold" style="color:var(--accent)">+$713.15</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card"><div class="card-title">Flujo Agosto</div><div class="chart-box"><canvas id="chartAgosto"></canvas></div></div>
+      </div>
+      <div class="col">
+        <div class="card">
+          <div class="card-title">Semana tipo Agosto</div>
+          <table>
+            <thead><tr><th>Semana</th><th class="num">Bolsa</th></tr></thead>
+            <tbody>
+              <tr><td>Sem 1</td><td class="num" style="color:var(--warn)">$169</td></tr>
+              <tr><td>Sem 2</td><td class="num" style="color:var(--accent)">$205.44</td></tr>
+              <tr><td>Sem 3</td><td class="num" style="color:var(--accent)">$205.44</td></tr>
+              <tr><td>Sem 4</td><td class="num" style="color:var(--accent)">$205.44</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card">
+          <div class="card-title">8 consejos financieros</div>
+          <div style="display:flex;flex-direction:column;gap:6px;margin-top:4px;">
+            <div class="tip"><span class="tip-icon">💰</span><span>Paga el mínimo de todas las deudas y el máximo a PacifiCard rotativo (estrategia avalancha).</span></div>
+            <div class="tip"><span class="tip-icon">📉</span><span>Evita consumos en tarjetas durante Mayo — solo paga lo pendiente.</span></div>
+            <div class="tip"><span class="tip-icon">🔁</span><span>Automatiza el depósito a inversión el día 28 (mismo día que el sueldo).</span></div>
+            <div class="tip"><span class="tip-icon">📦</span><span>Usa la cuenta corriente como tránsito, no como ahorro.</span></div>
+            <div class="tip"><span class="tip-icon">🧾</span><span>Revisa los estados de cuenta 2 días antes del corte para evitar sorpresas.</span></div>
+            <div class="tip"><span class="tip-icon">🎯</span><span>Meta: reducir PacifiCard rotativo de $3,514 a cero en 12 meses.</span></div>
+            <div class="tip"><span class="tip-icon">🌱</span><span>Con ahorro de $334/mes, en un año tendrás $6,008 acumulado.</span></div>
+            <div class="tip"><span class="tip-icon">⚡</span><span>En Agosto considera cancelar Diners si el diferido baja a menos de $200.</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════ TAB: SEMANAL ══════════ -->
+  <div class="panel" id="panel-semanal" role="tabpanel">
+    <div class="grid-2">
+      <div class="col">
+        <div class="card">
+          <div class="card-title">Gasto semanal por mes</div>
+          <div class="chart-box"><canvas id="chartSemanal"></canvas></div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card">
+          <div class="card-title">Bolsa semanal recomendada</div>
+          <table>
+            <thead><tr><th>Mes</th><th class="num">Bolsa/sem</th><th class="num">Diario</th><th>Estado</th></tr></thead>
+            <tbody>
+              <tr><td>Abril (16 días)</td><td class="num">$167</td><td class="num">$35.54</td><td><span class="badge badge-green">OK</span></td></tr>
+              <tr><td>Mayo Sem 1</td><td class="num" style="color:var(--danger)">$0</td><td class="num" style="color:var(--danger)">$0</td><td><span class="badge badge-red">CRÍTICO</span></td></tr>
+              <tr><td>Mayo Sem 2–4</td><td class="num" style="color:var(--warn)">$56</td><td class="num" style="color:var(--warn)">$8</td><td><span class="badge badge-yellow">Ajuste</span></td></tr>
+              <tr><td>Junio</td><td class="num">$200.44</td><td class="num">$28.63</td><td><span class="badge badge-green">OK</span></td></tr>
+              <tr><td>Julio</td><td class="num">$202.94</td><td class="num">$28.99</td><td><span class="badge badge-green">OK</span></td></tr>
+              <tr><td>Agosto</td><td class="num">$205.44</td><td class="num">$29.35</td><td><span class="badge badge-green">OK</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card">
+          <div class="card-title">Sobres de alimentación sugeridos</div>
+          <div style="display:flex;flex-direction:column;gap:6px;font-size:.8rem;">
+            <div class="tip"><span class="tip-icon">🛒</span><span><strong>Mercado semanal:</strong> $80 máx (verduras, proteína, básicos)</span></div>
+            <div class="tip"><span class="tip-icon">🍽️</span><span><strong>Comidas fuera:</strong> $40 máx/sem (2–3 salidas)</span></div>
+            <div class="tip"><span class="tip-icon">📦</span><span><strong>Delivery (Tipti):</strong> $0 Mayo, $80 desde Junio</span></div>
+            <div class="tip"><span class="tip-icon">☕</span><span><strong>Cafés/snacks:</strong> $20 máx/sem</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════ TAB: DEUDAS ══════════ -->
+  <div class="panel" id="panel-deudas" role="tabpanel">
+    <div class="col">
+      <div class="card">
+        <div class="card-title">Resumen deudas — Estrategia Avalancha</div>
+        <div class="chart-box"><canvas id="chartDeudas"></canvas></div>
+      </div>
+    </div>
+    <div style="margin-top:12px;">
+      <div class="section-title">Préstamos bancarios</div>
+      <div class="grid-2" style="margin-bottom:12px;">
+        <div class="debt-card">
+          <div class="debt-name">Produbanco — PRÉSTAMO</div>
+          <div class="debt-meta">Cuota $509/mes · Día 1 · 115 cuotas restantes · ~9.5 años</div>
+          <div class="prog-wrap">
+            <div class="prog-label"><span>Pagado este mes</span><span style="color:var(--accent)">$509</span></div>
+            <div class="prog-bar"><div class="prog-fill prog-green" style="width:100%"></div></div>
+          </div>
+        </div>
+        <div class="debt-card">
+          <div class="debt-name">Banco Pichincha — PRECISO</div>
+          <div class="debt-meta">Cuota $222.73/mes · Día 30 · Tasa 15.60% · 84 cuotas totales</div>
+          <div class="prog-wrap">
+            <div class="prog-label"><span>Estado</span><span style="color:var(--warn)">Al día</span></div>
+            <div class="prog-bar"><div class="prog-fill prog-yellow" style="width:45%"></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="section-title">Tarjetas de crédito — Prioridad avalancha</div>
+      <div class="grid-3">
+        <div class="debt-card" style="border-color:var(--danger);">
+          <div class="debt-name" style="color:var(--danger)">🔴 PacifiCard Mastercard Platinum</div>
+          <div class="debt-meta">Corte: 24/mes · Pago máx: 8/mes · <strong style="color:var(--danger)">PRIORIDAD #1</strong></div>
+          <table style="margin-top:6px;">
+            <tr><td>Total deuda</td><td class="num">$8,221.47</td></tr>
+            <tr><td>Rotativo</td><td class="num" style="color:var(--danger)">$3,514.26</td></tr>
+            <tr><td>Diferido</td><td class="num">$4,707.21</td></tr>
+            <tr><td>Mínimo</td><td class="num">$438.59</td></tr>
+          </table>
+          <div class="prog-wrap">
+            <div class="prog-label"><span>Rotativo vs total</span><span>42.7%</span></div>
+            <div class="prog-bar"><div class="prog-fill prog-red" style="width:42.7%"></div></div>
+          </div>
+        </div>
+        <div class="debt-card" style="border-color:var(--warn);">
+          <div class="debt-name" style="color:var(--warn)">🟡 Banco Guayaquil</div>
+          <div class="debt-meta">Corte: 27/mes · Pago máx: 15/mes · Deuda casi fija</div>
+          <table style="margin-top:6px;">
+            <tr><td>Total deuda</td><td class="num">$2,028.97</td></tr>
+            <tr><td>Rotativo</td><td class="num" style="color:var(--warn)">$821.74</td></tr>
+            <tr><td>Diferido</td><td class="num">$1,207.23</td></tr>
+            <tr><td>Mínimo</td><td class="num">$370</td></tr>
+          </table>
+          <div class="prog-wrap">
+            <div class="prog-label"><span>Rotativo vs total</span><span>40.5%</span></div>
+            <div class="prog-bar"><div class="prog-fill prog-yellow" style="width:40.5%"></div></div>
+          </div>
+        </div>
+        <div class="debt-card" style="border-color:var(--accent);">
+          <div class="debt-name" style="color:var(--accent)">🟢 Diners Club</div>
+          <div class="debt-meta">Corte: 18/mes · Pago máx: 2/mes · Deuda casi fija</div>
+          <table style="margin-top:6px;">
+            <tr><td>Total deuda</td><td class="num">$423.11</td></tr>
+            <tr><td>Mínimo</td><td class="num">$346.53</td></tr>
+            <tr><td>Cargo SRI/Municipio</td><td class="num">Recurrente</td></tr>
+            <tr><td>Sin uso activo</td><td class="num">✓</td></tr>
+          </table>
+          <div class="prog-wrap">
+            <div class="prog-label"><span>Progreso liquidación</span><span style="color:var(--accent)">Próxima meta</span></div>
+            <div class="prog-bar"><div class="prog-fill prog-green" style="width:75%"></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="card" style="margin-top:12px;">
+        <div class="card-title">Resumen total deudas</div>
+        <table>
+          <thead><tr><th>Deuda</th><th class="num">Total</th><th class="num">Mínimo</th><th>Prioridad</th></tr></thead>
+          <tbody>
+            <tr><td>Produbanco préstamo</td><td class="num">~$58,535</td><td class="num">$509</td><td><span class="badge badge-neutral">Fijo</span></td></tr>
+            <tr><td>PacifiCard (rotativo)</td><td class="num">$3,514.26</td><td class="num">$438.59</td><td><span class="badge badge-red">Prioridad #1</span></td></tr>
+            <tr><td>Banco Guayaquil</td><td class="num">$2,028.97</td><td class="num">$370</td><td><span class="badge badge-yellow">Prioridad #2</span></td></tr>
+            <tr><td>Banco Pichincha</td><td class="num">~$7,500</td><td class="num">$222.73</td><td><span class="badge badge-neutral">Fijo</span></td></tr>
+            <tr><td>Diners Club</td><td class="num">$423.11</td><td class="num">$346.53</td><td><span class="badge badge-green">Próxima cancel.</span></td></tr>
+            <tr style="border-top:2px solid var(--border)"><td class="bold">TOTAL</td><td class="num bold" style="color:var(--danger)">~$72,001</td><td class="num bold">$1,886.32</td><td></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════ TAB: ACTIVOS ══════════ -->
+  <div class="panel" id="panel-activos" role="tabpanel">
+    <div class="grid-main">
+      <div class="col">
+        <div class="card">
+          <div class="card-title">Distribución activos</div>
+          <div class="chart-box"><canvas id="chartActivos"></canvas></div>
+        </div>
+        <div class="card">
+          <div class="card-title">Proyección activos (Escenario A)</div>
+          <table>
+            <thead><tr><th>Mes</th><th class="num">Ahorro</th><th class="num">Inversión</th><th class="num">Corriente</th><th class="num">Total</th></tr></thead>
+            <tbody>
+              <tr><td>Hoy (Abr 14)</td><td class="num">$2,000</td><td class="num">$1,000</td><td class="num">$180</td><td class="num bold" style="color:var(--blue)">$3,180</td></tr>
+              <tr><td>Mayo 28</td><td class="num">$2,334</td><td class="num">$1,200</td><td class="num">$180</td><td class="num bold" style="color:var(--blue)">$3,714</td></tr>
+              <tr><td>Junio 28</td><td class="num">$2,668</td><td class="num">$1,400</td><td class="num">$180</td><td class="num bold" style="color:var(--accent)">$4,248</td></tr>
+              <tr><td>Julio 28</td><td class="num">$3,002</td><td class="num">$1,601</td><td class="num">$180</td><td class="num bold" style="color:var(--accent)">$4,783</td></tr>
+              <tr><td>Agosto 28</td><td class="num">$3,336</td><td class="num">$1,801</td><td class="num">$180</td><td class="num bold" style="color:var(--accent)">$5,317</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="col">
+        <div class="asset-card">
+          <div class="asset-lbl">Inversión 1</div>
+          <div class="asset-val" style="color:var(--accent)">$2,000</div>
+          <div class="asset-bar"><div class="asset-fill" style="width:62.9%;background:var(--accent);"></div></div>
+          <div style="font-size:.72rem;color:var(--text-muted);">62.9% del total activos</div>
+        </div>
+        <div class="asset-card">
+          <div class="asset-lbl">Inversión 2</div>
+          <div class="asset-val" style="color:var(--blue)">$1,000</div>
+          <div class="asset-bar"><div class="asset-fill" style="width:31.4%;background:var(--blue);"></div></div>
+          <div style="font-size:.72rem;color:var(--text-muted);">31.4% del total activos</div>
+        </div>
+        <div class="asset-card">
+          <div class="asset-lbl">Cuenta Corriente</div>
+          <div class="asset-val" style="color:var(--warn)">$180</div>
+          <div class="asset-bar"><div class="asset-fill" style="width:5.7%;background:var(--warn);"></div></div>
+          <div style="font-size:.72rem;color:var(--text-muted);">5.7% del total activos · Tránsito mensual</div>
+        </div>
+        <div class="card">
+          <div class="card-title">Flujo de distribución (día 28)</div>
+          <div class="roadmap">
+            <div class="rm-step"><div class="rm-num">1</div><div>Sueldo llega a cuenta corriente ($2,900 ó $4,100)</div></div>
+            <div class="rm-step"><div class="rm-num">2</div><div>Transferir fijos inmediatos (arriendo, Austro, Produbanco)</div></div>
+            <div class="rm-step"><div class="rm-num">3</div><div>Separar para tarjetas del mes siguiente</div></div>
+            <div class="rm-step"><div class="rm-num">4</div><div>Transferir $200 → Inversión 2 (automatizar)</div></div>
+            <div class="rm-step"><div class="rm-num">5</div><div>Transferir $334 → Inversión 1/Ahorro (desde Junio)</div></div>
+            <div class="rm-step"><div class="rm-num">6</div><div>Saldo restante = bolsa semanal para el mes</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- end .shell -->
+
+<script>
+// ─── THEME TOGGLE ───
+(function(){
+  const btn = document.getElementById('themeToggle');
+  const html = document.documentElement;
+  let theme = 'dark';
+  html.setAttribute('data-theme', theme);
+  btn.addEventListener('click', () => {
+    theme = theme === 'dark' ? 'light' : 'dark';
+    html.setAttribute('data-theme', theme);
+    btn.innerHTML = theme === 'dark'
+      ? '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>'
+      : '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>';
+  });
+})();
+
+// ─── DATE ───
+const dateEl = document.getElementById('liveClock');
+const now = new Date();
+const meses = ['ENE','FEB','MAR','ABR','MAY','JUN','JUL','AGO','SEP','OCT','NOV','DIC'];
+dateEl.textContent = `${now.getDate()} ${meses[now.getMonth()]} ${now.getFullYear()}`;
+
+// ─── TABS ───
+document.querySelectorAll('.tab').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    const id = btn.getAttribute('data-tab');
+    const panel = document.getElementById('panel-' + id);
+    if(panel) panel.classList.add('active');
+  });
+});
+
+// ─── CHART HELPERS ───
+function isDark() { return document.documentElement.getAttribute('data-theme') === 'dark'; }
+function gridColor() { return isDark() ? 'rgba(255,255,255,0.07)' : 'rgba(0,0,0,0.07)'; }
+function textColor() { return isDark() ? '#94a3b8' : '#6b7280'; }
+
+const baseOpts = (title) => ({
+  responsive: true,
+  maintainAspectRatio: false,
+  plugins: {
+    legend: { display: false },
+    tooltip: {
+      callbacks: {
+        label: ctx => ' $' + ctx.parsed.y?.toLocaleString('es-EC', {minimumFractionDigits:2, maximumFractionDigits:2})
+      }
+    }
+  },
+  scales: {
+    x: { grid: { color: gridColor() }, ticks: { color: textColor(), font: { size: 11, family: 'Inter' } } },
+    y: { grid: { color: gridColor() }, ticks: { color: textColor(), font: { size: 11, family: 'Inter' }, callback: v => '$' + v.toLocaleString('es-EC') } }
+  }
+});
+
+// CHART FLUJO PROYECCIÓN
+new Chart(document.getElementById('chartFlujo'), {
+  type: 'bar',
+  data: {
+    labels: ['Abril','Mayo','Junio','Julio','Agosto'],
+    datasets: [
+      {
+        label: 'Ingresos',
+        data: [5300, 2900, 4100, 4100, 4100],
+        backgroundColor: 'rgba(34,197,94,0.6)',
+        borderColor: '#22c55e', borderWidth: 1.5, borderRadius: 4
       },
-      options: { responsive: true, maintainAspectRatio: false }
-    });
-  </script>
+      {
+        label: 'Gastos totales',
+        data: [4731.4, 3398.26, 3278.26, 3278.26, 3278.26],
+        backgroundColor: 'rgba(239,68,68,0.45)',
+        borderColor: '#ef4444', borderWidth: 1.5, borderRadius: 4
+      },
+      {
+        type: 'line',
+        label: 'Saldo',
+        data: [568.6, -498.26, 821.74, 821.74, 821.74],
+        borderColor: '#38bdf8', borderWidth: 2.5, tension: 0.35,
+        pointBackgroundColor: ctx => ctx.parsed.y < 0 ? '#ef4444' : '#22c55e',
+        pointRadius: 5, fill: false,
+        yAxisID: 'y'
+      }
+    ]
+  },
+  options: { ...baseOpts(), responsive:true, maintainAspectRatio:false,
+    plugins: {
+      legend: { display:true, position:'bottom', labels:{color:textColor(), font:{size:11}, boxWidth:12, padding:12} }
+    },
+    scales: baseOpts().scales
+  }
+});
+
+// CHART ABRIL
+new Chart(document.getElementById('chartAbril'), {
+  type: 'doughnut',
+  data: {
+    labels: ['Arriendo','Austro+Produbanco','Tarjetas','Alimentación','Ahorro'],
+    datasets: [{
+      data: [600, 1009, 1155.12, 400, 568.6],
+      backgroundColor: ['#38bdf8','#a78bfa','#ef4444','#facc15','#22c55e'],
+      borderWidth: 0
+    }]
+  },
+  options: {
+    responsive:true, maintainAspectRatio:false, cutout:'62%',
+    plugins: {
+      legend: { position:'bottom', labels:{color:textColor(), font:{size:11}, boxWidth:10, padding:10} },
+      tooltip: { callbacks: { label: ctx => ' $' + ctx.parsed.toLocaleString('es-EC', {minimumFractionDigits:2}) } }
+    }
+  }
+});
+
+// CHART MAYO
+new Chart(document.getElementById('chartMayo'), {
+  type: 'bar',
+  data: {
+    labels: ['Ingreso','Arriendo','Austro','Produbanco','Pichincha','Diners','PacifiCard','Guayaquil','Alimentación','DÉFICIT'],
+    datasets: [{
+      data: [2900, -600, -500, -509, -222.73, -346.53, -438.59, -370, -400, -498.26],
+      backgroundColor: d => d.raw >= 0 ? 'rgba(34,197,94,0.7)' : 'rgba(239,68,68,0.6)',
+      borderColor: d => d.raw >= 0 ? '#22c55e' : '#ef4444',
+      borderWidth: 1.5, borderRadius: 3
+    }]
+  },
+  options: { ...baseOpts(), plugins:{ legend:{display:false}, tooltip:{ callbacks:{ label: ctx => ' $' + Math.abs(ctx.parsed.y).toFixed(2) } } } }
+});
+
+// CHART JUNIO
+new Chart(document.getElementById('chartJunio'), {
+  type: 'doughnut',
+  data: {
+    labels: ['Fijos','Tarjetas','Alimentación','Libre','→Ahorro','→Inversión'],
+    datasets: [{
+      data: [1831.73, 1155.12, 400, 279.15, 334, 200],
+      backgroundColor: ['#38bdf8','#ef4444','#facc15','#94a3b8','#22c55e','#a78bfa'],
+      borderWidth:0
+    }]
+  },
+  options: { responsive:true, maintainAspectRatio:false, cutout:'60%', plugins:{ legend:{position:'bottom',labels:{color:textColor(),font:{size:11},boxWidth:10,padding:10}}, tooltip:{callbacks:{label:ctx=>' $'+ctx.parsed.toLocaleString('es-EC',{minimumFractionDigits:2})}} } }
+});
+
+// CHART JULIO
+new Chart(document.getElementById('chartJulio'), {
+  type: 'bar',
+  data: {
+    labels: ['Jun','Jul','Ago'],
+    datasets: [
+      { label:'Ahorro', data:[2334,2668,3002], backgroundColor:'rgba(34,197,94,0.7)', borderRadius:4 },
+      { label:'Inversión', data:[1200,1400,1601], backgroundColor:'rgba(56,189,248,0.7)', borderRadius:4 }
+    ]
+  },
+  options: { ...baseOpts(), plugins:{ legend:{display:true,position:'bottom',labels:{color:textColor(),font:{size:11},boxWidth:10,padding:10}} } }
+});
+
+// CHART AGOSTO
+new Chart(document.getElementById('chartAgosto'), {
+  type: 'line',
+  data: {
+    labels: ['Abr','May','Jun','Jul','Ago'],
+    datasets: [
+      { label:'Ahorro', data:[2000,2334,2668,3002,3336], borderColor:'#22c55e', backgroundColor:'rgba(34,197,94,0.08)', fill:true, tension:0.4, pointBackgroundColor:'#22c55e', pointRadius:4 },
+      { label:'Inversión', data:[1000,1200,1400,1601,1801], borderColor:'#38bdf8', backgroundColor:'rgba(56,189,248,0.08)', fill:true, tension:0.4, pointBackgroundColor:'#38bdf8', pointRadius:4 }
+    ]
+  },
+  options: { ...baseOpts(), plugins:{ legend:{display:true,position:'bottom',labels:{color:textColor(),font:{size:11},boxWidth:10,padding:10}} } }
+});
+
+// CHART SEMANAL
+new Chart(document.getElementById('chartSemanal'), {
+  type: 'bar',
+  data: {
+    labels: ['Abr Sem3','Abr Sem4','May Sem1','May Sem2','May Sem3','May Sem4','Jun','Jul','Ago'],
+    datasets: [{
+      label: 'Bolsa semanal',
+      data: [167, 401.6, 0, 56, 37, 70, 200.44, 202.94, 205.44],
+      backgroundColor: d => d.raw === 0 ? '#ef4444' : d.raw < 100 ? '#facc15' : '#22c55e',
+      borderRadius: 5
+    }]
+  },
+  options: { ...baseOpts(), plugins:{ legend:{display:false} } }
+});
+
+// CHART DEUDAS
+new Chart(document.getElementById('chartDeudas'), {
+  type: 'bar',
+  data: {
+    labels: ['Produbanco','Pichincha','PacifiCard\nRotativo','Guayaquil','Diners'],
+    datasets: [{
+      label: 'Saldo deuda',
+      data: [58535, 7500, 3514.26, 2028.97, 423.11],
+      backgroundColor: ['rgba(56,189,248,0.7)','rgba(167,139,250,0.7)','rgba(239,68,68,0.7)','rgba(250,204,21,0.7)','rgba(34,197,94,0.7)'],
+      borderColor: ['#38bdf8','#a78bfa','#ef4444','#facc15','#22c55e'],
+      borderWidth: 1.5, borderRadius: 4
+    }]
+  },
+  options: {
+    indexAxis: 'y',
+    responsive:true, maintainAspectRatio:false,
+    plugins:{ legend:{display:false} },
+    scales:{
+      x:{ grid:{color:gridColor()}, ticks:{color:textColor(),font:{size:11},callback:v=>'$'+v.toLocaleString('es-EC')} },
+      y:{ grid:{display:false}, ticks:{color:textColor(),font:{size:11}} }
+    }
+  }
+});
+
+// CHART ACTIVOS
+new Chart(document.getElementById('chartActivos'), {
+  type: 'doughnut',
+  data: {
+    labels: ['Inversión 1','Inversión 2','Cuenta Corriente'],
+    datasets: [{
+      data: [2000, 1000, 180],
+      backgroundColor: ['#22c55e','#38bdf8','#facc15'],
+      borderWidth: 0
+    }]
+  },
+  options: {
+    responsive:true, maintainAspectRatio:false, cutout:'65%',
+    plugins: {
+      legend: { position:'bottom', labels:{color:textColor(),font:{size:12},boxWidth:12,padding:14} },
+      tooltip: { callbacks:{ label: ctx => ' $' + ctx.parsed.toLocaleString('es-EC',{minimumFractionDigits:2}) } }
+    }
+  }
+});
+</script>
 </body>
 </html>
