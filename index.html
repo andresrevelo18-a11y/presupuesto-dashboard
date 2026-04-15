@@ -799,12 +799,12 @@ td.bold{font-weight:600;}
         </div>
         <div class="debt-card" style="border-color:var(--accent);">
           <div class="debt-name" style="color:var(--accent)">🟢 Diners Club</div>
-          <div class="debt-meta">Corte: 18/mes · Pago máx: 2/mes · Deuda casi fija</div>
+          <div class="debt-meta">Corte: 18/mes · Pago máx: 2/mes · Diferidos activos</div>
           <table style="margin-top:6px;">
-            <tr><td>Total deuda</td><td class="num">$423.11</td></tr>
-            <tr><td>Mínimo</td><td class="num">$346.53</td></tr>
+            <tr><td>Saldo diferidos</td><td class="num">$11,492.49</td></tr>
+            <tr><td>Total a pagar (corte Mar)</td><td class="num">$423.11</td></tr>
+            <tr><td>Mínimo a pagar</td><td class="num">$346.53</td></tr>
             <tr><td>Cargo SRI/Municipio</td><td class="num">Recurrente</td></tr>
-            <tr><td>Sin uso activo</td><td class="num">✓</td></tr>
           </table>
           <div class="prog-wrap">
             <div class="prog-label"><span>Progreso liquidación</span><span style="color:var(--accent)">Próxima meta</span></div>
@@ -821,8 +821,8 @@ td.bold{font-weight:600;}
             <tr><td>PacifiCard (rotativo)</td><td class="num">$3,514.26</td><td class="num">$438.59</td><td><span class="badge badge-red">Prioridad #1</span></td></tr>
             <tr><td>Banco Guayaquil</td><td class="num">$4,784.68</td><td class="num">$311.93</td><td><span class="badge badge-yellow">Prioridad #2</span></td></tr>
             <tr><td>Banco Pichincha</td><td class="num">~$7,500</td><td class="num">$222.73</td><td><span class="badge badge-neutral">Fijo</span></td></tr>
-            <tr><td>Diners Club</td><td class="num">$423.11</td><td class="num">$346.53</td><td><span class="badge badge-green">Próxima cancel.</span></td></tr>
-            <tr style="border-top:2px solid var(--border)"><td class="bold">TOTAL</td><td class="num bold" style="color:var(--danger)">~$46,231</td><td class="num bold">$1,828.51</td><td></td></tr>
+            <tr><td>Diners Club (diferidos)</td><td class="num">$11,492.49</td><td class="num">$346.53</td><td><span class="badge badge-yellow">Prioridad #3</span></td></tr>
+            <tr style="border-top:2px solid var(--border)"><td class="bold">TOTAL</td><td class="num bold" style="color:var(--danger)">~$57,300</td><td class="num bold">$1,828.51</td><td></td></tr>
           </tbody>
         </table>
       </div>
@@ -1077,7 +1077,7 @@ new Chart(document.getElementById('chartDeudas'), {
     labels: ['Produbanco','Pichincha','PacifiCard\nRotativo','Guayaquil','Diners'],
     datasets: [{
       label: 'Saldo deuda',
-      data: [30009, 7500, 3514.26, 2028.97, 423.11],
+      data: [30009, 7500, 3514.26, 2028.97, 11492.49],
       backgroundColor: ['rgba(56,189,248,0.7)','rgba(167,139,250,0.7)','rgba(239,68,68,0.7)','rgba(250,204,21,0.7)','rgba(34,197,94,0.7)'],
       borderColor: ['#38bdf8','#a78bfa','#ef4444','#facc15','#22c55e'],
       borderWidth: 1.5, borderRadius: 4
