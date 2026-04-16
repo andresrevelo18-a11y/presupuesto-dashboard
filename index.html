@@ -381,7 +381,7 @@ td.bold{font-weight:600;}
         <div class="card">
           <div class="card-title">Mapa de saldos mensuales</div>
           <table>
-            <thead><tr><th>Mes</th><th class="num">Ingresos</th><th class="num">Egresos</th><th class="num">Saldo bruto</th><th class="num" style="color:var(--accent)">FCF libre</th><th>Estado</th></tr></thead>
+            <thead><tr><th>Mes</th><th class="num">Ingresos</th><th class="num">Egresos</th><th class="num">Saldo bruto</th><th class="num" style="color:var(--accent)">Colchón → sig. mes</th><th>Estado</th></tr></thead>
             <tbody>
               <tr>
                 <td>Abril</td>
@@ -453,14 +453,61 @@ td.bold{font-weight:600;}
             </tbody>
           </table>
         </div>
-        <div class="card">
-          <div class="card-title">Semáforo</div>
-          <div style="display:flex;flex-direction:column;gap:6px;font-size:.8rem;">
-            <div style="display:flex;align-items:center;gap:8px;"><span class="semaforo s-green"></span><span>Abril — Bolsillo real pendiente: +$2,677.27 (sueldo 28 − Pichincha PRECISO 30)</span></div>
-            <div style="display:flex;align-items:center;gap:8px;"><span class="semaforo s-green"></span><span><strong>Mayo — Déficit $0 (cubierto al 100% con reserva de Abril ✓)</strong></span></div>
-            <div style="display:flex;align-items:center;gap:8px;"><span class="semaforo s-green"></span><span>Junio — Normaliza con $4,100</span></div>
-            <div style="display:flex;align-items:center;gap:8px;"><span class="semaforo s-green"></span><span>Julio — Estable $821.74</span></div>
-            <div style="display:flex;align-items:center;gap:8px;"><span class="semaforo s-green"></span><span>Agosto — Estable $821.74</span></div>
+        <div class="card" style="border-color:var(--blue);">
+          <div class="card-title" style="color:var(--blue);">&#x1F4F8; Snapshot — Hoy 15 de abril</div>
+          <!-- CUENTAS -->
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:12px;">
+            <div style="background:var(--bg-surface);border-radius:var(--radius-sm);padding:10px;text-align:center;">
+              <div style="font-size:.65rem;color:var(--text-faint);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px;">Corriente</div>
+              <div style="font-size:1.1rem;font-weight:700;color:var(--blue);">$580</div>
+            </div>
+            <div style="background:var(--bg-surface);border-radius:var(--radius-sm);padding:10px;text-align:center;">
+              <div style="font-size:.65rem;color:var(--text-faint);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px;">Ahorro</div>
+              <div style="font-size:1.1rem;font-weight:700;color:var(--accent);">$2,000</div>
+            </div>
+            <div style="background:var(--bg-surface);border-radius:var(--radius-sm);padding:10px;text-align:center;">
+              <div style="font-size:.65rem;color:var(--text-faint);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px;">Inversi&#xF3;n</div>
+              <div style="font-size:1.1rem;font-weight:700;color:var(--blue);">$1,000</div>
+            </div>
+          </div>
+          <!-- SEPARADOR -->
+          <div style="border-top:1px solid var(--border);margin-bottom:10px;"></div>
+          <!-- GASTO DIARIO -->
+          <div style="display:flex;flex-direction:column;gap:7px;font-size:.8rem;">
+            <div style="display:flex;justify-content:space-between;align-items:center;">
+              <span style="color:var(--text-muted);">D&#xED;as hasta el sueldo (d&#xED;a 28)</span>
+              <span style="font-weight:600;">13 d&#xED;as</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;">
+              <span style="color:var(--text-muted);">Corriente disponible hoy</span>
+              <span style="color:var(--blue);font-weight:600;">$580.00</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;background:var(--accent-soft);padding:7px 10px;border-radius:var(--radius-xs);">
+              <span style="font-weight:600;">&#x1F4B0; Gasto diario m&#xE1;x. recomendado</span>
+              <span style="color:var(--accent);font-weight:700;font-size:.95rem;">$44.62 / d&#xED;a</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;background:var(--accent-soft);padding:7px 10px;border-radius:var(--radius-xs);">
+              <span style="font-weight:600;">&#x1F4C5; Bolsa semanal recomendada</span>
+              <span style="color:var(--accent);font-weight:700;font-size:.95rem;">$312.35 / sem</span>
+            </div>
+            <div style="border-top:1px solid var(--border);padding-top:6px;">
+              <div style="display:flex;justify-content:space-between;align-items:center;">
+                <span style="color:var(--text-muted);font-size:.75rem;">&#x1F512; FCF Abril reservado (no tocar)</span>
+                <span style="color:var(--warn);font-weight:600;">$2,494.76</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-top:4px;">
+                <span style="color:var(--text-faint);font-size:.7rem;">Colch&#xF3;n → arranca Mayo con este saldo</span>
+                <span style="color:var(--text-faint);font-size:.7rem;">&#x1F7E2; Intocable</span>
+              </div>
+            </div>
+          </div>
+          <!-- SEMÁFORO MENSUAL -->
+          <div style="border-top:1px solid var(--border);margin-top:10px;padding-top:8px;display:flex;flex-direction:column;gap:5px;font-size:.78rem;">
+            <div style="font-size:.65rem;color:var(--text-faint);text-transform:uppercase;letter-spacing:.08em;margin-bottom:2px;">Sem&#xE1;foro mensual</div>
+            <div style="display:flex;align-items:center;gap:8px;"><span class="semaforo s-green"></span><span><strong>Abril</strong> — FCF +$2,494.76 · Colch&#xF3;n Mayo ✓</span></div>
+            <div style="display:flex;align-items:center;gap:8px;"><span class="semaforo s-green"></span><span><strong>Mayo</strong> — D&#xE9;ficit $0 (reserva Abril ✓) · PacifiCard extra d&#xED;a 8</span></div>
+            <div style="display:flex;align-items:center;gap:8px;"><span class="semaforo s-green"></span><span><strong>Junio</strong> — Normaliza $4,100 · FCF +$237.49</span></div>
+            <div style="display:flex;align-items:center;gap:8px;"><span class="semaforo s-green"></span><span><strong>Jul / Ago</strong> — Estables · FCF +$237.49 c/u</span></div>
           </div>
         </div>
       </div>
@@ -528,11 +575,11 @@ td.bold{font-weight:600;}
           <div class="card-title">Resumen semanas restantes</div>
           <div style="font-size:.78rem;display:flex;flex-direction:column;gap:6px;">
             <div style="display:flex;justify-content:space-between;"><span>Sem 1–2 (ya pasó)</span><span style="color:var(--text-muted)">Completadas ✓</span></div>
-            <div style="display:flex;justify-content:space-between;"><span>Sem 3 (15–21 abr)</span><span style="color:var(--accent)">$1,247.38 disponibles</span></div>
-            <div style="display:flex;justify-content:space-between;"><span>Sem 4 (22–30 abr)</span><span style="color:var(--accent)">$1,247.38 disponibles</span></div>
+            <div style="display:flex;justify-content:space-between;"><span>Sem 3 (15–21 abr)</span><span style="color:var(--accent)">$312.35 para gastar</span></div>
+            <div style="display:flex;justify-content:space-between;"><span>Sem 4 (22–27 abr)</span><span style="color:var(--warn)">aguantar hasta sueldo</span></div>
             <div class="sep"></div>
-            <div style="display:flex;justify-content:space-between;"><span>Gasto diario real</span><span style="color:var(--accent)">$155.92/día (16 días)</span></div>
-            <div style="display:flex;justify-content:space-between;font-size:.7rem;color:var(--text-muted);"><span>FCF $2,494.76 ÷ 2 semanas = $1,247.38/sem</span><span style="color:var(--accent)">✓ Recalculado</span></div>
+            <div style="display:flex;justify-content:space-between;"><span>Gasto diario recomendado</span><span style="color:var(--accent)">$44.62/día</span></div>
+            <div style="display:flex;justify-content:space-between;font-size:.7rem;color:var(--text-muted);"><span>Corriente $580 ÷ 13 días (hasta sueldo d&#xED;a 28)</span><span style="color:var(--accent)">FCF $2,494.76 = colch&#xF3;n Mayo</span></div>
           </div>
         </div>
       </div>
@@ -801,7 +848,7 @@ td.bold{font-weight:600;}
           <table>
             <thead><tr><th>Mes</th><th class="num">Bolsa/sem</th><th class="num">Diario</th><th>Estado</th></tr></thead>
             <tbody>
-              <tr><td>Abril (16 días)*</td><td class="num" style="color:var(--accent)">$1,247.38</td><td class="num" style="color:var(--accent)">$155.92</td><td><span class="badge badge-green">OK</span></td></tr>
+              <tr><td>Abril (13 días hasta sueldo)*</td><td class="num" style="color:var(--accent)">$312.35</td><td class="num" style="color:var(--accent)">$44.62</td><td><span class="badge badge-green">OK</span></td></tr>
               <tr><td>Mayo Sem 1</td><td class="num" style="color:var(--danger)">$0</td><td class="num" style="color:var(--danger)">$0</td><td><span class="badge badge-red">CRÍTICO</span></td></tr>
               <tr><td>Mayo Sem 2–4</td><td class="num" style="color:var(--warn)">$56</td><td class="num" style="color:var(--warn)">$8</td><td><span class="badge badge-yellow">Ajuste</span></td></tr>
               <tr><td>Junio</td><td class="num">$200.44</td><td class="num">$28.63</td><td><span class="badge badge-green">OK</span></td></tr>
@@ -809,7 +856,7 @@ td.bold{font-weight:600;}
               <tr><td>Agosto</td><td class="num">$205.44</td><td class="num">$29.35</td><td><span class="badge badge-green">OK</span></td></tr>
             </tbody>
           </table>
-          <div style="font-size:.7rem;color:var(--text-muted);margin-top:6px;">* Abril: FCF libre $2,494.76 ÷ 16 días restantes (15–30 abr) = $155.92/día · $1,247.38/sem. Incluye saldo corriente $580 + sueldo $2,900 + reembolso $2,000, menos Pichincha $222.73, reserva Mayo $428.51, tarjetas extra $1,800, ahorro $334, inversión $200.</div>
+          <div style="font-size:.7rem;color:var(--text-muted);margin-top:6px;">* Abril: corriente disponible $580 ÷ 13 días (15–27 abr, hasta el sueldo) = $44.62/día · $312.35/sem. El FCF de $2,494.76 es el colchón que arranca Mayo — no se toca.</div>
         </div>
         <div class="card">
           <div class="card-title">Sobres de alimentación sugeridos</div>
@@ -1147,7 +1194,7 @@ new Chart(document.getElementById('chartSemanal'), {
     labels: ['Abr Sem3','Abr Sem4','May Sem1','May Sem2','May Sem3','May Sem4','Jun','Jul','Ago'],
     datasets: [{
       label: 'Bolsa semanal',
-      data: [1247.38, 1247.38, 0, 56, 37, 70, 200.44, 202.94, 205.44],
+      data: [312.35, 312.35, 0, 56, 37, 70, 200.44, 202.94, 205.44],
       backgroundColor: d => d.raw === 0 ? '#ef4444' : d.raw < 100 ? '#facc15' : '#22c55e',
       borderRadius: 5
     }]
