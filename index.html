@@ -406,40 +406,6 @@ td.bold{font-weight:600;}
           <div class="cal-item"><span class="cal-day">30</span><span class="cal-desc">Banco Pichincha PRECISO</span><span class="cal-amt">$222.73</span></div>
         </div>
 
-        <!-- SALDO PROYECTADO — BOLSILLO REAL ABRIL -->
-        <div class="card" style="border-color:var(--accent);">
-          <div class="card-title" style="color:var(--accent);">&#x1F4B3; Saldo Proyectado — Bolsillo Real (Abril)</div>
-          <p style="font-size:.75rem;color:var(--text-muted);margin-bottom:8px;">
-            Solo lo pendiente del mes: ingresos que faltan por entrar y gastos que faltan por salir.
-            No vuelve a considerar pagos ya realizados.
-          </p>
-          <table>
-            <thead>
-              <tr><th>Concepto</th><th class="num">Monto</th><th>Detalle</th></tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Ingresos pendientes abril</td>
-                <td class="num" style="color:var(--accent)">+$2,900.00</td>
-                <td>Sueldo del 28 de abril</td>
-              </tr>
-              <tr>
-                <td>Gastos pendientes abril</td>
-                <td class="num" style="color:var(--danger)">&#x2212;$222.73</td>
-                <td>Banco Pichincha PRECISO (d&#xED;a 30)</td>
-              </tr>
-              <tr style="border-top:2px solid var(--border)">
-                <td class="bold">Flujo neto pendiente abril</td>
-                <td class="num bold" style="color:var(--accent)">+$2,677.27</td>
-                <td>Se sumar&#xE1; a tu saldo actual en cuenta</td>
-              </tr>
-            </tbody>
-          </table>
-          <div style="font-size:.75rem;color:var(--text-muted);margin-top:8px;">
-            &#x1F4CF; Regla bolsillo real: <strong>Saldo esperado al 30 de abril = saldo actual en tu cuenta + $2,677.27</strong>
-          </div>
-        </div>
-
         <div class="card">
           <div class="card-title">Proyección ahorro/inversión (Escenario A)</div>
           <table>
@@ -477,43 +443,35 @@ td.bold{font-weight:600;}
         <div class="card">
           <div class="card-title">Detalle ingresos y gastos</div>
           <table>
-            <thead><tr><th>Concepto</th><th class="num">Monto</th><th>Estado</th></tr></thead>
+            <thead><tr><th style="width:60px">Fecha</th><th>Concepto</th><th class="num">Monto</th><th>Estado</th></tr></thead>
             <tbody>
-              <tr><td colspan="3" style="font-size:.7rem;color:var(--text-faint);padding-top:6px;">INGRESOS</td></tr>
-              <tr><td>Sueldo (día 28)</td><td class="num" style="color:var(--warn)">+$2,900</td><td><span class="badge badge-yellow">Pendiente</span></td></tr>
-              <tr><td>Reembolso empresa</td><td class="num" style="color:var(--warn)">+$2,000</td><td><span class="badge badge-yellow">Pendiente</span></td></tr>
-              <tr><td>Extra viernes</td><td class="num" style="color:var(--accent)">+$400</td><td><span class="badge badge-green">Recibido</span></td></tr>
-              <tr><td colspan="3" style="font-size:.7rem;color:var(--text-faint);padding-top:6px;">GASTOS FIJOS</td></tr>
-              <tr><td>Arriendo (día 1)</td><td class="num">-$600</td><td><span class="badge badge-green">✓ Pagado</span></td></tr>
-              <tr><td>Banco del Austro (día 1)</td><td class="num">-$500</td><td><span class="badge badge-green">✓ Pagado</span></td></tr>
-              <tr><td>Produbanco (día 4)</td><td class="num">-$508.73</td><td><span class="badge badge-green">✓ Pagado</span></td></tr>
-              <tr><td>Banco Pichincha (día 30)</td><td class="num">-$222.73</td><td><span class="badge badge-yellow">Pendiente</span></td></tr>
-              <tr><td colspan="3" style="font-size:.7rem;color:var(--text-faint);padding-top:6px;">TARJETAS</td></tr>
-              <tr><td>Diners Club (día 2)</td><td class="num">-$346.53</td><td><span class="badge badge-green">✓ Pagado</span></td></tr>
-              <tr><td>PacifiCard (día 8)</td><td class="num">-$438.59</td><td><span class="badge badge-green">✓ Pagado</span></td></tr>
-              <tr><td>Banco Guayaquil (día 15)</td><td class="num">-$311.93</td><td><span class="badge badge-green">✓ Pagado</span></td></tr>
-              <tr><td colspan="3" style="font-size:.7rem;color:var(--text-faint);padding-top:6px;">ALIMENTACIÓN (día 1)</td></tr>
-              <tr><td>Tipti / Alimentación (día 1)</td><td class="num">-$400</td><td><span class="badge badge-green">✓ Pagado</span></td></tr>
-              <tr style="border-top:2px solid var(--border)">
-                <td colspan="3" style="font-size:.7rem;color:var(--text-faint);padding-top:4px;">BOLSILLO REAL (solo pendiente)</td>
-              </tr>
-              <tr>
-                <td>Ingresos pendientes</td>
-                <td class="num" style="color:var(--accent)">+$2,900.00</td>
-                <td>Sueldo d&#xED;a 28</td>
-              </tr>
-              <tr>
-                <td>Gastos pendientes</td>
-                <td class="num" style="color:var(--danger)">&#x2212;$222.73</td>
-                <td>Pichincha PRECISO d&#xED;a 30</td>
-              </tr>
-              <tr style="border-top:2px solid var(--accent)">
-                <td class="bold">Flujo neto pendiente</td>
-                <td class="num bold" style="color:var(--accent)">+$2,677.27</td>
-                <td>Saldo esperado al 30/04 = cuenta actual + $2,677.27</td>
-              </tr>
+              <tr><td colspan="4" style="font-size:.7rem;font-weight:600;color:var(--text-faint);background:var(--bg-surface);padding:5px 6px;letter-spacing:.06em;">💰 INGRESOS YA RECIBIDOS</td></tr>
+              <tr><td style="color:var(--text-muted);font-size:.72rem;white-space:nowrap;">D&#xED;a 01 abr</td><td>Extra viernes</td><td class="num" style="color:var(--accent)">+$400.00</td><td><span class="badge badge-green">✓ Recibido</span></td></tr>
+              <tr><td colspan="4" style="font-size:.7rem;font-weight:600;color:var(--text-faint);background:var(--bg-surface);padding:5px 6px;letter-spacing:.06em;">⏳ INGRESOS PENDIENTES</td></tr>
+              <tr><td style="color:var(--text-muted);font-size:.72rem;white-space:nowrap;">D&#xED;a 28 abr</td><td>Sueldo</td><td class="num" style="color:var(--accent)">+$2,900.00</td><td><span class="badge badge-yellow">Pendiente</span></td></tr>
+              <tr><td style="color:var(--text-muted);font-size:.72rem;white-space:nowrap;">D&#xED;a 28 abr</td><td>Reembolso empresa</td><td class="num" style="color:var(--accent)">+$2,000.00</td><td><span class="badge badge-yellow">Pendiente</span></td></tr>
+              <tr><td colspan="4" style="font-size:.7rem;font-weight:600;color:var(--text-faint);background:var(--bg-surface);padding:5px 6px;letter-spacing:.06em;">✅ GASTOS YA PAGADOS</td></tr>
+              <tr><td style="color:var(--text-muted);font-size:.72rem;white-space:nowrap;">D&#xED;a 01 abr</td><td>Arriendo</td><td class="num" style="color:var(--danger)">−$600.00</td><td><span class="badge badge-green">✓ Pagado</span></td></tr>
+              <tr><td style="color:var(--text-muted);font-size:.72rem;white-space:nowrap;">D&#xED;a 01 abr</td><td>Banco del Austro</td><td class="num" style="color:var(--danger)">−$500.00</td><td><span class="badge badge-green">✓ Pagado</span></td></tr>
+              <tr><td style="color:var(--text-muted);font-size:.72rem;white-space:nowrap;">D&#xED;a 01 abr</td><td>Alimentaci&#xF3;n / Tipti</td><td class="num" style="color:var(--danger)">−$400.00</td><td><span class="badge badge-green">✓ Pagado</span></td></tr>
+              <tr><td style="color:var(--text-muted);font-size:.72rem;white-space:nowrap;">D&#xED;a 02 abr</td><td>Diners Club</td><td class="num" style="color:var(--danger)">−$346.53</td><td><span class="badge badge-green">✓ Pagado</span></td></tr>
+              <tr><td style="color:var(--text-muted);font-size:.72rem;white-space:nowrap;">D&#xED;a 04 abr</td><td>Produbanco</td><td class="num" style="color:var(--danger)">−$508.73</td><td><span class="badge badge-green">✓ Pagado</span></td></tr>
+              <tr><td style="color:var(--text-muted);font-size:.72rem;white-space:nowrap;">D&#xED;a 08 abr</td><td>PacifiCard Mastercard</td><td class="num" style="color:var(--danger)">−$438.59</td><td><span class="badge badge-green">✓ Pagado</span></td></tr>
+              <tr><td style="color:var(--text-muted);font-size:.72rem;white-space:nowrap;">D&#xED;a 15 abr</td><td>Banco Guayaquil</td><td class="num" style="color:var(--danger)">−$311.93</td><td><span class="badge badge-green">✓ Pagado</span></td></tr>
+              <tr><td colspan="4" style="font-size:.7rem;font-weight:600;color:var(--text-faint);background:var(--bg-surface);padding:5px 6px;letter-spacing:.06em;">⏳ GASTOS PENDIENTES</td></tr>
+              <tr><td style="color:var(--text-muted);font-size:.72rem;white-space:nowrap;">D&#xED;a 28 abr</td><td>Sueldo entra &rarr; saldo corriente</td><td class="num" style="color:var(--danger)">+$580.00 ya en cta.</td><td><span class="badge badge-yellow">Pendiente</span></td></tr>
+              <tr><td style="color:var(--text-muted);font-size:.72rem;white-space:nowrap;">D&#xED;a 30 abr</td><td>Banco Pichincha PRECISO</td><td class="num" style="color:var(--danger)">−$222.73</td><td><span class="badge badge-yellow">Pendiente</span></td></tr>
+              <tr><td colspan="4" style="font-size:.7rem;font-weight:600;color:var(--text-faint);background:var(--bg-surface);padding:5px 6px;letter-spacing:.06em;">📊 PROYECTADO AL FIN DE MES</td></tr>
+              <tr><td></td><td class="bold">Saldo bruto proyectado</td><td class="num bold" style="color:var(--accent)">+$5,257.27</td><td style="font-size:.7rem;color:var(--text-faint)">Saldo hoy + pendientes</td></tr>
+              <tr><td colspan="4" style="font-size:.7rem;font-weight:600;color:var(--text-faint);background:var(--bg-surface);padding:5px 6px;letter-spacing:.06em;">💸 DISTRIBUCIÓN RECOMENDADA</td></tr>
+              <tr><td></td><td style="font-size:.78rem;">🔒 Reserva déficit Mayo</td><td class="num" style="color:var(--danger);font-size:.78rem;">−$428.51</td><td></td></tr>
+              <tr><td></td><td style="font-size:.78rem;">💳 Pago extra tarjetas (deuda)</td><td class="num" style="color:var(--warn);font-size:.78rem;">−$1,800.00</td><td></td></tr>
+              <tr><td></td><td style="font-size:.78rem;">🏦 Ahorro (Esc. A)</td><td class="num" style="color:var(--accent);font-size:.78rem;">−$334.00</td><td></td></tr>
+              <tr><td></td><td style="font-size:.78rem;">📈 Inversión (Esc. A)</td><td class="num" style="color:var(--blue);font-size:.78rem;">−$200.00</td><td></td></tr>
+              <tr style="border-top:2px solid var(--accent);"><td></td><td class="bold" style="color:var(--accent);">Free Cash Flow</td><td class="num bold" style="color:var(--accent);">+$2,494.76</td><td style="font-size:.7rem;color:var(--text-faint);">Libre para gastos / bolsa semanal</td></tr>
             </tbody>
           </table>
+
         </div>
       </div>
       <div class="col">
@@ -553,51 +511,29 @@ td.bold{font-weight:600;}
         <div class="card" style="border-color:var(--danger);">
           <div class="card-title" style="color:var(--danger);">⚠️ Mayo 2026 — Mes Crítico</div>
           <table>
-            <thead><tr><th>Concepto</th><th class="num">Monto</th></tr></thead>
+            <thead><tr><th style="width:60px">Fecha</th><th>Concepto</th><th class="num">Monto</th></tr></thead>
             <tbody>
-              <tr><td>Sueldo base</td><td class="num" style="color:var(--accent)">+$2,900</td></tr>
-              <tr><td colspan="2" style="font-size:.7rem;color:var(--text-faint);padding-top:6px;">GASTOS FIJOS</td></tr>
-              <tr><td>Arriendo</td><td class="num">-$600</td></tr>
-              <tr><td>Banco del Austro</td><td class="num">-$500</td></tr>
-              <tr><td>Produbanco (día 4)</td><td class="num">-$508.73</td></tr>
-              <tr><td>Pichincha PRECISO</td><td class="num">-$222.73</td></tr>
-              <tr><td colspan="2" style="font-size:.7rem;color:var(--text-faint);padding-top:6px;">TARJETAS</td></tr>
-              <tr><td>Diners Club</td><td class="num">-$346.53</td></tr>
-              <tr><td>PacifiCard</td><td class="num">-$438.59</td></tr>
-              <tr><td>Banco Guayaquil</td><td class="num">-$311.93</td></tr>
-              <tr><td>Alimentación (día 1)</td><td class="num">-$400</td></tr>
-              <tr style="border-top:2px solid var(--danger)"><td class="bold">SALDO TOTAL MES</td><td class="num bold" style="color:var(--danger)">-$428.51</td><td style="font-size:.7rem;color:var(--text-faint)">Cubierto con reserva Abril ✓</td></tr>
+              <tr><td colspan="4" style="font-size:.7rem;font-weight:600;color:var(--text-faint);background:var(--bg-surface);padding:5px 6px;letter-spacing:.06em;">⏳ INGRESOS PENDIENTES</td></tr>
+              <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 28</td><td>Sueldo</td><td class="num" style="color:var(--accent)">+$2,900.00</td></tr>
+              <tr><td colspan="4" style="font-size:.7rem;font-weight:600;color:var(--text-faint);background:var(--bg-surface);padding:5px 6px;letter-spacing:.06em;">⏳ GASTOS PENDIENTES</td></tr>
+              <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 01</td><td>Arriendo</td><td class="num" style="color:var(--danger)">−$600.00</td></tr>
+              <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 01</td><td>Banco del Austro</td><td class="num" style="color:var(--danger)">−$500.00</td></tr>
+              <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 01</td><td>Alimentaci&#xF3;n / Tipti</td><td class="num" style="color:var(--danger)">−$400.00</td></tr>
+              <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 02</td><td>Diners Club</td><td class="num" style="color:var(--danger)">−$346.53</td></tr>
+              <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 04</td><td>Produbanco</td><td class="num" style="color:var(--danger)">−$508.73</td></tr>
+              <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 08</td><td>PacifiCard Mastercard</td><td class="num" style="color:var(--danger)">−$438.59</td></tr>
+              <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 15</td><td>Banco Guayaquil</td><td class="num" style="color:var(--danger)">−$311.93</td></tr>
+              <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 30</td><td>Banco Pichincha PRECISO</td><td class="num" style="color:var(--danger)">−$222.73</td></tr>
+              <tr><td colspan="4" style="font-size:.7rem;font-weight:600;color:var(--text-faint);background:var(--bg-surface);padding:5px 6px;letter-spacing:.06em;">📊 PROYECTADO AL FIN DE MES</td></tr>
+              <tr style="border-top:2px solid var(--border);"><td></td><td class="bold">Saldo bruto mayo</td><td class="num bold" style="color:var(--danger)">−$428.51</td></tr>
+              <tr><td></td><td style="font-size:.78rem;">🔒 Cubierto con reserva Abril</td><td class="num" style="color:var(--accent);font-size:.78rem;">+$428.51</td></tr>
+              <tr style="border-top:2px solid var(--border);"><td></td><td class="bold" style="color:var(--warn);">Saldo neto al 31/05</td><td class="num bold" style="color:var(--warn);">$0.00</td></tr>
+              <tr><td colspan="4" style="font-size:.7rem;font-weight:600;color:var(--text-faint);background:var(--bg-surface);padding:5px 6px;letter-spacing:.06em;">💸 DISTRIBUCIÓN</td></tr>
+              <tr><td></td><td style="font-size:.78rem;">🚫 Sin ahorro ni inversión este mes</td><td class="num" style="color:var(--danger);font-size:.78rem;">$0.00</td></tr>
+              <tr style="border-top:2px solid var(--border);"><td></td><td class="bold" style="color:var(--warn);">Free Cash Flow</td><td class="num bold" style="color:var(--warn);">$0.00</td></tr>
             </tbody>
           </table>
-        </div>
-        <div class="card" style="border-color:var(--accent);margin-top:12px;">
-          <div class="card-title" style="color:var(--accent);">&#x1F4B3; Bolsillo Real — Mayo 2026</div>
-          <p style="font-size:.75rem;color:var(--text-muted);margin-bottom:8px;">
-            Solo lo <strong>pendiente</strong> del mes: ingresos que faltan por entrar y gastos que faltan por salir.
-            No vuelve a considerar pagos ya realizados.
-          </p>
-          <table>
-            <thead>
-              <tr><th>Concepto</th><th class="num">Monto</th><th>Detalle</th></tr>
-            </thead>
-            <tbody>
-              <tr><td colspan="3" style="font-size:.7rem;color:var(--text-faint);padding-top:4px;">INGRESOS PENDIENTES</td></tr>
-              <tr>
-                <td>Sueldo d&#xED;a 28</td>
-                <td class="num" style="color:var(--accent)">+$2,900.00</td>
-                <td>&#xDA;nico ingreso Mayo</td>
-              </tr>
-              <tr><td colspan="3" style="font-size:.7rem;color:var(--text-faint);padding-top:4px;">GASTOS PENDIENTES</td></tr>
-              <tr style="border-top:2px solid var(--border)">
-                <td class="bold">Flujo neto pendiente</td>
-                <td class="num bold" style="color:var(--danger)">-$428.51</td>
-                <td>Se sumar&#xE1; a tu saldo actual en cuenta</td>
-              </tr>
-            </tbody>
-          </table>
-          <div style="font-size:.75rem;color:var(--text-muted);margin-top:8px;">
-            &#x1F4CF; Regla bolsillo real: <strong>D&#xE9;ficit $428.51 cubierto con reserva de Abril. Saldo neto al 31/05 = $0 (m&#xE1;s reserva de Abril ya apartada)</strong>
-          </div>
+
         </div>
         <div class="card">
           <div class="card-title">Gráfico Mayo</div>
@@ -638,51 +574,28 @@ td.bold{font-weight:600;}
         <div class="card">
           <div class="card-title">Junio 2026 — Sueldo normalizado $4,100</div>
           <table>
-            <thead><tr><th>Concepto</th><th class="num">Monto</th></tr></thead>
+            <thead><tr><th style="width:60px">Fecha</th><th>Concepto</th><th class="num">Monto</th></tr></thead>
             <tbody>
-              <tr><td>Sueldo estimado</td><td class="num" style="color:var(--accent)">+$4,100</td></tr>
-              <tr><td>Arriendo</td><td class="num">-$600</td></tr>
-              <tr><td>Banco del Austro</td><td class="num">-$500</td></tr>
-              <tr><td>Produbanco (día 4)</td><td class="num">-$508.73</td></tr>
-              <tr><td>Pichincha PRECISO</td><td class="num">-$222.73</td></tr>
-              <tr><td>Diners Club</td><td class="num">-$346.53</td></tr>
-              <tr><td>PacifiCard</td><td class="num">-$438.59</td></tr>
-              <tr><td>Banco Guayaquil</td><td class="num">-$311.93</td></tr>
-              <tr><td>Alimentación (día 1)</td><td class="num">-$400</td></tr>
-              <tr style="border-top:2px solid var(--border)"><td class="bold">Saldo</td><td class="num bold" style="color:var(--accent)">+$771.49</td></tr>
-              <tr><td>Dest. ahorro (Esc. A)</td><td class="num">+$334</td></tr>
-              <tr><td>Dest. inversión (Esc. A)</td><td class="num">+$200</td></tr>
+              <tr><td colspan="4" style="font-size:.7rem;font-weight:600;color:var(--text-faint);background:var(--bg-surface);padding:5px 6px;letter-spacing:.06em;">⏳ INGRESOS PENDIENTES</td></tr>
+              <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 28</td><td>Sueldo estimado</td><td class="num" style="color:var(--accent)">+$4,100.00</td></tr>
+              <tr><td colspan="4" style="font-size:.7rem;font-weight:600;color:var(--text-faint);background:var(--bg-surface);padding:5px 6px;letter-spacing:.06em;">⏳ GASTOS PENDIENTES (todo el mes)</td></tr>
+              <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 01</td><td>Arriendo</td><td class="num" style="color:var(--danger)">−$600.00</td></tr>
+              <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 01</td><td>Banco del Austro</td><td class="num" style="color:var(--danger)">−$500.00</td></tr>
+              <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 01</td><td>Alimentaci&#xF3;n / Tipti</td><td class="num" style="color:var(--danger)">−$400.00</td></tr>
+              <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 02</td><td>Diners Club</td><td class="num" style="color:var(--danger)">−$346.53</td></tr>
+              <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 04</td><td>Produbanco</td><td class="num" style="color:var(--danger)">−$508.73</td></tr>
+              <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 08</td><td>PacifiCard Mastercard</td><td class="num" style="color:var(--danger)">−$438.59</td></tr>
+              <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 15</td><td>Banco Guayaquil</td><td class="num" style="color:var(--danger)">−$311.93</td></tr>
+              <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 30</td><td>Banco Pichincha PRECISO</td><td class="num" style="color:var(--danger)">−$222.73</td></tr>
+              <tr><td colspan="4" style="font-size:.7rem;font-weight:600;color:var(--text-faint);background:var(--bg-surface);padding:5px 6px;letter-spacing:.06em;">📊 PROYECTADO AL FIN DE MES</td></tr>
+              <tr style="border-top:2px solid var(--border);"><td></td><td class="bold">Saldo bruto junio</td><td class="num bold" style="color:var(--accent)">+$771.49</td></tr>
+              <tr><td colspan="4" style="font-size:.7rem;font-weight:600;color:var(--text-faint);background:var(--bg-surface);padding:5px 6px;letter-spacing:.06em;">💸 DISTRIBUCIÓN RECOMENDADA</td></tr>
+              <tr><td></td><td style="font-size:.78rem;">🏦 Ahorro (Esc. A)</td><td class="num" style="color:var(--accent);font-size:.78rem;">−$334.00</td></tr>
+              <tr><td></td><td style="font-size:.78rem;">📈 Inversi&#xF3;n (Esc. A)</td><td class="num" style="color:var(--blue);font-size:.78rem;">−$200.00</td></tr>
+              <tr style="border-top:2px solid var(--accent);"><td></td><td class="bold" style="color:var(--accent);">Free Cash Flow</td><td class="num bold" style="color:var(--accent);">+$237.49</td></tr>
             </tbody>
           </table>
-        </div>
-        <div class="card" style="border-color:var(--accent);margin-top:12px;">
-          <div class="card-title" style="color:var(--accent);">&#x1F4B3; Bolsillo Real — Junio 2026</div>
-          <p style="font-size:.75rem;color:var(--text-muted);margin-bottom:8px;">
-            Solo lo <strong>pendiente</strong> del mes: ingresos que faltan por entrar y gastos que faltan por salir.
-            No vuelve a considerar pagos ya realizados.
-          </p>
-          <table>
-            <thead>
-              <tr><th>Concepto</th><th class="num">Monto</th><th>Detalle</th></tr>
-            </thead>
-            <tbody>
-              <tr><td colspan="3" style="font-size:.7rem;color:var(--text-faint);padding-top:4px;">INGRESOS PENDIENTES</td></tr>
-              <tr>
-                <td>Sueldo d&#xED;a 28</td>
-                <td class="num" style="color:var(--accent)">+$4,100.00</td>
-                <td>Ingreso mensual normalizado</td>
-              </tr>
-              <tr><td colspan="3" style="font-size:.7rem;color:var(--text-faint);padding-top:4px;">GASTOS PENDIENTES</td></tr>
-              <tr style="border-top:2px solid var(--border)">
-                <td class="bold">Flujo neto pendiente</td>
-                <td class="num bold" style="color:var(--accent)">+$3,877.27</td>
-                <td>Se sumar&#xE1; a tu saldo actual en cuenta</td>
-              </tr>
-            </tbody>
-          </table>
-          <div style="font-size:.75rem;color:var(--text-muted);margin-top:8px;">
-            &#x1F4CF; Regla bolsillo real: <strong>Sueldo d&#xED;a 28 menos &#xFA;nico gasto posterior = +$3,877.27 disponibles para distribuir (fijos + tarjetas ya pagados con saldo anterior)</strong>
-          </div>
+
         </div>
         <div class="card"><div class="card-title">Flujo Junio</div><div class="chart-box"><canvas id="chartJunio"></canvas></div></div>
       </div>
@@ -722,46 +635,28 @@ td.bold{font-weight:600;}
         <div class="card">
           <div class="card-title">Julio 2026</div>
           <table>
-            <thead><tr><th>Concepto</th><th class="num">Monto</th></tr></thead>
+            <thead><tr><th style="width:60px">Fecha</th><th>Concepto</th><th class="num">Monto</th></tr></thead>
             <tbody>
-              <tr><td>Sueldo estimado</td><td class="num" style="color:var(--accent)">+$4,100</td></tr>
-              <tr><td>Fijos (=Junio)</td><td class="num">-$1,831.73</td></tr>
-              <tr><td>Tarjetas</td><td class="num">-$1,097.05</td></tr>
-              <tr><td>Alimentación (día 1)</td><td class="num">-$400</td></tr>
-              <tr style="border-top:2px solid var(--border)"><td class="bold">Saldo</td><td class="num bold" style="color:var(--accent)">+$771.49</td></tr>
-              <tr><td>Ahorro acumulado</td><td class="num" style="color:var(--accent)">$3,002</td></tr>
-              <tr><td>Inversión acumulada</td><td class="num" style="color:var(--blue)">$1,601</td></tr>
+              <tr><td colspan="4" style="font-size:.7rem;font-weight:600;color:var(--text-faint);background:var(--bg-surface);padding:5px 6px;letter-spacing:.06em;">⏳ INGRESOS PENDIENTES</td></tr>
+              <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 28</td><td>Sueldo estimado</td><td class="num" style="color:var(--accent)">+$4,100.00</td></tr>
+              <tr><td colspan="4" style="font-size:.7rem;font-weight:600;color:var(--text-faint);background:var(--bg-surface);padding:5px 6px;letter-spacing:.06em;">⏳ GASTOS PENDIENTES (todo el mes)</td></tr>
+              <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 01</td><td>Arriendo</td><td class="num" style="color:var(--danger)">−$600.00</td></tr>
+              <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 01</td><td>Banco del Austro</td><td class="num" style="color:var(--danger)">−$500.00</td></tr>
+              <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 01</td><td>Alimentaci&#xF3;n / Tipti</td><td class="num" style="color:var(--danger)">−$400.00</td></tr>
+              <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 02</td><td>Diners Club</td><td class="num" style="color:var(--danger)">−$346.53</td></tr>
+              <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 04</td><td>Produbanco</td><td class="num" style="color:var(--danger)">−$508.73</td></tr>
+              <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 08</td><td>PacifiCard Mastercard</td><td class="num" style="color:var(--danger)">−$438.59</td></tr>
+              <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 15</td><td>Banco Guayaquil</td><td class="num" style="color:var(--danger)">−$311.93</td></tr>
+              <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 30</td><td>Banco Pichincha PRECISO</td><td class="num" style="color:var(--danger)">−$222.73</td></tr>
+              <tr><td colspan="4" style="font-size:.7rem;font-weight:600;color:var(--text-faint);background:var(--bg-surface);padding:5px 6px;letter-spacing:.06em;">📊 PROYECTADO AL FIN DE MES</td></tr>
+              <tr style="border-top:2px solid var(--border);"><td></td><td class="bold">Saldo bruto julio</td><td class="num bold" style="color:var(--accent)">+$771.49</td></tr>
+              <tr><td colspan="4" style="font-size:.7rem;font-weight:600;color:var(--text-faint);background:var(--bg-surface);padding:5px 6px;letter-spacing:.06em;">💸 DISTRIBUCIÓN RECOMENDADA</td></tr>
+              <tr><td></td><td style="font-size:.78rem;">🏦 Ahorro (Esc. A)</td><td class="num" style="color:var(--accent);font-size:.78rem;">−$334.00</td></tr>
+              <tr><td></td><td style="font-size:.78rem;">📈 Inversi&#xF3;n (Esc. A)</td><td class="num" style="color:var(--blue);font-size:.78rem;">−$200.00</td></tr>
+              <tr style="border-top:2px solid var(--accent);"><td></td><td class="bold" style="color:var(--accent);">Free Cash Flow</td><td class="num bold" style="color:var(--accent);">+$237.49</td></tr>
             </tbody>
           </table>
-        </div>
-        <div class="card" style="border-color:var(--accent);margin-top:12px;">
-          <div class="card-title" style="color:var(--accent);">&#x1F4B3; Bolsillo Real — Julio 2026</div>
-          <p style="font-size:.75rem;color:var(--text-muted);margin-bottom:8px;">
-            Solo lo <strong>pendiente</strong> del mes: ingresos que faltan por entrar y gastos que faltan por salir.
-            No vuelve a considerar pagos ya realizados.
-          </p>
-          <table>
-            <thead>
-              <tr><th>Concepto</th><th class="num">Monto</th><th>Detalle</th></tr>
-            </thead>
-            <tbody>
-              <tr><td colspan="3" style="font-size:.7rem;color:var(--text-faint);padding-top:4px;">INGRESOS PENDIENTES</td></tr>
-              <tr>
-                <td>Sueldo d&#xED;a 28</td>
-                <td class="num" style="color:var(--accent)">+$4,100.00</td>
-                <td>Ingreso mensual</td>
-              </tr>
-              <tr><td colspan="3" style="font-size:.7rem;color:var(--text-faint);padding-top:4px;">GASTOS PENDIENTES</td></tr>
-              <tr style="border-top:2px solid var(--border)">
-                <td class="bold">Flujo neto pendiente</td>
-                <td class="num bold" style="color:var(--accent)">+$3,877.27</td>
-                <td>Se sumar&#xE1; a tu saldo actual en cuenta</td>
-              </tr>
-            </tbody>
-          </table>
-          <div style="font-size:.75rem;color:var(--text-muted);margin-top:8px;">
-            &#x1F4CF; Regla bolsillo real: <strong>Saldo esperado al 31/07 = saldo actual en cuenta + $3,877.27 (fijos/tarjetas pagados con saldo anterior)</strong>
-          </div>
+
         </div>
         <div class="card"><div class="card-title">Flujo Julio</div><div class="chart-box"><canvas id="chartJulio"></canvas></div></div>
       </div>
@@ -800,44 +695,28 @@ td.bold{font-weight:600;}
         <div class="card">
           <div class="card-title">Agosto 2026</div>
           <table>
-            <thead><tr><th>Concepto</th><th class="num">Monto</th></tr></thead>
+            <thead><tr><th style="width:60px">Fecha</th><th>Concepto</th><th class="num">Monto</th></tr></thead>
             <tbody>
-              <tr><td>Sueldo estimado</td><td class="num" style="color:var(--accent)">+$4,100</td></tr>
-              <tr><td>Fijos</td><td class="num">-$1,831.73</td></tr>
-              <tr><td>Tarjetas</td><td class="num">-$1,097.05</td></tr>
-              <tr><td>Alimentación (día 1)</td><td class="num">-$400</td></tr>
-              <tr style="border-top:2px solid var(--border)"><td class="bold">Saldo total mes</td><td class="num bold" style="color:var(--accent)">+$771.49</td></tr>
+              <tr><td colspan="4" style="font-size:.7rem;font-weight:600;color:var(--text-faint);background:var(--bg-surface);padding:5px 6px;letter-spacing:.06em;">⏳ INGRESOS PENDIENTES</td></tr>
+              <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 28</td><td>Sueldo estimado</td><td class="num" style="color:var(--accent)">+$4,100.00</td></tr>
+              <tr><td colspan="4" style="font-size:.7rem;font-weight:600;color:var(--text-faint);background:var(--bg-surface);padding:5px 6px;letter-spacing:.06em;">⏳ GASTOS PENDIENTES (todo el mes)</td></tr>
+              <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 01</td><td>Arriendo</td><td class="num" style="color:var(--danger)">−$600.00</td></tr>
+              <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 01</td><td>Banco del Austro</td><td class="num" style="color:var(--danger)">−$500.00</td></tr>
+              <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 01</td><td>Alimentaci&#xF3;n / Tipti</td><td class="num" style="color:var(--danger)">−$400.00</td></tr>
+              <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 02</td><td>Diners Club</td><td class="num" style="color:var(--danger)">−$346.53</td></tr>
+              <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 04</td><td>Produbanco</td><td class="num" style="color:var(--danger)">−$508.73</td></tr>
+              <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 08</td><td>PacifiCard Mastercard</td><td class="num" style="color:var(--danger)">−$438.59</td></tr>
+              <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 15</td><td>Banco Guayaquil</td><td class="num" style="color:var(--danger)">−$311.93</td></tr>
+              <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 30</td><td>Banco Pichincha PRECISO</td><td class="num" style="color:var(--danger)">−$222.73</td></tr>
+              <tr><td colspan="4" style="font-size:.7rem;font-weight:600;color:var(--text-faint);background:var(--bg-surface);padding:5px 6px;letter-spacing:.06em;">📊 PROYECTADO AL FIN DE MES</td></tr>
+              <tr style="border-top:2px solid var(--border);"><td></td><td class="bold">Saldo bruto agosto</td><td class="num bold" style="color:var(--accent)">+$771.49</td></tr>
+              <tr><td colspan="4" style="font-size:.7rem;font-weight:600;color:var(--text-faint);background:var(--bg-surface);padding:5px 6px;letter-spacing:.06em;">💸 DISTRIBUCIÓN RECOMENDADA</td></tr>
+              <tr><td></td><td style="font-size:.78rem;">🏦 Ahorro (Esc. A)</td><td class="num" style="color:var(--accent);font-size:.78rem;">−$334.00</td></tr>
+              <tr><td></td><td style="font-size:.78rem;">📈 Inversi&#xF3;n (Esc. A)</td><td class="num" style="color:var(--blue);font-size:.78rem;">−$200.00</td></tr>
+              <tr style="border-top:2px solid var(--accent);"><td></td><td class="bold" style="color:var(--accent);">Free Cash Flow</td><td class="num bold" style="color:var(--accent);">+$237.49</td></tr>
             </tbody>
           </table>
-        </div>
-        <div class="card" style="border-color:var(--accent);margin-top:12px;">
-          <div class="card-title" style="color:var(--accent);">&#x1F4B3; Bolsillo Real — Agosto 2026</div>
-          <p style="font-size:.75rem;color:var(--text-muted);margin-bottom:8px;">
-            Solo lo <strong>pendiente</strong> del mes: ingresos que faltan por entrar y gastos que faltan por salir.
-            No vuelve a considerar pagos ya realizados.
-          </p>
-          <table>
-            <thead>
-              <tr><th>Concepto</th><th class="num">Monto</th><th>Detalle</th></tr>
-            </thead>
-            <tbody>
-              <tr><td colspan="3" style="font-size:.7rem;color:var(--text-faint);padding-top:4px;">INGRESOS PENDIENTES</td></tr>
-              <tr>
-                <td>Sueldo d&#xED;a 28</td>
-                <td class="num" style="color:var(--accent)">+$4,100.00</td>
-                <td>Ingreso mensual</td>
-              </tr>
-              <tr><td colspan="3" style="font-size:.7rem;color:var(--text-faint);padding-top:4px;">GASTOS PENDIENTES</td></tr>
-              <tr style="border-top:2px solid var(--border)">
-                <td class="bold">Flujo neto pendiente</td>
-                <td class="num bold" style="color:var(--accent)">+$3,877.27</td>
-                <td>Se sumar&#xE1; a tu saldo actual en cuenta</td>
-              </tr>
-            </tbody>
-          </table>
-          <div style="font-size:.75rem;color:var(--text-muted);margin-top:8px;">
-            &#x1F4CF; Regla bolsillo real: <strong>Saldo esperado al 31/08 = saldo actual en cuenta + $3,877.27 (fijos/tarjetas pagados con saldo anterior)</strong>
-          </div>
+
         </div>
         <div class="card"><div class="card-title">Flujo Agosto</div><div class="chart-box"><canvas id="chartAgosto"></canvas></div></div>
       </div>
