@@ -381,16 +381,51 @@ td.bold{font-weight:600;}
         <div class="card">
           <div class="card-title">Mapa de saldos mensuales</div>
           <table>
-            <thead><tr><th>Mes</th><th>Ingreso</th><th>Fijos</th><th>Tarjetas</th><th class="num">Saldo</th><th>Estado</th></tr></thead>
+            <thead><tr><th>Mes</th><th class="num">Ingresos</th><th class="num">Egresos</th><th class="num">Saldo bruto</th><th class="num" style="color:var(--accent)">FCF libre</th><th>Estado</th></tr></thead>
             <tbody>
-              <tr><td>Abril</td><td>$5,300</td><td>$1,331.73</td><td>$1,599.67</td><td class="num" style="color:var(--accent)">+$568.60 <small style="color:var(--text-muted)">(acumulado)</small></td><td><span class="badge badge-green">Sano</span></td></tr>
-              <tr><td>Mayo</td><td>$2,900</td><td>$1,331.46</td><td>$1,666.53</td><td class="num" style="color:var(--accent)">$0.00*</td><td><span class="badge badge-green">Cubierto</span></td></tr>
-              <tr><td>Junio</td><td>$4,100</td><td>$1,331.46</td><td>$1,546.53</td><td class="num" style="color:var(--accent)">+$822.01</td><td><span class="badge badge-green">Sano</span></td></tr>
-              <tr><td>Julio</td><td>$4,100</td><td>$1,331.46</td><td>$1,546.53</td><td class="num" style="color:var(--accent)">+$822.01</td><td><span class="badge badge-green">Sano</span></td></tr>
-              <tr><td>Agosto</td><td>$4,100</td><td>$1,331.46</td><td>$1,546.53</td><td class="num" style="color:var(--accent)">+$822.01</td><td><span class="badge badge-green">Sano</span></td></tr>
+              <tr>
+                <td>Abril</td>
+                <td class="num">$5,300</td>
+                <td class="num">$4,731.40</td>
+                <td class="num" style="color:var(--accent)">+$5,257.27 <small style="color:var(--text-muted)">*</small></td>
+                <td class="num bold" style="color:var(--accent)">+$2,494.76</td>
+                <td><span class="badge badge-green">Sano</span></td>
+              </tr>
+              <tr>
+                <td>Mayo</td>
+                <td class="num">$2,900</td>
+                <td class="num">$3,328.51</td>
+                <td class="num" style="color:var(--danger)">−$428.51 <small style="color:var(--text-muted)">**</small></td>
+                <td class="num bold" style="color:var(--warn)">$0.00</td>
+                <td><span class="badge badge-green">Cubierto</span></td>
+              </tr>
+              <tr>
+                <td>Junio</td>
+                <td class="num">$4,100</td>
+                <td class="num">$3,328.51</td>
+                <td class="num" style="color:var(--accent)">+$771.49</td>
+                <td class="num bold" style="color:var(--accent)">+$237.49</td>
+                <td><span class="badge badge-green">Sano</span></td>
+              </tr>
+              <tr>
+                <td>Julio</td>
+                <td class="num">$4,100</td>
+                <td class="num">$3,328.51</td>
+                <td class="num" style="color:var(--accent)">+$771.49</td>
+                <td class="num bold" style="color:var(--accent)">+$237.49</td>
+                <td><span class="badge badge-green">Sano</span></td>
+              </tr>
+              <tr>
+                <td>Agosto</td>
+                <td class="num">$4,100</td>
+                <td class="num">$3,328.51</td>
+                <td class="num" style="color:var(--accent)">+$771.49</td>
+                <td class="num bold" style="color:var(--accent)">+$237.49</td>
+                <td><span class="badge badge-green">Sano</span></td>
+              </tr>
             </tbody>
           </table>
-          <div style="font-size:.7rem;color:var(--text-muted);margin-top:6px;">* Déficit de Mayo (-$428.51) cubierto al 100% con reserva de Abril. Regla: el saldo de cada mes cubre el déficit del siguiente.</div>
+          <div style="font-size:.7rem;color:var(--text-muted);margin-top:6px;">* Abril: saldo corriente $580 + sueldo $2,900 + reembolso $2,000 − Pichincha $222.73 = $5,257.27 bruto. FCF tras reserva Mayo $428.51 + tarjetas extra $1,800 + ahorro $334 + inversión $200.<br>** Déficit Mayo cubierto al 100% con reserva de Abril.</div>
         </div>
       </div>
       <div class="col">
