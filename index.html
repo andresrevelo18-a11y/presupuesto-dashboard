@@ -590,8 +590,8 @@ td.bold{font-weight:600;}
   <div class="panel" id="panel-mayo" role="tabpanel">
     <div class="grid-main">
       <div class="col">
-        <div class="card" style="border-color:var(--danger);">
-          <div class="card-title" style="color:var(--danger);">⚠️ Mayo 2026 — Mes Crítico</div>
+        <div class="card" style="border-color:var(--warn);">
+          <div class="card-title" style="color:var(--warn);">⚡ Mayo 2026 — Mes de liquidez activa</div>
           <table>
             <thead><tr><th style="width:60px">Fecha</th><th>Concepto</th><th class="num">Monto</th></tr></thead>
             <tbody>
@@ -623,14 +623,37 @@ td.bold{font-weight:600;}
         </div>
       </div>
       <div class="col">
-        <div class="card" style="border-color:var(--danger);">
-          <div class="card-title" style="color:var(--danger);">Plan de contingencia Mayo</div>
-          <div style="display:flex;flex-direction:column;gap:8px;font-size:.8rem;margin-top:4px;">
-            <div class="tip"><span class="tip-icon">✅</span><span>Mayo cubierto con colch&#xF3;n de Abril ($2,298.57). Los $1,800 extra PacifiCard salen de la provisi&#xF3;n, no del sueldo. Saldo final: +$1,870.06.</span></div>
-            <div class="tip"><span class="tip-icon">🔒</span><span>Regla: el colch&#xF3;n de cada mes cubre gastos del siguiente. Junio arranca con +$1,870.06 ya disponible.</span></div>
-            <div class="tip"><span class="tip-icon">💰</span><span>No tocar inversiones ni ahorro — la reserva ya está en cuenta corriente.</span></div>
-            <div class="tip"><span class="tip-icon">📱</span><span>Revisar suscripciones y eliminar las que no uses este mes.</span></div>
-            <div class="tip"><span class="tip-icon">🏦</span><span>Junio normaliza: sueldo $4,100 + colch&#xF3;n $1,870.06 = saldo bruto +$2,641.55 → colch&#xF3;n → Julio +$2,107.55.</span></div>
+        <div class="card" style="border-color:var(--warn);">
+          <div class="card-title" style="color:var(--warn);">&#x1F6A8; Plan de liquidez Mayo</div>
+          <div style="font-size:.75rem;color:var(--text-muted);margin-bottom:8px;">El colch&#xF3;n cubre hasta el d&#xED;a 02. Del d&#xED;a 04 al 27 necesitas apoyo de ahorro e inversi&#xF3;n — todo se repone el d&#xED;a 28 con el sueldo.</div>
+          <table style="font-size:.78rem;">
+            <thead><tr><th>D&#xED;a</th><th>Acci&#xF3;n</th><th class="num">Monto</th><th>Fuente</th></tr></thead>
+            <tbody>
+              <tr><td style="color:var(--text-muted);">D&#xED;a 04</td><td>Retiro para Produbanco</td><td class="num" style="color:var(--warn);">&#x2212;$106.69</td><td><span class="badge badge-yellow">Ahorro</span></td></tr>
+              <tr><td style="color:var(--text-muted);">D&#xED;a 08</td><td>Retiro provisi&#xF3;n PacifiCard extra</td><td class="num" style="color:var(--warn);">&#x2212;$1,800.00</td><td><span class="badge badge-yellow">Ahorro</span></td></tr>
+              <tr><td style="color:var(--text-muted);">D&#xED;a 08</td><td>Retiro PacifiCard m&#xED;nimo (parcial)</td><td class="num" style="color:var(--warn);">&#x2212;$93.31</td><td><span class="badge badge-yellow">Ahorro</span></td></tr>
+              <tr><td style="color:var(--text-muted);">D&#xED;a 08</td><td>Complemento PacifiCard m&#xED;nimo</td><td class="num" style="color:var(--blue);">&#x2212;$345.28</td><td><span class="badge" style="background:var(--blue-soft);color:var(--blue);">Inversi&#xF3;n</span></td></tr>
+              <tr><td style="color:var(--text-muted);">D&#xED;a 15</td><td>Retiro para Guayaquil</td><td class="num" style="color:var(--blue);">&#x2212;$311.93</td><td><span class="badge" style="background:var(--blue-soft);color:var(--blue);">Inversi&#xF3;n</span></td></tr>
+              <tr style="border-top:2px solid var(--border);background:var(--bg-surface);"><td></td><td style="font-weight:600;">Total a reponer d&#xED;a 28</td><td class="num" style="color:var(--danger);font-weight:600;">&#x2212;$2,657.21</td><td></td></tr>
+              <tr style="background:rgba(16,185,129,0.07);"><td style="color:var(--accent);">D&#xED;a 28</td><td style="color:var(--accent);font-weight:600;">Sueldo &#x2192; reponer ahorro + inv.</td><td class="num" style="color:var(--accent);font-weight:600;">+$2,657.21</td><td><span class="badge badge-green">Sueldo</span></td></tr>
+            </tbody>
+          </table>
+          <div style="display:flex;gap:8px;margin-top:8px;font-size:.72rem;">
+            <div style="flex:1;background:var(--bg-surface);border-radius:6px;padding:6px 8px;text-align:center;">
+              <div style="color:var(--text-muted);margin-bottom:2px;">Ahorro usado</div>
+              <div style="color:var(--warn);font-weight:600;">&#x2212;$2,000.00</div>
+              <div style="color:var(--accent);font-size:.68rem;">repuesto d&#xED;a 28 &#x2713;</div>
+            </div>
+            <div style="flex:1;background:var(--bg-surface);border-radius:6px;padding:6px 8px;text-align:center;">
+              <div style="color:var(--text-muted);margin-bottom:2px;">Inversi&#xF3;n usada</div>
+              <div style="color:var(--blue);font-weight:600;">&#x2212;$657.21</div>
+              <div style="color:var(--accent);font-size:.68rem;">repuesto d&#xED;a 28 &#x2713;</div>
+            </div>
+            <div style="flex:1;background:var(--bg-surface);border-radius:6px;padding:6px 8px;text-align:center;">
+              <div style="color:var(--text-muted);margin-bottom:2px;">Colch&#xF3;n &#x2192; Junio</div>
+              <div style="color:var(--accent);font-weight:600;">+$1,870.06</div>
+              <div style="color:var(--text-faint);font-size:.68rem;">cuentas intactas</div>
+            </div>
           </div>
         </div>
         <div class="card">
