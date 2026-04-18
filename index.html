@@ -336,9 +336,9 @@ td.bold{font-weight:600;}
   <!-- KPI ROW -->
   <section class="kpi-row">
     <div class="kpi" style="--kpi-color:var(--accent-soft)">
-      <div class="kpi-label">Ingresos Totales (5M)</div>
-      <div class="kpi-value" style="color:var(--accent)">$20,500</div>
-      <div class="kpi-meta">Abr $5,300 · May $2,900 · Jun/Jul/Ago $4,100 c/u</div>
+      <div class="kpi-label">Ingresos Totales (Abr-May)</div>
+      <div class="kpi-value" style="color:var(--accent)">$8,400</div>
+      <div class="kpi-meta">Abr $5,400 · May $3,000</div>
     </div>
     <div class="kpi" style="--kpi-color:var(--danger-soft)">
       <div class="kpi-label">Deuda Total</div>
@@ -352,8 +352,8 @@ td.bold{font-weight:600;}
     </div>
     <div class="kpi" style="--kpi-color:var(--warn-soft)">
       <div class="kpi-label">Ratio Deuda/Ingreso</div>
-      <div class="kpi-value" style="color:var(--warn)">84.8%</div>
-      <div class="kpi-meta">Mínimos deuda $2,458.30 / Ingreso $2,900</div>
+      <div class="kpi-value" style="color:var(--warn)">81.9%</div>
+      <div class="kpi-meta">Mínimos deuda $2,458.30 / Ingreso $3,000</div>
     </div>
   </section>
 
@@ -362,9 +362,6 @@ td.bold{font-weight:600;}
     <button class="tab active" data-tab="proyeccion" role="tab">📊 Proyección</button>
     <button class="tab" data-tab="abril" role="tab">Abril <span class="chip chip-ok">SANO</span></button>
     <button class="tab" data-tab="mayo" role="tab">Mayo <span class="chip">AJUSTE</span></button>
-    <button class="tab" data-tab="junio" role="tab">Junio</button>
-    <button class="tab" data-tab="julio" role="tab">Julio</button>
-    <button class="tab" data-tab="agosto" role="tab">Agosto</button>
     <button class="tab" data-tab="semanal" role="tab">📅 Semanal</button>
     <button class="tab" data-tab="deudas" role="tab">💳 Deudas</button>
     <button class="tab" data-tab="activos" role="tab">🏦 Activos</button>
@@ -375,7 +372,7 @@ td.bold{font-weight:600;}
     <div class="grid-main">
       <div class="col">
         <div class="card">
-          <div class="card-title">Flujo mensual Abril–Agosto</div>
+          <div class="card-title">Flujo mensual Abril-Mayo</div>
           <div class="chart-box"><canvas id="chartFlujo"></canvas></div>
         </div>
         <div class="card">
@@ -385,53 +382,30 @@ td.bold{font-weight:600;}
             <tbody>
               <tr>
                 <td>Abril</td>
-                <td class="num">$5,300</td>
+                <td class="num">$5,400</td>
                 <td class="num">$4,731.40</td>
-                <td class="num" style="color:var(--accent)">+$5,257.27 <small style="color:var(--text-muted)">*</small></td>
-                <td class="num bold" style="color:var(--accent)">+$4,523.27</td>
+                <td class="num" style="color:var(--accent)">+$5,357.27 <small style="color:var(--text-muted)">*</small></td>
+                <td class="num bold" style="color:var(--accent)">+$4,623.27</td>
                 <td><span class="badge badge-green">Sano</span></td>
               </tr>
               <tr>
                 <td>Mayo</td>
-                <td class="num">$2,900</td>
+                <td class="num">$3,000</td>
                 <td class="num">$4,393.39</td>
-                <td class="num" style="color:var(--accent)">+$3,029.88</td>
-                <td class="num bold" style="color:var(--accent)">+$3,029.88</td>
+                <td class="num" style="color:var(--accent)">+$3,229.88</td>
+                <td class="num bold" style="color:var(--accent)">+$3,229.88</td>
                 <td><span class="badge badge-yellow">Ajuste</span></td>
               </tr>
-              <tr>
-                <td>Junio</td>
-                <td class="num">$4,100</td>
-                <td class="num">$4,373.39</td>
-                <td class="num" style="color:var(--accent)">+$2,756.49</td>
-                <td class="num bold" style="color:var(--accent)">+$2,756.49</td>
-                <td><span class="badge badge-yellow">Ajuste</span></td>
-              </tr>
-              <tr>
-                <td>Julio</td>
-                <td class="num">$4,100</td>
-                <td class="num">$4,393.39</td>
-                <td class="num" style="color:var(--accent)">+$2,463.10</td>
-                <td class="num bold" style="color:var(--accent)">+$2,463.10</td>
-                <td><span class="badge badge-yellow">Ajuste</span></td>
-              </tr>
-              <tr>
-                <td>Agosto</td>
-                <td class="num">$4,100</td>
-                <td class="num">$4,393.39</td>
-                <td class="num" style="color:var(--accent)">+$2,169.71</td>
-                <td class="num bold" style="color:var(--accent)">+$2,169.71</td>
-                <td><span class="badge badge-yellow">Ajuste</span></td>
-              </tr>
+
             </tbody>
           </table>
-          <div style="font-size:.7rem;color:var(--text-muted);margin-top:6px;">* Abril recalculado al 18/04: saldo corriente $580 + sueldo $2,900 + reembolso $2,000 − Pichincha $222.73 = $5,257.27 bruto. Con $20/día hasta el sueldo, el colchón bruto que arranca Mayo queda en $4,523.27 y se conserva como liquidez, no como pago extra de deuda.<br>** Desde Mayo, $20/día es regla diaria y se mide semana a semana contra la fluidez. No se maneja como un pago mensual único.</div>
+          <div style="font-size:.7rem;color:var(--text-muted);margin-top:6px;">* Abril recalculado al 18/04: saldo corriente $580 + sueldo $3,000 + reembolso $2,000 − Pichincha $222.73 = $5,357.27 bruto. Con $20/día hasta el sueldo, el colchón bruto que arranca Mayo queda en $4,623.27 y se conserva como liquidez, no como pago extra de deuda.<br>** Desde Mayo, $20/día es regla diaria y se mide semana a semana contra la fluidez. No se maneja como un pago mensual único.</div>
         </div>
       </div>
       <div class="col">
         <div class="card">
           <div class="card-title">Calendario de pagos fijos</div>
-          <div class="cal-item"><span class="cal-day">01</span><span class="cal-desc">Arriendo + Alimentación</span><span class="cal-amt">$1,000</span></div>
+          <div class="cal-item"><span class="cal-day">01</span><span class="cal-desc">Arriendo + Tipti abarrotes</span><span class="cal-amt">$1,000</span></div>
           <div class="cal-item"><span class="cal-day">04</span><span class="cal-desc">Banco del Austro mínimo</span><span class="cal-amt">$629.79</span></div>
           <div class="cal-item"><span class="cal-day">02</span><span class="cal-desc">Humana S.A. seguro salud (Austro)</span><span class="cal-amt">$315.09</span></div>
           <div class="cal-item"><span class="cal-day">04</span><span class="cal-desc">Produbanco cuota</span><span class="cal-amt">$508.73</span></div>
@@ -439,7 +413,7 @@ td.bold{font-weight:600;}
           <div class="cal-item"><span class="cal-day">02</span><span class="cal-desc">Diners Club</span><span class="cal-amt">$346.53</span></div>
           <div class="cal-item"><span class="cal-day">08</span><span class="cal-desc">PacifiCard Mastercard</span><span class="cal-amt">$438.59</span></div>
           <div class="cal-item"><span class="cal-day">15</span><span class="cal-desc">Banco Guayaquil</span><span class="cal-amt">$311.93</span></div>
-          <div class="cal-item"><span class="cal-day">28</span><span class="cal-desc">💰 SUELDO</span><span class="cal-amt" style="color:var(--accent)">+$2,900</span></div>
+          <div class="cal-item"><span class="cal-day">28</span><span class="cal-desc">💰 SUELDO</span><span class="cal-amt" style="color:var(--accent)">+$3,000</span></div>
           <div class="cal-item"><span class="cal-day">30</span><span class="cal-desc">Banco Pichincha PRECISO</span><span class="cal-amt">$222.73</span></div>
         </div>
 
@@ -450,8 +424,7 @@ td.bold{font-weight:600;}
             <tbody>
               <tr><td>Hoy</td><td class="num">$1,000</td><td class="num">$1,000</td></tr>
               <tr><td>Mayo</td><td class="num" style="color:var(--warn)">$1,000</td><td class="num" style="color:var(--warn)">$1,000</td></tr>
-              <tr><td>Junio</td><td class="num" style="color:var(--warn)">$1,000</td><td class="num" style="color:var(--warn)">$1,000</td></tr>
-              <tr><td>Julio</td><td class="num" style="color:var(--warn)">$1,000</td><td class="num" style="color:var(--warn)">$1,000</td></tr>
+
             </tbody>
           </table>
         </div>
@@ -495,7 +468,7 @@ td.bold{font-weight:600;}
             <div style="border-top:1px solid var(--border);padding-top:6px;">
               <div style="display:flex;justify-content:space-between;align-items:center;">
                 <span style="color:var(--text-muted);font-size:.75rem;">&#x1F512; FCF Abril reservado (no tocar)</span>
-                <span style="color:var(--warn);font-weight:600;">$4,523.27</span>
+                <span style="color:var(--warn);font-weight:600;">$4,623.27</span>
               </div>
               <div style="display:flex;justify-content:space-between;align-items:center;margin-top:4px;">
                 <span style="color:var(--text-faint);font-size:.7rem;">Colch&#xF3;n bruto → arranca Mayo con este saldo</span>
@@ -506,10 +479,9 @@ td.bold{font-weight:600;}
           <!-- SEMÁFORO MENSUAL -->
           <div style="border-top:1px solid var(--border);margin-top:10px;padding-top:8px;display:flex;flex-direction:column;gap:5px;font-size:.78rem;">
             <div style="font-size:.65rem;color:var(--text-faint);text-transform:uppercase;letter-spacing:.08em;margin-bottom:2px;">Sem&#xE1;foro mensual</div>
-            <div style="display:flex;align-items:center;gap:8px;"><span class="semaforo s-green"></span><span><strong>Abril</strong> — FCF +$2,494.76 · Colch&#xF3;n Mayo ✓</span></div>
-            <div style="display:flex;align-items:center;gap:8px;"><span class="semaforo s-green"></span><span><strong>Mayo</strong> — sin pago extra; cierra con colchón +$3,029.88</span></div>
-            <div style="display:flex;align-items:center;gap:8px;"><span class="semaforo s-yellow"></span><span><strong>Junio</strong> — cierre positivo, puente semanal máximo $940.78 antes del sueldo</span></div>
-            <div style="display:flex;align-items:center;gap:8px;"><span class="semaforo s-yellow"></span><span><strong>Jul / Ago</strong> — mantener colchón para puentes semanales antes del día 28</span></div>
+            <div style="display:flex;align-items:center;gap:8px;"><span class="semaforo s-green"></span><span><strong>Abril</strong> — FCF +$2,594.76 · Colch&#xF3;n Mayo ✓</span></div>
+            <div style="display:flex;align-items:center;gap:8px;"><span class="semaforo s-green"></span><span><strong>Mayo</strong> — sin pago extra; cierra con colchón +$3,229.88</span></div>
+
           </div>
         </div>
       </div>
@@ -532,12 +504,12 @@ td.bold{font-weight:600;}
               <tr><td colspan="4" style="font-size:.7rem;font-weight:600;color:var(--text-faint);background:var(--bg-surface);padding:5px 6px;letter-spacing:.06em;">💰 INGRESOS YA RECIBIDOS</td></tr>
               <tr><td style="color:var(--text-muted);font-size:.72rem;white-space:nowrap;">D&#xED;a 01 abr</td><td>Extra viernes</td><td class="num" style="color:var(--accent)">+$400.00</td><td><span class="badge badge-green">✓ Recibido</span></td></tr>
               <tr><td colspan="4" style="font-size:.7rem;font-weight:600;color:var(--text-faint);background:var(--bg-surface);padding:5px 6px;letter-spacing:.06em;">⏳ INGRESOS PENDIENTES</td></tr>
-              <tr><td style="color:var(--text-muted);font-size:.72rem;white-space:nowrap;">D&#xED;a 28 abr</td><td>Sueldo</td><td class="num" style="color:var(--accent)">+$2,900.00</td><td><span class="badge badge-yellow">Pendiente</span></td></tr>
+              <tr><td style="color:var(--text-muted);font-size:.72rem;white-space:nowrap;">D&#xED;a 28 abr</td><td>Sueldo</td><td class="num" style="color:var(--accent)">+$3,000.00</td><td><span class="badge badge-yellow">Pendiente</span></td></tr>
               <tr><td style="color:var(--text-muted);font-size:.72rem;white-space:nowrap;">D&#xED;a 28 abr</td><td>Reembolso empresa</td><td class="num" style="color:var(--accent)">+$2,000.00</td><td><span class="badge badge-yellow">Pendiente</span></td></tr>
               <tr><td colspan="4" style="font-size:.7rem;font-weight:600;color:var(--text-faint);background:var(--bg-surface);padding:5px 6px;letter-spacing:.06em;">✅ GASTOS YA PAGADOS</td></tr>
               <tr><td style="color:var(--text-muted);font-size:.72rem;white-space:nowrap;">D&#xED;a 01 abr</td><td>Arriendo</td><td class="num" style="color:var(--danger)">−$600.00</td><td><span class="badge badge-green">✓ Pagado</span></td></tr>
               <tr><td style="color:var(--text-muted);font-size:.72rem;white-space:nowrap;">D&#xED;a 01 abr</td><td>Banco del Austro</td><td class="num" style="color:var(--danger)">−$500.00</td><td><span class="badge badge-green">✓ Pagado</span></td></tr>
-              <tr><td style="color:var(--text-muted);font-size:.72rem;white-space:nowrap;">D&#xED;a 01 abr</td><td>Alimentaci&#xF3;n / Tipti</td><td class="num" style="color:var(--danger)">−$400.00</td><td><span class="badge badge-green">✓ Pagado</span></td></tr>
+              <tr><td style="color:var(--text-muted);font-size:.72rem;white-space:nowrap;">D&#xED;a 01 abr</td><td>Abarrotes / Tipti <small style="color:var(--text-faint)">(1 compra mensual)</small></td><td class="num" style="color:var(--danger)">−$400.00</td><td><span class="badge badge-green">✓ Pagado</span></td></tr>
               <tr><td style="color:var(--text-muted);font-size:.72rem;white-space:nowrap;">D&#xED;a 02 abr</td><td>Diners Club</td><td class="num" style="color:var(--danger)">−$346.53</td><td><span class="badge badge-green">✓ Pagado</span></td></tr>
               <tr><td style="color:var(--text-muted);font-size:.72rem;white-space:nowrap;">D&#xED;a 04 abr</td><td>Produbanco</td><td class="num" style="color:var(--danger)">−$508.73</td><td><span class="badge badge-green">✓ Pagado</span></td></tr>
               <tr><td style="color:var(--text-muted);font-size:.72rem;white-space:nowrap;">D&#xED;a 08 abr</td><td>PacifiCard Mastercard</td><td class="num" style="color:var(--danger)">−$438.59</td><td><span class="badge badge-green">✓ Pagado</span></td></tr>
@@ -546,12 +518,12 @@ td.bold{font-weight:600;}
               <tr style="background:var(--bg-surface);"><td style="color:var(--blue);font-size:.72rem;white-space:nowrap;">Hoy</td><td style="font-size:.78rem;color:var(--text-muted);">&#x2139;&#xFE0F; Saldo corriente actual en cuenta</td><td class="num" style="color:var(--blue)">$580.00</td><td><span class="badge badge-green" style="background:var(--blue-soft);color:var(--blue);">Ya disponible</span></td></tr>
               <tr><td style="color:var(--text-muted);font-size:.72rem;white-space:nowrap;">D&#xED;a 30 abr</td><td>Banco Pichincha PRECISO</td><td class="num" style="color:var(--danger)">−$222.73</td><td><span class="badge badge-yellow">Pendiente</span></td></tr>
               <tr><td colspan="4" style="font-size:.7rem;font-weight:600;color:var(--text-faint);background:var(--bg-surface);padding:5px 6px;letter-spacing:.06em;">📊 PROYECTADO AL FIN DE MES</td></tr>
-              <tr><td></td><td class="bold">Saldo bruto proyectado</td><td class="num bold" style="color:var(--accent)">+$5,257.27</td><td style="font-size:.7rem;color:var(--text-faint)">Saldo hoy + pendientes</td></tr>
+              <tr><td></td><td class="bold">Saldo bruto proyectado</td><td class="num bold" style="color:var(--accent)">+$5,357.27</td><td style="font-size:.7rem;color:var(--text-faint)">Saldo hoy + pendientes</td></tr>
               <tr><td colspan="4" style="font-size:.7rem;font-weight:600;color:var(--text-faint);background:var(--bg-surface);padding:5px 6px;letter-spacing:.06em;">💸 DISTRIBUCIÓN RECOMENDADA</td></tr>
               <tr><td></td><td style="font-size:.78rem;">🏦 Ahorro (Esc. A)</td><td class="num" style="color:var(--accent);font-size:.78rem;">−$334.00</td><td></td></tr>
               <tr><td></td><td style="font-size:.78rem;">📈 Inversión (Esc. A)</td><td class="num" style="color:var(--blue);font-size:.78rem;">−$200.00</td><td></td></tr>
               <tr><td></td><td style="font-size:.78rem;">🛒 Regla diaria restante 10 días × $20</td><td class="num" style="color:var(--danger);font-size:.78rem;">−$200.00</td><td style="font-size:.7rem;color:var(--text-faint);">excedente $380 al colchón</td></tr>
-              <tr style="border-top:2px solid var(--accent);"><td></td><td class="bold" style="color:var(--accent);">💰 Colchón bruto que arranca Mayo</td><td class="num bold" style="color:var(--accent);">+$4,523.27</td><td style="font-size:.7rem;color:var(--text-faint);">liquidez protegida, sin pago extra</td></tr>
+              <tr style="border-top:2px solid var(--accent);"><td></td><td class="bold" style="color:var(--accent);">💰 Colchón bruto que arranca Mayo</td><td class="num bold" style="color:var(--accent);">+$4,623.27</td><td style="font-size:.7rem;color:var(--text-faint);">liquidez protegida, sin pago extra</td></tr>
             </tbody>
           </table>
 
@@ -563,13 +535,13 @@ td.bold{font-weight:600;}
           <div class="cal-item"><span class="cal-day paid">01</span><span class="cal-desc">Arriendo $600</span><span class="cal-amt" style="color:var(--accent)">✓</span></div>
           <div class="cal-item"><span class="cal-day paid">01</span><span class="cal-desc">Banco Austro $500</span><span class="cal-amt" style="color:var(--accent)">✓</span></div>
           <div class="cal-item"><span class="cal-day paid">01</span><span class="cal-desc">Produbanco $508.73</span><span class="cal-amt" style="color:var(--accent)">✓</span></div>
-          <div class="cal-item"><span class="cal-day paid">01</span><span class="cal-desc">Alimentación $400</span><span class="cal-amt" style="color:var(--accent)">✓</span></div>
+          <div class="cal-item"><span class="cal-day paid">01</span><span class="cal-desc">Tipti abarrotes $400</span><span class="cal-amt" style="color:var(--accent)">✓</span></div>
           <div class="cal-item"><span class="cal-day paid">02</span><span class="cal-desc">Diners $346.53</span><span class="cal-amt" style="color:var(--accent)">✓</span></div>
           <div class="cal-item"><span class="cal-day paid">08</span><span class="cal-desc">PacifiCard $438.59</span><span class="cal-amt" style="color:var(--accent)">✓</span></div>
           <div class="cal-item"><span class="cal-day paid">15</span><span class="cal-desc">Guayaquil $311.93</span><span class="cal-amt" style="color:var(--accent)">✓</span></div>
           <div class="cal-item"><span class="cal-day">24</span><span class="cal-desc">Corte PacifiCard</span><span class="cal-amt">—</span></div>
           <div class="cal-item"><span class="cal-day">27</span><span class="cal-desc">Corte Guayaquil</span><span class="cal-amt">—</span></div>
-          <div class="cal-item"><span class="cal-day pending">28</span><span class="cal-desc">💰 SUELDO + Reembolso $2,000</span><span class="cal-amt" style="color:var(--warn)">+$4,900 pend.</span></div>
+          <div class="cal-item"><span class="cal-day pending">28</span><span class="cal-desc">💰 SUELDO + Reembolso $2,000</span><span class="cal-amt" style="color:var(--warn)">+$5,000 pend.</span></div>
           <div class="cal-item"><span class="cal-day pending">30</span><span class="cal-desc">Pichincha $222.73</span><span class="cal-amt" style="color:var(--warn)">Pendiente</span></div>
         </div>
         <div class="card" style="--kpi-color:var(--accent-soft)">
@@ -580,7 +552,7 @@ td.bold{font-weight:600;}
             <div style="display:flex;justify-content:space-between;"><span>Sem 4 (22–27 abr)</span><span style="color:var(--accent)">$120.00 para gastar</span></div>
             <div class="sep"></div>
             <div style="display:flex;justify-content:space-between;"><span>Gasto diario recomendado</span><span style="color:var(--accent)">$20.00/día</span></div>
-            <div style="display:flex;justify-content:space-between;font-size:.7rem;color:var(--text-muted);"><span>$200 para vivir hasta sueldo · $380 se conserva</span><span style="color:var(--accent)">Colchón bruto Mayo $4,523.27</span></div>
+            <div style="display:flex;justify-content:space-between;font-size:.7rem;color:var(--text-muted);"><span>$200 para vivir hasta sueldo · $380 se conserva</span><span style="color:var(--accent)">Colchón bruto Mayo $4,623.27</span></div>
           </div>
         </div>
       </div>
@@ -596,13 +568,13 @@ td.bold{font-weight:600;}
           <table>
             <thead><tr><th style="width:60px">Fecha</th><th>Concepto</th><th class="num">Monto</th></tr></thead>
             <tbody>
-              <tr style="background:rgba(16,185,129,0.07);"><td></td><td style="font-size:.78rem;color:var(--accent);font-weight:600;">💰 Saldo inicial — Colchón bruto de Abril</td><td class="num" style="color:var(--accent);font-weight:600;">+$4,523.27</td><td style="font-size:.68rem;color:var(--text-faint);">liquidez protegida</td></tr>
+              <tr style="background:rgba(16,185,129,0.07);"><td></td><td style="font-size:.78rem;color:var(--accent);font-weight:600;">💰 Saldo inicial — Colchón bruto de Abril</td><td class="num" style="color:var(--accent);font-weight:600;">+$4,623.27</td><td style="font-size:.68rem;color:var(--text-faint);">liquidez protegida</td></tr>
               <tr><td colspan="4" style="font-size:.7rem;font-weight:600;color:var(--text-faint);background:var(--bg-surface);padding:5px 6px;letter-spacing:.06em;">⏳ INGRESOS PENDIENTES</td></tr>
-              <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 28</td><td>Sueldo</td><td class="num" style="color:var(--accent)">+$2,900.00</td></tr>
+              <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 28</td><td>Sueldo</td><td class="num" style="color:var(--accent)">+$3,000.00</td></tr>
               <tr><td colspan="4" style="font-size:.7rem;font-weight:600;color:var(--text-faint);background:var(--bg-surface);padding:5px 6px;letter-spacing:.06em;">⏳ GASTOS PENDIENTES</td></tr>
               <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 01</td><td>Arriendo</td><td class="num" style="color:var(--danger)">−$600.00</td></tr>
               <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 04</td><td>Banco del Austro <small style="color:var(--text-faint)">(mínimo corte 16/ABR)</small></td><td class="num" style="color:var(--danger)">−$629.79</td></tr>
-              <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 01</td><td>Alimentaci&#xF3;n / Tipti</td><td class="num" style="color:var(--danger)">−$400.00</td></tr>
+              <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 01</td><td>Abarrotes / Tipti <small style="color:var(--text-faint)">(1 compra mensual)</small></td><td class="num" style="color:var(--danger)">−$400.00</td></tr>
               <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 02</td><td>Humana S.A. <small style="color:var(--text-faint)">(seguro salud recurrente en Austro)</small></td><td class="num" style="color:var(--danger)">−$315.09</td></tr>
               <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 02</td><td>Diners Club</td><td class="num" style="color:var(--danger)">−$346.53</td></tr>
               <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 04</td><td>Produbanco</td><td class="num" style="color:var(--danger)">−$508.73</td></tr>
@@ -611,10 +583,10 @@ td.bold{font-weight:600;}
               <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 30</td><td>Banco Pichincha PRECISO</td><td class="num" style="color:var(--danger)">−$222.73</td></tr>
               <tr><td></td><td style="font-size:.78rem;">Regla diaria de gasto</td><td class="num" style="color:var(--accent);font-size:.78rem;">$20/día</td><td style="font-size:.7rem;color:var(--text-faint);">se mide en semanas</td></tr>
               <tr><td colspan="4" style="font-size:.7rem;font-weight:600;color:var(--text-faint);background:var(--bg-surface);padding:5px 6px;letter-spacing:.06em;">📊 PROYECTADO AL FIN DE MES</td></tr>
-              <tr style="border-top:2px solid var(--border);"><td></td><td class="bold">Saldo bruto mayo</td><td class="num bold" style="color:var(--accent)">+$3,029.88</td></tr>
+              <tr style="border-top:2px solid var(--border);"><td></td><td class="bold">Saldo bruto mayo</td><td class="num bold" style="color:var(--accent)">+$3,229.88</td></tr>
               <tr><td colspan="4" style="font-size:.7rem;font-weight:600;color:var(--text-faint);background:var(--bg-surface);padding:5px 6px;letter-spacing:.06em;">💸 DISTRIBUCIÓN RECOMENDADA</td></tr>
               <tr><td></td><td style="font-size:.78rem;">🚫 Sin ahorro ni inversión este mes</td><td class="num" style="color:var(--text-muted);font-size:.78rem;">$0.00</td></tr>
-              <tr style="border-top:2px solid var(--accent);"><td></td><td class="bold" style="color:var(--accent);">💰 Colchón que arranca Junio</td><td class="num bold" style="color:var(--accent);">+$3,029.88</td><td style="font-size:.7rem;color:var(--text-faint);">$20/día aplicado semanalmente</td></tr>
+              <tr style="border-top:2px solid var(--accent);"><td></td><td class="bold" style="color:var(--accent);">💰 Cierre proyectado de Mayo</td><td class="num bold" style="color:var(--accent);">+$3,229.88</td><td style="font-size:.7rem;color:var(--text-faint);">$20/día aplicado semanalmente</td></tr>
             </tbody>
           </table>
 
@@ -627,15 +599,15 @@ td.bold{font-weight:600;}
       <div class="col">
         <div class="card" style="border-color:var(--warn);">
           <div class="card-title" style="color:var(--warn);">🚨 Plan de liquidez Mayo</div>
-          <div style="font-size:.75rem;color:var(--text-muted);margin-bottom:8px;">El colchón bruto de Mayo se protege como liquidez. No se aplica pago extra al Banco del Austro hasta que las semanas de Junio–Agosto dejen de requerir puente de efectivo.</div>
+          <div style="font-size:.75rem;color:var(--text-muted);margin-bottom:8px;">El colchón bruto de Mayo se protege como liquidez. No se aplica pago extra al Banco del Austro hasta que Mayo cierre sin presionar el efectivo.</div>
           <table style="font-size:.78rem;">
             <thead><tr><th>Día</th><th>Acción</th><th class="num">Monto</th><th>Fuente</th></tr></thead>
             <tbody>
               <tr><td style="color:var(--text-muted);">Diario</td><td>Regla de gasto recomendada</td><td class="num" style="color:var(--accent);">$20.00</td><td><span class="badge badge-green">cada día</span></td></tr>
-              <tr><td style="color:var(--text-muted);">Día 02</td><td>Humana S.A. seguro salud recurrente</td><td class="num" style="color:var(--danger);">−$315.09</td><td><span class="badge badge-yellow">Austro</span></td></tr>
+              <tr><td style="color:var(--text-muted);">Día 02</td><td>Humana S.A. seguro salud recurrente</td><td class="num" style="color:var(--danger);">−$315.09</td><td><span class="badge badge-yellow">Flujo mensual</span></td></tr>
               <tr><td style="color:var(--text-muted);">Día 04</td><td>Banco del Austro mínimo</td><td class="num" style="color:var(--danger);">−$629.79</td><td><span class="badge badge-red">Obligatorio</span></td></tr>
               <tr style="border-top:2px solid var(--border);background:var(--bg-surface);"><td></td><td style="font-weight:600;">Extra aplicado a Austro</td><td class="num" style="color:var(--text-muted);font-weight:600;">$0.00</td><td><span class="badge badge-yellow">Pausado</span></td></tr>
-              <tr style="background:rgba(16,185,129,0.07);"><td style="color:var(--accent);">Día 28</td><td style="color:var(--accent);font-weight:600;">Sueldo sostiene el cierre del mes</td><td class="num" style="color:var(--accent);font-weight:600;">+$2,900.00</td><td><span class="badge badge-green">Sueldo</span></td></tr>
+              <tr style="background:rgba(16,185,129,0.07);"><td style="color:var(--accent);">Día 28</td><td style="color:var(--accent);font-weight:600;">Sueldo sostiene el cierre del mes</td><td class="num" style="color:var(--accent);font-weight:600;">+$3,000.00</td><td><span class="badge badge-green">Sueldo</span></td></tr>
             </tbody>
           </table>
           <div style="display:flex;gap:8px;margin-top:8px;font-size:.72rem;">
@@ -650,8 +622,8 @@ td.bold{font-weight:600;}
               <div style="color:var(--text-faint);font-size:.68rem;">no tocar</div>
             </div>
             <div style="flex:1;background:var(--bg-surface);border-radius:6px;padding:6px 8px;text-align:center;">
-              <div style="color:var(--text-muted);margin-bottom:2px;">Colchón → Junio</div>
-              <div style="color:var(--accent);font-weight:600;">+$3,029.88</div>
+              <div style="color:var(--text-muted);margin-bottom:2px;">Cierre Mayo</div>
+              <div style="color:var(--accent);font-weight:600;">+$3,229.88</div>
               <div style="color:var(--text-faint);font-size:.68rem;">sin negativo</div>
             </div>
           </div>
@@ -661,206 +633,13 @@ td.bold{font-weight:600;}
           <table>
             <thead><tr><th>Semana</th><th class="num">Saldo cuenta</th><th>Gastos sem.</th><th>Nota</th></tr></thead>
             <tbody>
-              <tr><td style="font-size:.72rem;">Inicio</td><td class="num" style="color:var(--accent);font-weight:600;">+$4,523.27</td><td class="num" style="color:var(--text-faint);font-size:.72rem;">—</td><td style="font-size:.7rem;color:var(--text-faint)">Liquidez protegida</td></tr>
-              <tr><td>Sem 1 (1–7)</td><td class="num" style="color:var(--accent)">+$1,583.13</td><td class="num" style="color:var(--danger);font-size:.72rem;">−$2,940.14</td><td style="font-size:.7rem;color:var(--text-faint)">Fijos + Humana + $20/día</td></tr>
-              <tr style="background:rgba(99,102,241,0.07);"><td>Sem 2 (8–14)</td><td class="num" style="color:var(--accent)">+$1,004.54</td><td class="num" style="color:var(--danger);font-size:.72rem;">−$578.59</td><td style="font-size:.7rem;color:var(--text-faint)">PacifiCard + $20/día</td></tr>
-              <tr><td>Sem 3 (15–21)</td><td class="num" style="color:var(--accent)">+$552.61</td><td class="num" style="color:var(--danger);font-size:.72rem;">−$451.93</td><td style="font-size:.7rem;color:var(--text-faint)">Guayaquil + $20/día</td></tr>
-              <tr style="background:rgba(16,185,129,0.07);"><td>Sem 4 (22–31)</td><td class="num" style="color:var(--accent);font-weight:600;">+$3,029.88</td><td class="num" style="color:var(--accent);font-size:.72rem;">+$2,477.27</td><td style="font-size:.7rem;color:var(--text-faint)">Sueldo − Pichincha − $20/día</td></tr>
+              <tr><td style="font-size:.72rem;">Inicio</td><td class="num" style="color:var(--accent);font-weight:600;">+$4,623.27</td><td class="num" style="color:var(--text-faint);font-size:.72rem;">—</td><td style="font-size:.7rem;color:var(--text-faint)">Liquidez protegida</td></tr>
+              <tr><td>Sem 1 (1–7)</td><td class="num" style="color:var(--accent)">+$1,683.13</td><td class="num" style="color:var(--danger);font-size:.72rem;">−$2,940.14</td><td style="font-size:.7rem;color:var(--text-faint)">Fijos + Humana + $20/día</td></tr>
+              <tr style="background:rgba(99,102,241,0.07);"><td>Sem 2 (8–14)</td><td class="num" style="color:var(--accent)">+$1,104.54</td><td class="num" style="color:var(--danger);font-size:.72rem;">−$578.59</td><td style="font-size:.7rem;color:var(--text-faint)">PacifiCard + $20/día</td></tr>
+              <tr><td>Sem 3 (15–21)</td><td class="num" style="color:var(--accent)">+$652.61</td><td class="num" style="color:var(--danger);font-size:.72rem;">−$451.93</td><td style="font-size:.7rem;color:var(--text-faint)">Guayaquil + $20/día</td></tr>
+              <tr style="background:rgba(16,185,129,0.07);"><td>Sem 4 (22–31)</td><td class="num" style="color:var(--accent);font-weight:600;">+$3,229.88</td><td class="num" style="color:var(--accent);font-size:.72rem;">+$2,577.27</td><td style="font-size:.7rem;color:var(--text-faint)">Sueldo − Pichincha − $20/día</td></tr>
             </tbody>
           </table>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ══════════ TAB: JUNIO ══════════ -->
-  <div class="panel" id="panel-junio" role="tabpanel">
-    <div class="grid-main">
-      <div class="col">
-        <div class="card">
-          <div class="card-title">Junio 2026 — Sueldo normalizado $4,100</div>
-          <table>
-            <thead><tr><th style="width:60px">Fecha</th><th>Concepto</th><th class="num">Monto</th></tr></thead>
-            <tbody>
-              <tr style="background:rgba(16,185,129,0.07);"><td></td><td style="font-size:.78rem;color:var(--accent);font-weight:600;">💰 Saldo inicial — Colchón de Mayo</td><td class="num" style="color:var(--accent);font-weight:600;">+$3,029.88</td><td style="font-size:.68rem;color:var(--text-faint);">arrastrado</td></tr>
-              <tr><td colspan="4" style="font-size:.7rem;font-weight:600;color:var(--text-faint);background:var(--bg-surface);padding:5px 6px;letter-spacing:.06em;">⏳ INGRESOS PENDIENTES</td></tr>
-              <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 28</td><td>Sueldo estimado</td><td class="num" style="color:var(--accent)">+$4,100.00</td></tr>
-              <tr><td colspan="4" style="font-size:.7rem;font-weight:600;color:var(--text-faint);background:var(--bg-surface);padding:5px 6px;letter-spacing:.06em;">⏳ GASTOS PENDIENTES (todo el mes)</td></tr>
-              <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 01</td><td>Arriendo</td><td class="num" style="color:var(--danger)">−$600.00</td></tr>
-              <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 04</td><td>Banco del Austro <small style="color:var(--text-faint)">(mínimo estimado)</small></td><td class="num" style="color:var(--danger)">−$629.79</td></tr>
-              <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 01</td><td>Alimentaci&#xF3;n / Tipti</td><td class="num" style="color:var(--danger)">−$400.00</td></tr>
-              <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 02</td><td>Humana S.A. <small style="color:var(--text-faint)">(seguro salud recurrente)</small></td><td class="num" style="color:var(--danger)">−$315.09</td></tr>
-              <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 02</td><td>Diners Club</td><td class="num" style="color:var(--danger)">−$346.53</td></tr>
-              <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 04</td><td>Produbanco</td><td class="num" style="color:var(--danger)">−$508.73</td></tr>
-              <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 08</td><td>PacifiCard Mastercard</td><td class="num" style="color:var(--danger)">−$438.59</td></tr>
-              <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 15</td><td>Banco Guayaquil</td><td class="num" style="color:var(--danger)">−$311.93</td></tr>
-              <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 30</td><td>Banco Pichincha PRECISO</td><td class="num" style="color:var(--danger)">−$222.73</td></tr>
-              <tr><td></td><td style="font-size:.78rem;">Regla diaria de gasto</td><td class="num" style="color:var(--accent);font-size:.78rem;">$20/día</td><td style="font-size:.7rem;color:var(--text-faint);">se mide en semanas</td></tr>
-              <tr><td colspan="4" style="font-size:.7rem;font-weight:600;color:var(--text-faint);background:var(--bg-surface);padding:5px 6px;letter-spacing:.06em;">📊 PROYECTADO AL FIN DE MES</td></tr>
-              <tr style="border-top:2px solid var(--border);"><td></td><td class="bold">Saldo bruto junio</td><td class="num bold" style="color:var(--accent)">+$2,756.49</td></tr>
-              <tr><td colspan="4" style="font-size:.7rem;font-weight:600;color:var(--text-faint);background:var(--bg-surface);padding:5px 6px;letter-spacing:.06em;">💸 DISTRIBUCIÓN RECOMENDADA</td></tr>
-              <tr><td></td><td style="font-size:.78rem;">🏦 Ahorro pausado</td><td class="num" style="color:var(--text-muted);font-size:.78rem;">$0.00</td></tr>
-              <tr><td></td><td style="font-size:.78rem;">📈 Inversión pausada</td><td class="num" style="color:var(--text-muted);font-size:.78rem;">$0.00</td></tr>
-              <tr style="border-top:2px solid var(--accent);"><td></td><td class="bold" style="color:var(--accent);">💰 Colchón que arranca Julio</td><td class="num bold" style="color:var(--accent);">+$2,756.49</td><td style="font-size:.7rem;color:var(--text-faint);">$20/día aplicado semanalmente</td></tr>
-            </tbody>
-          </table>
-
-        </div>
-        <div class="card"><div class="card-title">Flujo Junio</div><div class="chart-box"><canvas id="chartJunio"></canvas></div></div>
-      </div>
-      <div class="col">
-        <div class="card">
-          <div class="card-title">Liquidez semanal Junio — $20/día</div>
-          <table>
-            <thead><tr><th>Semana</th><th class="num">Saldo cta.</th><th class="num">Diario</th><th>Fluidez</th></tr></thead>
-            <tbody>
-              <tr><td>Sem 1 (1–7)</td><td class="num" style="color:var(--accent)">+$89.74</td><td class="num">$140.00</td><td><span class="badge badge-green">Cubierto</span></td></tr>
-              <tr><td>Sem 2 (8–14)</td><td class="num" style="color:var(--danger)">−$488.85</td><td class="num">$140.00</td><td><span class="badge badge-yellow">Puente</span></td></tr>
-              <tr><td>Sem 3 (15–21)</td><td class="num" style="color:var(--danger)">−$940.78</td><td class="num">$140.00</td><td><span class="badge badge-yellow">Máx puente</span></td></tr>
-              <tr><td>Sem 4 (22–30)</td><td class="num" style="color:var(--accent)">+$2,756.49</td><td class="num">$180.00</td><td><span class="badge badge-green">Sueldo recupera</span></td></tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="card">
-          <div class="card-title">Distribución sueldo Junio</div>
-          <div style="display:flex;flex-direction:column;gap:8px;font-size:.8rem;margin-top:4px;">
-            <div style="display:flex;justify-content:space-between;"><span>Fijos (día 1–4 + Humana)</span><span>$2,400.14</span></div>
-            <div style="display:flex;justify-content:space-between;"><span>Tarjetas (día 8, 15)</span><span>$750.52</span></div>
-            <div style="display:flex;justify-content:space-between;"><span>Pichincha (día 30)</span><span>$222.73</span></div>
-            <div style="display:flex;justify-content:space-between;"><span>Alimentación (día 1)</span><span>$400</span></div>
-            <div style="display:flex;justify-content:space-between;"><span>Regla diaria semanal</span><span>$20/día</span></div>
-            <div style="display:flex;justify-content:space-between;"><span>→ Ahorro</span><span style="color:var(--text-muted)">$0</span></div>
-            <div style="display:flex;justify-content:space-between;"><span>→ Inversión</span><span style="color:var(--text-muted)">$0</span></div>
-            <div style="display:flex;justify-content:space-between;font-weight:600;"><span>→ Colchón final</span><span style="color:var(--accent)">$2,756.49</span></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ══════════ TAB: JULIO ══════════ -->
-  <div class="panel" id="panel-julio" role="tabpanel">
-    <div class="grid-main">
-      <div class="col">
-        <div class="card">
-          <div class="card-title">Julio 2026</div>
-          <table>
-            <thead><tr><th style="width:60px">Fecha</th><th>Concepto</th><th class="num">Monto</th></tr></thead>
-            <tbody>
-              <tr style="background:rgba(16,185,129,0.07);"><td></td><td style="font-size:.78rem;color:var(--accent);font-weight:600;">💰 Saldo inicial — Colchón de Junio</td><td class="num" style="color:var(--accent);font-weight:600;">+$2,756.49</td><td style="font-size:.68rem;color:var(--text-faint);">arrastrado</td></tr>
-              <tr><td colspan="4" style="font-size:.7rem;font-weight:600;color:var(--text-faint);background:var(--bg-surface);padding:5px 6px;letter-spacing:.06em;">⏳ INGRESOS PENDIENTES</td></tr>
-              <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 28</td><td>Sueldo estimado</td><td class="num" style="color:var(--accent)">+$4,100.00</td></tr>
-              <tr><td colspan="4" style="font-size:.7rem;font-weight:600;color:var(--text-faint);background:var(--bg-surface);padding:5px 6px;letter-spacing:.06em;">⏳ GASTOS PENDIENTES (todo el mes)</td></tr>
-              <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 01</td><td>Arriendo</td><td class="num" style="color:var(--danger)">−$600.00</td></tr>
-              <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 04</td><td>Banco del Austro <small style="color:var(--text-faint)">(mínimo estimado)</small></td><td class="num" style="color:var(--danger)">−$629.79</td></tr>
-              <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 01</td><td>Alimentaci&#xF3;n / Tipti</td><td class="num" style="color:var(--danger)">−$400.00</td></tr>
-              <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 02</td><td>Humana S.A. <small style="color:var(--text-faint)">(seguro salud recurrente)</small></td><td class="num" style="color:var(--danger)">−$315.09</td></tr>
-              <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 02</td><td>Diners Club</td><td class="num" style="color:var(--danger)">−$346.53</td></tr>
-              <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 04</td><td>Produbanco</td><td class="num" style="color:var(--danger)">−$508.73</td></tr>
-              <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 08</td><td>PacifiCard Mastercard</td><td class="num" style="color:var(--danger)">−$438.59</td></tr>
-              <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 15</td><td>Banco Guayaquil</td><td class="num" style="color:var(--danger)">−$311.93</td></tr>
-              <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 30</td><td>Banco Pichincha PRECISO</td><td class="num" style="color:var(--danger)">−$222.73</td></tr>
-              <tr><td></td><td style="font-size:.78rem;">Regla diaria de gasto</td><td class="num" style="color:var(--accent);font-size:.78rem;">$20/día</td><td style="font-size:.7rem;color:var(--text-faint);">se mide en semanas</td></tr>
-              <tr><td colspan="4" style="font-size:.7rem;font-weight:600;color:var(--text-faint);background:var(--bg-surface);padding:5px 6px;letter-spacing:.06em;">📊 PROYECTADO AL FIN DE MES</td></tr>
-              <tr style="border-top:2px solid var(--border);"><td></td><td class="bold">Saldo bruto julio</td><td class="num bold" style="color:var(--accent)">+$2,463.10</td></tr>
-              <tr><td colspan="4" style="font-size:.7rem;font-weight:600;color:var(--text-faint);background:var(--bg-surface);padding:5px 6px;letter-spacing:.06em;">💸 DISTRIBUCIÓN RECOMENDADA</td></tr>
-              <tr><td></td><td style="font-size:.78rem;">🏦 Ahorro pausado</td><td class="num" style="color:var(--text-muted);font-size:.78rem;">$0.00</td></tr>
-              <tr><td></td><td style="font-size:.78rem;">📈 Inversión pausada</td><td class="num" style="color:var(--text-muted);font-size:.78rem;">$0.00</td></tr>
-              <tr style="border-top:2px solid var(--accent);"><td></td><td class="bold" style="color:var(--accent);">💰 Colchón que arranca Agosto</td><td class="num bold" style="color:var(--accent);">+$2,463.10</td><td style="font-size:.7rem;color:var(--text-faint);">$20/día aplicado semanalmente</td></tr>
-            </tbody>
-          </table>
-
-        </div>
-        <div class="card"><div class="card-title">Flujo Julio</div><div class="chart-box"><canvas id="chartJulio"></canvas></div></div>
-      </div>
-      <div class="col">
-        <div class="card">
-          <div class="card-title">Liquidez semanal Julio — $20/día</div>
-          <table>
-            <thead><tr><th>Semana</th><th class="num">Saldo cta.</th><th class="num">Diario</th><th>Fluidez</th></tr></thead>
-            <tbody>
-              <tr><td>Sem 1 (1–7)</td><td class="num" style="color:var(--danger)">−$183.65</td><td class="num">$140.00</td><td><span class="badge badge-yellow">Puente</span></td></tr>
-              <tr><td>Sem 2 (8–14)</td><td class="num" style="color:var(--danger)">−$762.24</td><td class="num">$140.00</td><td><span class="badge badge-yellow">Puente</span></td></tr>
-              <tr><td>Sem 3 (15–21)</td><td class="num" style="color:var(--danger)">−$1,214.17</td><td class="num">$140.00</td><td><span class="badge badge-yellow">Máx puente</span></td></tr>
-              <tr><td>Sem 4 (22–31)</td><td class="num" style="color:var(--accent)">+$2,463.10</td><td class="num">$200.00</td><td><span class="badge badge-green">Sueldo recupera</span></td></tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="card">
-          <div class="card-title">Hoja de ruta 6 meses</div>
-          <div class="roadmap">
-            <div class="rm-step"><div class="rm-num">1</div><div>Abril: cubrir Guayaquil (15/04). Extra $400 recibido ✓.</div></div>
-            <div class="rm-step"><div class="rm-num">2</div><div>Mayo: cubrir Austro mínimo $629.79 y preservar liquidez; extra al rotativo pausado.</div></div>
-            <div class="rm-step"><div class="rm-num">3</div><div>Junio: sueldo $4,100 con Humana $315.09 y $20/día; ahorro e inversión pausados.</div></div>
-            <div class="rm-step"><div class="rm-num">4</div><div>Jul–Ago: sostener $20/día antes que ahorro/inversión.</div></div>
-            <div class="rm-step"><div class="rm-num">5</div><div>Ago: cierre positivo, pero la semana 3 exige el puente más alto antes del sueldo.</div></div>
-            <div class="rm-step"><div class="rm-num">6</div><div>Sep: si Austro baja de zona roja, volver a atacar PacifiCard rotativo ($3,514).</div></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ══════════ TAB: AGOSTO ══════════ -->
-  <div class="panel" id="panel-agosto" role="tabpanel">
-    <div class="grid-main">
-      <div class="col">
-        <div class="card">
-          <div class="card-title">Agosto 2026</div>
-          <table>
-            <thead><tr><th style="width:60px">Fecha</th><th>Concepto</th><th class="num">Monto</th></tr></thead>
-            <tbody>
-              <tr style="background:rgba(16,185,129,0.07);"><td></td><td style="font-size:.78rem;color:var(--accent);font-weight:600;">💰 Saldo inicial — Colchón de Julio</td><td class="num" style="color:var(--accent);font-weight:600;">+$2,463.10</td><td style="font-size:.68rem;color:var(--text-faint);">arrastrado</td></tr>
-              <tr><td colspan="4" style="font-size:.7rem;font-weight:600;color:var(--text-faint);background:var(--bg-surface);padding:5px 6px;letter-spacing:.06em;">⏳ INGRESOS PENDIENTES</td></tr>
-              <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 28</td><td>Sueldo estimado</td><td class="num" style="color:var(--accent)">+$4,100.00</td></tr>
-              <tr><td colspan="4" style="font-size:.7rem;font-weight:600;color:var(--text-faint);background:var(--bg-surface);padding:5px 6px;letter-spacing:.06em;">⏳ GASTOS PENDIENTES (todo el mes)</td></tr>
-              <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 01</td><td>Arriendo</td><td class="num" style="color:var(--danger)">−$600.00</td></tr>
-              <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 04</td><td>Banco del Austro <small style="color:var(--text-faint)">(mínimo estimado)</small></td><td class="num" style="color:var(--danger)">−$629.79</td></tr>
-              <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 01</td><td>Alimentaci&#xF3;n / Tipti</td><td class="num" style="color:var(--danger)">−$400.00</td></tr>
-              <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 02</td><td>Humana S.A. <small style="color:var(--text-faint)">(seguro salud recurrente)</small></td><td class="num" style="color:var(--danger)">−$315.09</td></tr>
-              <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 02</td><td>Diners Club</td><td class="num" style="color:var(--danger)">−$346.53</td></tr>
-              <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 04</td><td>Produbanco</td><td class="num" style="color:var(--danger)">−$508.73</td></tr>
-              <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 08</td><td>PacifiCard Mastercard</td><td class="num" style="color:var(--danger)">−$438.59</td></tr>
-              <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 15</td><td>Banco Guayaquil</td><td class="num" style="color:var(--danger)">−$311.93</td></tr>
-              <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 30</td><td>Banco Pichincha PRECISO</td><td class="num" style="color:var(--danger)">−$222.73</td></tr>
-              <tr><td></td><td style="font-size:.78rem;">Regla diaria de gasto</td><td class="num" style="color:var(--accent);font-size:.78rem;">$20/día</td><td style="font-size:.7rem;color:var(--text-faint);">se mide en semanas</td></tr>
-              <tr><td colspan="4" style="font-size:.7rem;font-weight:600;color:var(--text-faint);background:var(--bg-surface);padding:5px 6px;letter-spacing:.06em;">📊 PROYECTADO AL FIN DE MES</td></tr>
-              <tr style="border-top:2px solid var(--border);"><td></td><td class="bold">Saldo bruto agosto</td><td class="num bold" style="color:var(--accent)">+$2,169.71</td></tr>
-              <tr><td colspan="4" style="font-size:.7rem;font-weight:600;color:var(--text-faint);background:var(--bg-surface);padding:5px 6px;letter-spacing:.06em;">💸 DISTRIBUCIÓN RECOMENDADA</td></tr>
-              <tr><td></td><td style="font-size:.78rem;">🏦 Ahorro pausado</td><td class="num" style="color:var(--text-muted);font-size:.78rem;">$0.00</td></tr>
-              <tr><td></td><td style="font-size:.78rem;">📈 Inversión pausada</td><td class="num" style="color:var(--text-muted);font-size:.78rem;">$0.00</td></tr>
-              <tr style="border-top:2px solid var(--accent);"><td></td><td class="bold" style="color:var(--accent);">💰 Colchón que arranca Septiembre</td><td class="num bold" style="color:var(--accent);">+$2,169.71</td><td style="font-size:.7rem;color:var(--text-faint);">$20/día aplicado semanalmente</td></tr>
-            </tbody>
-          </table>
-
-        </div>
-        <div class="card"><div class="card-title">Flujo Agosto</div><div class="chart-box"><canvas id="chartAgosto"></canvas></div></div>
-      </div>
-      <div class="col">
-        <div class="card">
-          <div class="card-title">Liquidez semanal Agosto — $20/día</div>
-          <table>
-            <thead><tr><th>Semana</th><th class="num">Saldo cta.</th><th class="num">Diario</th><th>Fluidez</th></tr></thead>
-            <tbody>
-              <tr><td>Sem 1 (1–7)</td><td class="num" style="color:var(--danger)">−$477.04</td><td class="num">$140.00</td><td><span class="badge badge-yellow">Puente</span></td></tr>
-              <tr><td>Sem 2 (8–14)</td><td class="num" style="color:var(--danger)">−$1,055.63</td><td class="num">$140.00</td><td><span class="badge badge-yellow">Puente</span></td></tr>
-              <tr><td>Sem 3 (15–21)</td><td class="num" style="color:var(--danger)">−$1,507.56</td><td class="num">$140.00</td><td><span class="badge badge-yellow">Máx puente</span></td></tr>
-              <tr><td>Sem 4 (22–31)</td><td class="num" style="color:var(--accent)">+$2,169.71</td><td class="num">$200.00</td><td><span class="badge badge-green">Sueldo recupera</span></td></tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="card">
-          <div class="card-title">8 consejos financieros</div>
-          <div style="display:flex;flex-direction:column;gap:6px;margin-top:4px;">
-            <div class="tip"><span class="tip-icon">💰</span><span>Paga mínimos primero; el extra al Austro se activa sólo cuando el puente semanal quede cubierto.</span></div>
-            <div class="tip"><span class="tip-icon">📉</span><span>Evita consumos nuevos fuera de Humana; el seguro ya queda presupuestado como recurrente.</span></div>
-            <div class="tip"><span class="tip-icon">🔁</span><span>Pausa depósitos automáticos a inversión hasta que el colchón cubra al menos $1,600 de puente semanal.</span></div>
-            <div class="tip"><span class="tip-icon">📦</span><span>Usa la cuenta corriente como tránsito, no como ahorro.</span></div>
-            <div class="tip"><span class="tip-icon">🧾</span><span>Revisa los estados de cuenta 2 días antes del corte para evitar sorpresas.</span></div>
-            <div class="tip"><span class="tip-icon">🎯</span><span>Meta inmediata: refinanciar o estabilizar Austro rotativo; luego atacar PacifiCard rotativo.</span></div>
-            <div class="tip"><span class="tip-icon">🌱</span><span>Si la fluidez semanal entra en rojo, usa puente temporal antes de tocar el gasto diario de $20.</span></div>
-            <div class="tip"><span class="tip-icon">⚡</span><span>En Agosto considera cancelar Diners si el diferido baja a menos de $200.</span></div>
-          </div>
         </div>
       </div>
     </div>
@@ -886,9 +665,7 @@ td.bold{font-weight:600;}
               <tr><td>Mayo Sem 2</td><td class="num" style="color:var(--accent)">$140</td><td class="num" style="color:var(--accent)">$20</td><td><span class="badge badge-green">Mínimo</span></td></tr>
               <tr><td>Mayo Sem 3</td><td class="num" style="color:var(--accent)">$140</td><td class="num" style="color:var(--accent)">$20</td><td><span class="badge badge-green">Mínimo</span></td></tr>
               <tr><td>Mayo Sem 4</td><td class="num" style="color:var(--accent)">$200</td><td class="num" style="color:var(--accent)">$20</td><td><span class="badge badge-green">Mínimo</span></td></tr>
-              <tr><td>Junio</td><td class="num">$140</td><td class="num">$20</td><td><span class="badge badge-yellow">Ajuste</span></td></tr>
-              <tr><td>Julio</td><td class="num">$140</td><td class="num">$20</td><td><span class="badge badge-yellow">Ajuste</span></td></tr>
-              <tr><td>Agosto</td><td class="num">$140</td><td class="num">$20</td><td><span class="badge badge-yellow">Ajuste</span></td></tr>
+
             </tbody>
           </table>
           <div style="font-size:.7rem;color:var(--text-muted);margin-top:6px;">* Abril: regla diaria $20/día. De los $580 disponibles, $200 cubren 10 días y $380 se conservan como colchón; la fluidez se revisa por semana.</div>
@@ -896,9 +673,9 @@ td.bold{font-weight:600;}
         <div class="card">
           <div class="card-title">Sobres de alimentación sugeridos</div>
           <div style="display:flex;flex-direction:column;gap:6px;font-size:.8rem;">
-            <div class="tip"><span class="tip-icon">🛒</span><span><strong>Mercado semanal:</strong> $80 máx (verduras, proteína, básicos)</span></div>
+            <div class="tip"><span class="tip-icon">🛒</span><span><strong>Abarrotes mensual:</strong> $400 máx por Tipti</span></div>
             <div class="tip"><span class="tip-icon">🍽️</span><span><strong>Comidas fuera:</strong> $40 máx/sem (2–3 salidas)</span></div>
-            <div class="tip"><span class="tip-icon">📦</span><span><strong>Delivery (Tipti):</strong> $0 Mayo, $80 desde Junio</span></div>
+            <div class="tip"><span class="tip-icon">📦</span><span><strong>Frecuencia Tipti:</strong> 1 compra mensual planificada</span></div>
             <div class="tip"><span class="tip-icon">☕</span><span><strong>Cafés/snacks:</strong> $20 máx/sem</span></div>
           </div>
         </div>
@@ -1028,10 +805,7 @@ td.bold{font-weight:600;}
             <thead><tr><th>Mes</th><th class="num">Ahorro</th><th class="num">Inversión</th><th class="num">Corriente</th><th class="num">Total</th></tr></thead>
             <tbody>
               <tr><td>Hoy (Abr 18)</td><td class="num">$1,000</td><td class="num">$1,000</td><td class="num">$580</td><td class="num bold" style="color:var(--blue)">$2,580</td></tr>
-              <tr><td>Mayo 31</td><td class="num">$1,000</td><td class="num">$1,000</td><td class="num">$3,029.88</td><td class="num bold" style="color:var(--blue)">$5,029.88</td></tr>
-              <tr><td>Junio 30</td><td class="num">$1,000</td><td class="num">$1,000</td><td class="num">$2,756.49</td><td class="num bold" style="color:var(--accent)">$4,756.49</td></tr>
-              <tr><td>Julio 31</td><td class="num">$1,000</td><td class="num">$1,000</td><td class="num">$2,463.10</td><td class="num bold" style="color:var(--warn)">$4,463.10</td></tr>
-              <tr><td>Agosto 31</td><td class="num">$1,000</td><td class="num">$1,000</td><td class="num">$2,169.71</td><td class="num bold" style="color:var(--warn)">$4,169.71</td></tr>
+              <tr><td>Mayo 31</td><td class="num">$1,000</td><td class="num">$1,000</td><td class="num">$3,229.88</td><td class="num bold" style="color:var(--blue)">$5,229.88</td></tr>
             </tbody>
           </table>
         </div>
@@ -1058,7 +832,7 @@ td.bold{font-weight:600;}
         <div class="card">
           <div class="card-title">Flujo de distribución (día 28)</div>
           <div class="roadmap">
-            <div class="rm-step"><div class="rm-num">1</div><div>Sueldo llega a cuenta corriente ($2,900 ó $4,100)</div></div>
+            <div class="rm-step"><div class="rm-num">1</div><div>Sueldo llega a cuenta corriente ($3,000)</div></div>
             <div class="rm-step"><div class="rm-num">2</div><div>Transferir fijos inmediatos (arriendo, Austro, Produbanco)</div></div>
             <div class="rm-step"><div class="rm-num">3</div><div>Separar para tarjetas del mes siguiente</div></div>
             <div class="rm-step"><div class="rm-num">4</div><div>Separar primero $20/día para todo el mes</div></div>
@@ -1132,24 +906,24 @@ const baseOpts = (title) => ({
 new Chart(document.getElementById('chartFlujo'), {
   type: 'bar',
   data: {
-    labels: ['Abril','Mayo','Junio','Julio','Agosto'],
+    labels: ['Abril','Mayo'],
     datasets: [
       {
         label: 'Ingresos',
-        data: [5300, 2900, 4100, 4100, 4100],
+        data: [5400, 3000],
         backgroundColor: 'rgba(34,197,94,0.6)',
         borderColor: '#22c55e', borderWidth: 1.5, borderRadius: 4
       },
       {
         label: 'Gastos totales (diario por semana)',
-        data: [4731.4, 4393.39, 4373.39, 4393.39, 4393.39],
+        data: [4731.4, 4393.39],
         backgroundColor: 'rgba(239,68,68,0.45)',
         borderColor: '#ef4444', borderWidth: 1.5, borderRadius: 4
       },
       {
         type: 'line',
         label: 'Saldo',
-        data: [4523.27, 3029.88, 2756.49, 2463.10, 2169.71],
+        data: [4623.27, 3229.88],
         borderColor: '#38bdf8', borderWidth: 2.5, tension: 0.35,
         pointBackgroundColor: ctx => ctx.parsed.y < 0 ? '#ef4444' : '#22c55e',
         pointRadius: 5, fill: false,
@@ -1169,9 +943,9 @@ new Chart(document.getElementById('chartFlujo'), {
 new Chart(document.getElementById('chartAbril'), {
   type: 'doughnut',
   data: {
-    labels: ['Arriendo','Austro+Produbanco','Tarjetas','Alimentación','Ahorro'],
+    labels: ['Arriendo','Austro+Produbanco','Tarjetas','Tipti','Ahorro'],
     datasets: [{
-      data: [600, 1009, 1155.12, 400, 568.6],
+      data: [600, 1009, 1155.12, 400, 668.6],
       backgroundColor: ['#38bdf8','#a78bfa','#ef4444','#facc15','#22c55e'],
       borderWidth: 0
     }]
@@ -1191,7 +965,7 @@ new Chart(document.getElementById('chartMayo'), {
   data: {
     labels: ['Ingreso','Arriendo','Austro','Humana','Produbanco','Pichincha','Diners','PacifiCard','Guayaquil','Alimentación'],
     datasets: [{
-      data: [2900, -600, -629.79, -315.09, -508.73, -222.73, -346.53, -438.59, -311.93, -400],
+      data: [3000, -600, -629.79, -315.09, -508.73, -222.73, -346.53, -438.59, -311.93, -400],
       backgroundColor: d => d.raw >= 0 ? 'rgba(34,197,94,0.7)' : 'rgba(239,68,68,0.6)',
       borderColor: d => d.raw >= 0 ? '#22c55e' : '#ef4444',
       borderWidth: 1.5, borderRadius: 3
@@ -1200,54 +974,14 @@ new Chart(document.getElementById('chartMayo'), {
   options: { ...baseOpts(), plugins:{ legend:{display:false}, tooltip:{ callbacks:{ label: ctx => ' $' + Math.abs(ctx.parsed.y).toFixed(2) } } } }
 });
 
-// CHART JUNIO
-new Chart(document.getElementById('chartJunio'), {
-  type: 'doughnut',
-  data: {
-    labels: ['Fijos','Tarjetas','Pichincha','Alimentación','Diario sem.','Colchón'],
-    datasets: [{
-      data: [2400.14, 750.52, 222.73, 400, 600, 2756.49],
-      backgroundColor: ['#38bdf8','#ef4444','#a78bfa','#facc15','#f97316','#22c55e'],
-      borderWidth:0
-    }]
-  },
-  options: { responsive:true, maintainAspectRatio:false, cutout:'60%', plugins:{ legend:{position:'bottom',labels:{color:textColor(),font:{size:11},boxWidth:10,padding:10}}, tooltip:{callbacks:{label:ctx=>' $'+ctx.parsed.toLocaleString('es-EC',{minimumFractionDigits:2})}} } }
-});
-
-// CHART JULIO
-new Chart(document.getElementById('chartJulio'), {
-  type: 'bar',
-  data: {
-    labels: ['Jun','Jul','Ago'],
-    datasets: [
-      { label:'Ahorro', data:[1000,1000,1000], backgroundColor:'rgba(34,197,94,0.7)', borderRadius:4 },
-      { label:'Inversión', data:[1000,1000,1000], backgroundColor:'rgba(56,189,248,0.7)', borderRadius:4 }
-    ]
-  },
-  options: { ...baseOpts(), plugins:{ legend:{display:true,position:'bottom',labels:{color:textColor(),font:{size:11},boxWidth:10,padding:10}} } }
-});
-
-// CHART AGOSTO
-new Chart(document.getElementById('chartAgosto'), {
-  type: 'line',
-  data: {
-    labels: ['Abr','May','Jun','Jul','Ago'],
-    datasets: [
-      { label:'Ahorro', data:[1000,1000,1000,1000,1000], borderColor:'#22c55e', backgroundColor:'rgba(34,197,94,0.08)', fill:true, tension:0.4, pointBackgroundColor:'#22c55e', pointRadius:4 },
-      { label:'Inversión', data:[1000,1000,1000,1000,1000], borderColor:'#38bdf8', backgroundColor:'rgba(56,189,248,0.08)', fill:true, tension:0.4, pointBackgroundColor:'#38bdf8', pointRadius:4 }
-    ]
-  },
-  options: { ...baseOpts(), plugins:{ legend:{display:true,position:'bottom',labels:{color:textColor(),font:{size:11},boxWidth:10,padding:10}} } }
-});
-
 // CHART SEMANAL
 new Chart(document.getElementById('chartSemanal'), {
   type: 'bar',
   data: {
-    labels: ['Abr Sem3','Abr Sem4','May Sem1','May Sem2','May Sem3','May Sem4','Jun','Jul','Ago'],
+    labels: ['Abr Sem3','Abr Sem4','May Sem1','May Sem2','May Sem3','May Sem4'],
     datasets: [{
       label: 'Bolsa semanal',
-      data: [80, 120, 140, 140, 140, 200, 140, 140, 140],
+      data: [80, 120, 140, 140, 140, 200],
       backgroundColor: d => d.raw === 0 ? '#ef4444' : d.raw < 100 ? '#facc15' : '#22c55e',
       borderRadius: 5
     }]
