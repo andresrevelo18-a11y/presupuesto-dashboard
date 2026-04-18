@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="data/presupuesto.js"></script>
 <style>
 /* ─── TOKENS ─── */
 :root, [data-theme="light"] {
@@ -337,8 +338,8 @@ td.bold{font-weight:600;}
   <section class="kpi-row">
     <div class="kpi" style="--kpi-color:var(--accent-soft)">
       <div class="kpi-label">Ingresos Totales (Abr-May)</div>
-      <div class="kpi-value" style="color:var(--accent)">$8,400</div>
-      <div class="kpi-meta">Abr $5,400 · May $3,000</div>
+      <div class="kpi-value" id="kpiIngresos" style="color:var(--accent)">$8,400</div>
+      <div class="kpi-meta" id="kpiIngresosMeta">Abr $5,400 · May $3,000</div>
     </div>
     <div class="kpi" style="--kpi-color:var(--danger-soft)">
       <div class="kpi-label">Deuda Total</div>
@@ -352,7 +353,7 @@ td.bold{font-weight:600;}
     </div>
     <div class="kpi" style="--kpi-color:var(--warn-soft)">
       <div class="kpi-label">Ratio Deuda/Ingreso</div>
-      <div class="kpi-value" style="color:var(--warn)">81.9%</div>
+      <div class="kpi-value" id="kpiRatio" style="color:var(--warn)">81.9%</div>
       <div class="kpi-meta">Mínimos deuda $2,458.30 / Ingreso $3,000</div>
     </div>
   </section>
@@ -379,7 +380,7 @@ td.bold{font-weight:600;}
           <div class="card-title">Mapa de saldos mensuales</div>
           <table>
             <thead><tr><th>Mes</th><th class="num">Ingresos</th><th class="num">Egresos</th><th class="num">Saldo bruto</th><th class="num" style="color:var(--accent)">Colchón → sig. mes</th><th>Estado</th></tr></thead>
-            <tbody>
+            <tbody id="monthsTableBody">
               <tr>
                 <td>Abril</td>
                 <td class="num">$5,400</td>
@@ -884,6 +885,36 @@ document.querySelectorAll('.tab').forEach(btn => {
 function isDark() { return document.documentElement.getAttribute('data-theme') === 'dark'; }
 function gridColor() { return isDark() ? 'rgba(255,255,255,0.07)' : 'rgba(0,0,0,0.07)'; }
 function textColor() { return isDark() ? '#94a3b8' : '#6b7280'; }
+const presupuestoData = window.PRESUPUESTO_DATA || {};
+const charts = presupuestoData.charts || {};
+const chartSource = (name, fallback) => charts[name] || fallback;
+const money = (value, digits = 0) => '$' + Number(value || 0).toLocaleString('en-US', {minimumFractionDigits: digits, maximumFractionDigits: digits});
+
+function hydrateFromData(data) {
+  if (!data || !data.summary) return;
+  const ingresos = document.getElementById('kpiIngresos');
+  const ingresosMeta = document.getElementById('kpiIngresosMeta');
+  const ratio = document.getElementById('kpiRatio');
+  if (ingresos) ingresos.textContent = money(data.summary.ingresos_total, 0);
+  if (ingresosMeta) ingresosMeta.textContent = data.summary.ingresos_meta || ingresosMeta.textContent;
+  if (ratio) ratio.textContent = data.summary.ratio_deuda_ingreso || ratio.textContent;
+
+  const monthsBody = document.getElementById('monthsTableBody');
+  if (monthsBody && Array.isArray(data.months) && data.months.length) {
+    monthsBody.innerHTML = data.months.map((row, idx) => `
+      <tr>
+        <td>${row.mes}</td>
+        <td class="num">${money(row.ingresos, 0)}</td>
+        <td class="num">${money(row.gastos, 2)}</td>
+        <td class="num" style="color:var(--accent)">+${money(row.saldo_bruto, 2)}${idx === 0 ? ' <small style="color:var(--text-muted)">*</small>' : ''}</td>
+        <td class="num bold" style="color:var(--accent)">+${money(row.colchon, 2)}</td>
+        <td><span class="badge ${row.estado === 'Sano' ? 'badge-green' : 'badge-yellow'}">${row.estado}</span></td>
+      </tr>
+    `).join('');
+  }
+}
+
+hydrateFromData(presupuestoData);
 
 const baseOpts = (title) => ({
   responsive: true,
@@ -903,27 +934,33 @@ const baseOpts = (title) => ({
 });
 
 // CHART FLUJO PROYECCIÓN
+const flujoData = chartSource('flujo', {
+  labels: ['Abril','Mayo'],
+  ingresos: [5400, 3000],
+  gastos: [4731.4, 4393.39],
+  saldo: [4623.27, 3229.88]
+});
 new Chart(document.getElementById('chartFlujo'), {
   type: 'bar',
   data: {
-    labels: ['Abril','Mayo'],
+    labels: flujoData.labels,
     datasets: [
       {
         label: 'Ingresos',
-        data: [5400, 3000],
+        data: flujoData.ingresos,
         backgroundColor: 'rgba(34,197,94,0.6)',
         borderColor: '#22c55e', borderWidth: 1.5, borderRadius: 4
       },
       {
         label: 'Gastos totales (diario por semana)',
-        data: [4731.4, 4393.39],
+        data: flujoData.gastos,
         backgroundColor: 'rgba(239,68,68,0.45)',
         borderColor: '#ef4444', borderWidth: 1.5, borderRadius: 4
       },
       {
         type: 'line',
         label: 'Saldo',
-        data: [4623.27, 3229.88],
+        data: flujoData.saldo,
         borderColor: '#38bdf8', borderWidth: 2.5, tension: 0.35,
         pointBackgroundColor: ctx => ctx.parsed.y < 0 ? '#ef4444' : '#22c55e',
         pointRadius: 5, fill: false,
@@ -960,12 +997,16 @@ new Chart(document.getElementById('chartAbril'), {
 });
 
 // CHART MAYO
+const mayoData = chartSource('mayo', {
+  labels: ['Ingreso','Arriendo','Austro','Humana','Produbanco','Pichincha','Diners','PacifiCard','Guayaquil','Tipti'],
+  values: [3000, -600, -629.79, -315.09, -508.73, -222.73, -346.53, -438.59, -311.93, -400]
+});
 new Chart(document.getElementById('chartMayo'), {
   type: 'bar',
   data: {
-    labels: ['Ingreso','Arriendo','Austro','Humana','Produbanco','Pichincha','Diners','PacifiCard','Guayaquil','Alimentación'],
+    labels: mayoData.labels,
     datasets: [{
-      data: [3000, -600, -629.79, -315.09, -508.73, -222.73, -346.53, -438.59, -311.93, -400],
+      data: mayoData.values,
       backgroundColor: d => d.raw >= 0 ? 'rgba(34,197,94,0.7)' : 'rgba(239,68,68,0.6)',
       borderColor: d => d.raw >= 0 ? '#22c55e' : '#ef4444',
       borderWidth: 1.5, borderRadius: 3
@@ -975,13 +1016,17 @@ new Chart(document.getElementById('chartMayo'), {
 });
 
 // CHART SEMANAL
+const semanalData = chartSource('semanal', {
+  labels: ['Abr Sem3','Abr Sem4','May Sem1','May Sem2','May Sem3','May Sem4'],
+  values: [80, 120, 140, 140, 140, 200]
+});
 new Chart(document.getElementById('chartSemanal'), {
   type: 'bar',
   data: {
-    labels: ['Abr Sem3','Abr Sem4','May Sem1','May Sem2','May Sem3','May Sem4'],
+    labels: semanalData.labels,
     datasets: [{
       label: 'Bolsa semanal',
-      data: [80, 120, 140, 140, 140, 200],
+      data: semanalData.values,
       backgroundColor: d => d.raw === 0 ? '#ef4444' : d.raw < 100 ? '#facc15' : '#22c55e',
       borderRadius: 5
     }]
@@ -990,13 +1035,17 @@ new Chart(document.getElementById('chartSemanal'), {
 });
 
 // CHART DEUDAS
+const deudasData = chartSource('deudas', {
+  labels: ['Produbanco','Pichincha','Austro\nUtilizado','PacifiCard\nRotativo','Guayaquil','Diners'],
+  values: [30009, 7500, 15301.77, 3514.26, 4784.68, 11492.49]
+});
 new Chart(document.getElementById('chartDeudas'), {
   type: 'bar',
   data: {
-    labels: ['Produbanco','Pichincha','Austro\nUtilizado','PacifiCard\nRotativo','Guayaquil','Diners'],
+    labels: deudasData.labels,
     datasets: [{
       label: 'Saldo deuda',
-      data: [30009, 7500, 15301.77, 3514.26, 4784.68, 11492.49],
+      data: deudasData.values,
       backgroundColor: ['rgba(56,189,248,0.7)','rgba(167,139,250,0.7)','rgba(239,68,68,0.7)','rgba(248,113,113,0.7)','rgba(250,204,21,0.7)','rgba(34,197,94,0.7)'],
       borderColor: ['#38bdf8','#a78bfa','#ef4444','#f87171','#facc15','#22c55e'],
       borderWidth: 1.5, borderRadius: 4
@@ -1014,12 +1063,16 @@ new Chart(document.getElementById('chartDeudas'), {
 });
 
 // CHART ACTIVOS
+const activosData = chartSource('activos', {
+  labels: ['Inversión 1','Inversión 2','Cuenta Corriente'],
+  values: [1000, 1000, 580]
+});
 new Chart(document.getElementById('chartActivos'), {
   type: 'doughnut',
   data: {
-    labels: ['Inversión 1','Inversión 2','Cuenta Corriente'],
+    labels: activosData.labels,
     datasets: [{
-      data: [1000, 1000, 580],
+      data: activosData.values,
       backgroundColor: ['#22c55e','#38bdf8','#facc15'],
       borderWidth: 0
     }]

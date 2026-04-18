@@ -1,0 +1,125 @@
+{
+  "generatedAt": "2026-04-18T15:38:35.939940+00:00",
+  "summary": {
+    "periodo": "Abr-May",
+    "ingresos_total": 8400,
+    "ingresos_meta": "Abr $5,400 · May $3,000",
+    "ratio_deuda_ingreso": "81.9%",
+    "sueldo_mensual": 3000,
+    "tipti_abastos": 400,
+    "gasto_diario": 20,
+    "humana": 315.09
+  },
+  "months": [
+    {
+      "mes": "Abril",
+      "ingresos": 5400,
+      "gastos": 4731.4,
+      "saldo_bruto": 5357.27,
+      "colchon": 4623.27,
+      "estado": "Sano"
+    },
+    {
+      "mes": "Mayo",
+      "ingresos": 3000,
+      "gastos": 4393.39,
+      "saldo_bruto": 3229.88,
+      "colchon": 3229.88,
+      "estado": "Ajuste"
+    }
+  ],
+  "charts": {
+    "flujo": {
+      "labels": [
+        "Abril",
+        "Mayo"
+      ],
+      "ingresos": [
+        5400.0,
+        3000.0
+      ],
+      "gastos": [
+        4731.4,
+        4393.39
+      ],
+      "saldo": [
+        4623.27,
+        3229.88
+      ]
+    },
+    "mayo": {
+      "labels": [
+        "Ingreso",
+        "Arriendo",
+        "Austro",
+        "Humana",
+        "Produbanco",
+        "Pichincha",
+        "Diners",
+        "PacifiCard",
+        "Guayaquil",
+        "Tipti"
+      ],
+      "values": [
+        3000.0,
+        -600.0,
+        -629.79,
+        -315.09,
+        -508.73,
+        -222.73,
+        -346.53,
+        -438.59,
+        -311.93,
+        -400.0
+      ]
+    },
+    "semanal": {
+      "labels": [
+        "Abr Sem3",
+        "Abr Sem4",
+        "May Sem1",
+        "May Sem2",
+        "May Sem3",
+        "May Sem4"
+      ],
+      "values": [
+        80.0,
+        120.0,
+        140.0,
+        140.0,
+        140.0,
+        200.0
+      ]
+    },
+    "deudas": {
+      "labels": [
+        "Produbanco",
+        "Pichincha",
+        "Austro\nUtilizado",
+        "PacifiCard\nRotativo",
+        "Guayaquil",
+        "Diners"
+      ],
+      "values": [
+        30009.0,
+        7500.0,
+        15301.77,
+        3514.26,
+        4784.68,
+        11492.49
+      ]
+    },
+    "activos": {
+      "labels": [
+        "Inversión 1",
+        "Inversión 2",
+        "Cuenta Corriente"
+      ],
+      "values": [
+        1000.0,
+        1000.0,
+        580.0
+      ]
+    }
+  }
+}
