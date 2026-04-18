@@ -326,7 +326,7 @@ td.bold{font-weight:600;}
       </div>
     </div>
     <div class="hdr-right">
-      <span class="date-badge" id="liveClock">14 ABR 2026</span>
+      <span class="date-badge" id="liveClock">18 ABR 2026</span>
       <button class="theme-btn" id="themeToggle" aria-label="Cambiar tema" title="Cambiar tema">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
       </button>
@@ -361,7 +361,7 @@ td.bold{font-weight:600;}
   <nav class="tab-bar" role="tablist">
     <button class="tab active" data-tab="proyeccion" role="tab">📊 Proyección</button>
     <button class="tab" data-tab="abril" role="tab">Abril <span class="chip chip-ok">SANO</span></button>
-    <button class="tab" data-tab="mayo" role="tab">Mayo <span class="chip">CRÍTICO</span></button>
+    <button class="tab" data-tab="mayo" role="tab">Mayo <span class="chip">AJUSTE</span></button>
     <button class="tab" data-tab="junio" role="tab">Junio</button>
     <button class="tab" data-tab="julio" role="tab">Julio</button>
     <button class="tab" data-tab="agosto" role="tab">Agosto</button>
@@ -394,38 +394,38 @@ td.bold{font-weight:600;}
               <tr>
                 <td>Mayo</td>
                 <td class="num">$2,900</td>
-                <td class="num">$5,258.30</td>
-                <td class="num" style="color:var(--accent)">+$1,784.97</td>
-                <td class="num bold" style="color:var(--accent)">+$1,784.97</td>
-                <td><span class="badge badge-green">Sano</span></td>
+                <td class="num">$6,113.39</td>
+                <td class="num" style="color:var(--accent)">+$929.88</td>
+                <td class="num bold" style="color:var(--accent)">+$929.88</td>
+                <td><span class="badge badge-yellow">Ajuste</span></td>
               </tr>
               <tr>
                 <td>Junio</td>
                 <td class="num">$4,100</td>
-                <td class="num">$3,458.30</td>
-                <td class="num" style="color:var(--accent)">+$2,426.67</td>
-                <td class="num bold" style="color:var(--accent)">+$1,892.67</td>
-                <td><span class="badge badge-green">Sano</span></td>
+                <td class="num">$3,773.39</td>
+                <td class="num" style="color:var(--accent)">+$1,256.49</td>
+                <td class="num bold" style="color:var(--accent)">+$722.49</td>
+                <td><span class="badge badge-yellow">Ajuste</span></td>
               </tr>
               <tr>
                 <td>Julio</td>
                 <td class="num">$4,100</td>
-                <td class="num">$3,458.30</td>
-                <td class="num" style="color:var(--accent)">+$2,534.37</td>
-                <td class="num bold" style="color:var(--accent)">+$2,000.37</td>
-                <td><span class="badge badge-green">Sano</span></td>
+                <td class="num">$3,773.39</td>
+                <td class="num" style="color:var(--accent)">+$1,049.10</td>
+                <td class="num bold" style="color:var(--accent)">+$515.10</td>
+                <td><span class="badge badge-yellow">Ajuste</span></td>
               </tr>
               <tr>
                 <td>Agosto</td>
                 <td class="num">$4,100</td>
-                <td class="num">$3,458.30</td>
-                <td class="num" style="color:var(--accent)">+$2,642.07</td>
-                <td class="num bold" style="color:var(--accent)">+$2,108.07</td>
-                <td><span class="badge badge-green">Sano</span></td>
+                <td class="num">$3,773.39</td>
+                <td class="num" style="color:var(--accent)">+$841.71</td>
+                <td class="num bold" style="color:var(--accent)">+$307.71</td>
+                <td><span class="badge badge-yellow">Ajuste</span></td>
               </tr>
             </tbody>
           </table>
-          <div style="font-size:.7rem;color:var(--text-muted);margin-top:6px;">* Abril recalculado al 18/04: saldo corriente $580 + sueldo $2,900 + reembolso $2,000 − Pichincha $222.73 = $5,257.27 bruto. Colchón bruto → Mayo incluye reserva Austro $1,800; después de ahorro $334 + inv. $200 + gasto vida restante $580 quedan $4,143.27.<br>** Mayo: Austro corte 16/ABR exige mínimo $629.79 al 04/05. La reserva $1,800 se paga ese mismo día; sueldo día 28 repone ahorro $235.09 + inversión $657.21.</div>
+          <div style="font-size:.7rem;color:var(--text-muted);margin-top:6px;">* Abril recalculado al 18/04: saldo corriente $580 + sueldo $2,900 + reembolso $2,000 − Pichincha $222.73 = $5,257.27 bruto. Colchón bruto → Mayo incluye reserva Austro $1,800; después de ahorro $334 + inv. $200 + gasto vida restante $580 quedan $4,143.27.<br>** Mayo preserva gasto humano mínimo de $20/día. El extra Austro $1,800 se divide: $52.61 antes del sueldo y $1,747.39 después del sueldo. Humana $315.09 queda como seguro de salud recurrente en Austro.</div>
         </div>
       </div>
       <div class="col">
@@ -433,6 +433,7 @@ td.bold{font-weight:600;}
           <div class="card-title">Calendario de pagos fijos</div>
           <div class="cal-item"><span class="cal-day">01</span><span class="cal-desc">Arriendo + Alimentación</span><span class="cal-amt">$1,000</span></div>
           <div class="cal-item"><span class="cal-day">04</span><span class="cal-desc">Banco del Austro mínimo</span><span class="cal-amt">$629.79</span></div>
+          <div class="cal-item"><span class="cal-day">02</span><span class="cal-desc">Humana S.A. seguro salud (Austro)</span><span class="cal-amt">$315.09</span></div>
           <div class="cal-item"><span class="cal-day">04</span><span class="cal-desc">Produbanco cuota</span><span class="cal-amt">$508.73</span></div>
           <!-- total día 4: Austro $629.79 + Produbanco $508.73 = $1,138.52 -->
           <div class="cal-item"><span class="cal-day">02</span><span class="cal-desc">Diners Club</span><span class="cal-amt">$346.53</span></div>
@@ -506,9 +507,9 @@ td.bold{font-weight:600;}
           <div style="border-top:1px solid var(--border);margin-top:10px;padding-top:8px;display:flex;flex-direction:column;gap:5px;font-size:.78rem;">
             <div style="font-size:.65rem;color:var(--text-faint);text-transform:uppercase;letter-spacing:.08em;margin-bottom:2px;">Sem&#xE1;foro mensual</div>
             <div style="display:flex;align-items:center;gap:8px;"><span class="semaforo s-green"></span><span><strong>Abril</strong> — FCF +$2,494.76 · Colch&#xF3;n Mayo ✓</span></div>
-            <div style="display:flex;align-items:center;gap:8px;"><span class="semaforo s-yellow"></span><span><strong>Mayo</strong> — cubrir Austro $629.79 al 04/05 · extra Austro provisionado</span></div>
-            <div style="display:flex;align-items:center;gap:8px;"><span class="semaforo s-green"></span><span><strong>Junio</strong> — Normaliza $4,100 · FCF +$107.70</span></div>
-            <div style="display:flex;align-items:center;gap:8px;"><span class="semaforo s-green"></span><span><strong>Jul / Ago</strong> — Estables · FCF +$107.70 c/u</span></div>
+            <div style="display:flex;align-items:center;gap:8px;"><span class="semaforo s-yellow"></span><span><strong>Mayo</strong> — $20/día protegido · extra Austro dividido antes/después del sueldo</span></div>
+            <div style="display:flex;align-items:center;gap:8px;"><span class="semaforo s-yellow"></span><span><strong>Junio</strong> — Humana recurrente $315.09 · ahorro/inv. en modo ajuste</span></div>
+            <div style="display:flex;align-items:center;gap:8px;"><span class="semaforo s-yellow"></span><span><strong>Jul / Ago</strong> — Colchón baja si se mantiene ahorro + inversión</span></div>
           </div>
         </div>
       </div>
@@ -603,17 +604,20 @@ td.bold{font-weight:600;}
               <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 01</td><td>Arriendo</td><td class="num" style="color:var(--danger)">−$600.00</td></tr>
               <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 04</td><td>Banco del Austro <small style="color:var(--text-faint)">(mínimo corte 16/ABR)</small></td><td class="num" style="color:var(--danger)">−$629.79</td></tr>
               <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 01</td><td>Alimentaci&#xF3;n / Tipti</td><td class="num" style="color:var(--danger)">−$400.00</td></tr>
+              <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 02</td><td>Humana S.A. <small style="color:var(--text-faint)">(seguro salud recurrente en Austro)</small></td><td class="num" style="color:var(--danger)">−$315.09</td></tr>
               <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 02</td><td>Diners Club</td><td class="num" style="color:var(--danger)">−$346.53</td></tr>
               <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 04</td><td>Produbanco</td><td class="num" style="color:var(--danger)">−$508.73</td></tr>
               <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 08</td><td>PacifiCard Mastercard <small style="color:var(--text-faint)">(m&#xED;nimo)</small></td><td class="num" style="color:var(--danger)">−$438.59</td></tr>
-              <tr style="background:rgba(99,102,241,0.07);border-left:3px solid var(--blue);"><td style="color:var(--blue);font-size:.72rem;font-weight:600;">D&#xED;a 04</td><td style="font-size:.78rem;color:var(--blue);">📦 Pago reserva Abril — Austro extra <small style="color:var(--text-faint)">rotativo baja a $8,895.84</small></td><td class="num" style="color:var(--blue);">−$1,800.00</td></tr>
+              <tr style="background:rgba(99,102,241,0.07);border-left:3px solid var(--blue);"><td style="color:var(--blue);font-size:.72rem;font-weight:600;">D&#xED;a 04</td><td style="font-size:.78rem;color:var(--blue);">📦 Austro extra antes del sueldo <small style="color:var(--text-faint)">preserva $20/día hasta el 28</small></td><td class="num" style="color:var(--blue);">−$52.61</td></tr>
               <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 15</td><td>Banco Guayaquil</td><td class="num" style="color:var(--danger)">−$311.93</td></tr>
+              <tr style="background:rgba(99,102,241,0.07);border-left:3px solid var(--blue);"><td style="color:var(--blue);font-size:.72rem;font-weight:600;">D&#xED;a 28</td><td style="font-size:.78rem;color:var(--blue);">📦 Austro extra post-sueldo <small style="color:var(--text-faint)">completa $1,800 al rotativo</small></td><td class="num" style="color:var(--blue);">−$1,747.39</td></tr>
               <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 30</td><td>Banco Pichincha PRECISO</td><td class="num" style="color:var(--danger)">−$222.73</td></tr>
+              <tr><td></td><td style="font-size:.78rem;">Gasto humano mínimo 27 días × $20</td><td class="num" style="color:var(--danger);font-size:.78rem;">−$540.00</td></tr>
               <tr><td colspan="4" style="font-size:.7rem;font-weight:600;color:var(--text-faint);background:var(--bg-surface);padding:5px 6px;letter-spacing:.06em;">📊 PROYECTADO AL FIN DE MES</td></tr>
-              <tr style="border-top:2px solid var(--border);"><td></td><td class="bold">Saldo bruto mayo</td><td class="num bold" style="color:var(--accent)">+$1,784.97</td></tr>
+              <tr style="border-top:2px solid var(--border);"><td></td><td class="bold">Saldo bruto mayo</td><td class="num bold" style="color:var(--accent)">+$929.88</td></tr>
               <tr><td colspan="4" style="font-size:.7rem;font-weight:600;color:var(--text-faint);background:var(--bg-surface);padding:5px 6px;letter-spacing:.06em;">💸 DISTRIBUCIÓN RECOMENDADA</td></tr>
               <tr><td></td><td style="font-size:.78rem;">🚫 Sin ahorro ni inversión este mes</td><td class="num" style="color:var(--text-muted);font-size:.78rem;">$0.00</td></tr>
-              <tr style="border-top:2px solid var(--accent);"><td></td><td class="bold" style="color:var(--accent);">💰 Colchón que arranca Junio</td><td class="num bold" style="color:var(--accent);">+$1,784.97</td><td style="font-size:.7rem;color:var(--text-faint);">FCF neto de Mayo</td></tr>
+              <tr style="border-top:2px solid var(--accent);"><td></td><td class="bold" style="color:var(--accent);">💰 Colchón que arranca Junio</td><td class="num bold" style="color:var(--accent);">+$929.88</td><td style="font-size:.7rem;color:var(--text-faint);">$20/día protegido</td></tr>
             </tbody>
           </table>
 
@@ -626,34 +630,33 @@ td.bold{font-weight:600;}
       <div class="col">
         <div class="card" style="border-color:var(--warn);">
           <div class="card-title" style="color:var(--warn);">🚨 Plan de liquidez Mayo</div>
-          <div style="font-size:.75rem;color:var(--text-muted);margin-bottom:8px;">El colchón bruto de Mayo ya incluye la reserva de Banco del Austro. El 04/05 se paga mínimo $629.79 + extra reservado $1,800. Del día 04 al 27 se usan ahorro e inversión como puente — todo se repone el día 28 con el sueldo.</div>
+          <div style="font-size:.75rem;color:var(--text-muted);margin-bottom:8px;">El colchón bruto de Mayo ya incluye la reserva de Banco del Austro. Para no caer en negativo, el gasto humano mínimo queda protegido en $20/día y el extra Austro $1,800 se divide: $52.61 antes del sueldo y $1,747.39 después del sueldo.</div>
           <table style="font-size:.78rem;">
             <thead><tr><th>Día</th><th>Acción</th><th class="num">Monto</th><th>Fuente</th></tr></thead>
             <tbody>
-              <tr><td style="color:var(--text-muted);">Día 04</td><td>Retiro puente para Austro + Produbanco</td><td class="num" style="color:var(--warn);">−$141.78</td><td><span class="badge badge-yellow">Ahorro</span></td></tr>
-              <tr><td style="color:var(--text-muted);">Día 04</td><td>Pago reserva Banco del Austro extra</td><td class="num" style="color:var(--blue);">−$1,800.00</td><td><span class="badge" style="background:var(--blue-soft);color:var(--blue);">Reserva Abril</span></td></tr>
-              <tr><td style="color:var(--text-muted);">Día 08</td><td>PacifiCard mínimo (parcial)</td><td class="num" style="color:var(--warn);">−$93.31</td><td><span class="badge badge-yellow">Ahorro</span></td></tr>
-              <tr><td style="color:var(--text-muted);">Día 08</td><td>Complemento PacifiCard mínimo</td><td class="num" style="color:var(--blue);">−$345.28</td><td><span class="badge" style="background:var(--blue-soft);color:var(--blue);">Inversión</span></td></tr>
-              <tr><td style="color:var(--text-muted);">Día 15</td><td>Retiro para Guayaquil</td><td class="num" style="color:var(--blue);">−$311.93</td><td><span class="badge" style="background:var(--blue-soft);color:var(--blue);">Inversión</span></td></tr>
-              <tr style="border-top:2px solid var(--border);background:var(--bg-surface);"><td></td><td style="font-weight:600;">Total a reponer día 28</td><td class="num" style="color:var(--danger);font-weight:600;">−$892.30</td><td></td></tr>
-              <tr style="background:rgba(16,185,129,0.07);"><td style="color:var(--accent);">Día 28</td><td style="color:var(--accent);font-weight:600;">Sueldo → reponer ahorro + inv.</td><td class="num" style="color:var(--accent);font-weight:600;">+$892.30</td><td><span class="badge badge-green">Sueldo</span></td></tr>
+              <tr><td style="color:var(--text-muted);">Día 01–27</td><td>Gasto humano mínimo protegido</td><td class="num" style="color:var(--accent);">−$540.00</td><td><span class="badge badge-green">$20/día</span></td></tr>
+              <tr><td style="color:var(--text-muted);">Día 02</td><td>Humana S.A. seguro salud recurrente</td><td class="num" style="color:var(--danger);">−$315.09</td><td><span class="badge badge-yellow">Austro</span></td></tr>
+              <tr><td style="color:var(--text-muted);">Día 04</td><td>Austro extra antes del sueldo</td><td class="num" style="color:var(--blue);">−$52.61</td><td><span class="badge" style="background:var(--blue-soft);color:var(--blue);">Reserva</span></td></tr>
+              <tr><td style="color:var(--text-muted);">Día 28</td><td>Austro extra post-sueldo</td><td class="num" style="color:var(--blue);">−$1,747.39</td><td><span class="badge badge-green">Sueldo</span></td></tr>
+              <tr style="border-top:2px solid var(--border);background:var(--bg-surface);"><td></td><td style="font-weight:600;">Extra total aplicado a Austro</td><td class="num" style="color:var(--blue);font-weight:600;">−$1,800.00</td><td></td></tr>
+              <tr style="background:rgba(16,185,129,0.07);"><td style="color:var(--accent);">Día 28</td><td style="color:var(--accent);font-weight:600;">Sueldo sostiene el cierre del mes</td><td class="num" style="color:var(--accent);font-weight:600;">+$2,900.00</td><td><span class="badge badge-green">Sueldo</span></td></tr>
             </tbody>
           </table>
           <div style="display:flex;gap:8px;margin-top:8px;font-size:.72rem;">
             <div style="flex:1;background:var(--bg-surface);border-radius:6px;padding:6px 8px;text-align:center;">
               <div style="color:var(--text-muted);margin-bottom:2px;">Ahorro usado</div>
-              <div style="color:var(--warn);font-weight:600;">−$235.09</div>
-              <div style="color:var(--accent);font-size:.68rem;">repuesto día 28 ✓</div>
+              <div style="color:var(--accent);font-weight:600;">$0.00</div>
+              <div style="color:var(--text-faint);font-size:.68rem;">no tocar</div>
             </div>
             <div style="flex:1;background:var(--bg-surface);border-radius:6px;padding:6px 8px;text-align:center;">
               <div style="color:var(--text-muted);margin-bottom:2px;">Inversión usada</div>
-              <div style="color:var(--blue);font-weight:600;">−$657.21</div>
-              <div style="color:var(--accent);font-size:.68rem;">repuesto día 28 ✓</div>
+              <div style="color:var(--accent);font-weight:600;">$0.00</div>
+              <div style="color:var(--text-faint);font-size:.68rem;">no tocar</div>
             </div>
             <div style="flex:1;background:var(--bg-surface);border-radius:6px;padding:6px 8px;text-align:center;">
               <div style="color:var(--text-muted);margin-bottom:2px;">Colchón → Junio</div>
-              <div style="color:var(--accent);font-weight:600;">+$1,784.97</div>
-              <div style="color:var(--text-faint);font-size:.68rem;">cuentas intactas</div>
+              <div style="color:var(--accent);font-weight:600;">+$929.88</div>
+              <div style="color:var(--text-faint);font-size:.68rem;">sin negativo</div>
             </div>
           </div>
         </div>
@@ -663,10 +666,10 @@ td.bold{font-weight:600;}
             <thead><tr><th>Semana</th><th class="num">Saldo cuenta</th><th>Gastos sem.</th><th>Nota</th></tr></thead>
             <tbody>
               <tr><td style="font-size:.72rem;">Inicio</td><td class="num" style="color:var(--accent);font-weight:600;">+$4,143.27</td><td class="num" style="color:var(--text-faint);font-size:.72rem;">—</td><td style="font-size:.7rem;color:var(--text-faint)">Incluye reserva Austro $1,800</td></tr>
-              <tr><td>Sem 1 (1–7)</td><td class="num" style="color:var(--danger)">−$141.78</td><td class="num" style="color:var(--danger);font-size:.72rem;">−$4,285.05</td><td style="font-size:.7rem;color:var(--text-faint)">Fijos + Austro mínimo/extra 04/05</td></tr>
-              <tr style="background:rgba(99,102,241,0.07);"><td>Sem 2 (8–14)</td><td class="num" style="color:var(--danger)">−$580.37</td><td class="num" style="color:var(--danger);font-size:.72rem;">−$438.59</td><td style="font-size:.7rem;color:var(--text-faint)">PacifiCard día 8</td></tr>
-              <tr><td>Sem 3 (15–21)</td><td class="num" style="color:var(--danger)">−$892.30</td><td class="num" style="color:var(--danger);font-size:.72rem;">−$311.93</td><td style="font-size:.7rem;color:var(--text-faint)">Guayaquil día 15</td></tr>
-              <tr style="background:rgba(16,185,129,0.07);"><td>Sem 4 (22–31)</td><td class="num" style="color:var(--accent);font-weight:600;">+$1,784.97</td><td class="num" style="color:var(--accent);font-size:.72rem;">+$2,677.27</td><td style="font-size:.7rem;color:var(--text-faint)">Sueldo d28 − Pichincha d30</td></tr>
+              <tr><td>Sem 1 (1–7)</td><td class="num" style="color:var(--accent)">+$1,150.52</td><td class="num" style="color:var(--danger);font-size:.72rem;">−$2,992.75</td><td style="font-size:.7rem;color:var(--text-faint)">Fijos + Humana + extra parcial + $20/día</td></tr>
+              <tr style="background:rgba(99,102,241,0.07);"><td>Sem 2 (8–14)</td><td class="num" style="color:var(--accent)">+$571.93</td><td class="num" style="color:var(--danger);font-size:.72rem;">−$578.59</td><td style="font-size:.7rem;color:var(--text-faint)">PacifiCard + $20/día</td></tr>
+              <tr><td>Sem 3 (15–21)</td><td class="num" style="color:var(--accent)">+$120.00</td><td class="num" style="color:var(--danger);font-size:.72rem;">−$451.93</td><td style="font-size:.7rem;color:var(--text-faint)">Guayaquil + $20/día</td></tr>
+              <tr style="background:rgba(16,185,129,0.07);"><td>Sem 4 (22–31)</td><td class="num" style="color:var(--accent);font-weight:600;">+$929.88</td><td class="num" style="color:var(--accent);font-size:.72rem;">+$809.88</td><td style="font-size:.7rem;color:var(--text-faint)">Sueldo − extra Austro − Pichincha − $20/día</td></tr>
             </tbody>
           </table>
         </div>
@@ -683,24 +686,25 @@ td.bold{font-weight:600;}
           <table>
             <thead><tr><th style="width:60px">Fecha</th><th>Concepto</th><th class="num">Monto</th></tr></thead>
             <tbody>
-              <tr style="background:rgba(16,185,129,0.07);"><td></td><td style="font-size:.78rem;color:var(--accent);font-weight:600;">💰 Saldo inicial — Colchón de Mayo</td><td class="num" style="color:var(--accent);font-weight:600;">+$1,784.97</td><td style="font-size:.68rem;color:var(--text-faint);">arrastrado</td></tr>
+              <tr style="background:rgba(16,185,129,0.07);"><td></td><td style="font-size:.78rem;color:var(--accent);font-weight:600;">💰 Saldo inicial — Colchón de Mayo</td><td class="num" style="color:var(--accent);font-weight:600;">+$929.88</td><td style="font-size:.68rem;color:var(--text-faint);">arrastrado</td></tr>
               <tr><td colspan="4" style="font-size:.7rem;font-weight:600;color:var(--text-faint);background:var(--bg-surface);padding:5px 6px;letter-spacing:.06em;">⏳ INGRESOS PENDIENTES</td></tr>
               <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 28</td><td>Sueldo estimado</td><td class="num" style="color:var(--accent)">+$4,100.00</td></tr>
               <tr><td colspan="4" style="font-size:.7rem;font-weight:600;color:var(--text-faint);background:var(--bg-surface);padding:5px 6px;letter-spacing:.06em;">⏳ GASTOS PENDIENTES (todo el mes)</td></tr>
               <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 01</td><td>Arriendo</td><td class="num" style="color:var(--danger)">−$600.00</td></tr>
               <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 04</td><td>Banco del Austro <small style="color:var(--text-faint)">(mínimo estimado)</small></td><td class="num" style="color:var(--danger)">−$629.79</td></tr>
               <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 01</td><td>Alimentaci&#xF3;n / Tipti</td><td class="num" style="color:var(--danger)">−$400.00</td></tr>
+              <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 02</td><td>Humana S.A. <small style="color:var(--text-faint)">(seguro salud recurrente)</small></td><td class="num" style="color:var(--danger)">−$315.09</td></tr>
               <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 02</td><td>Diners Club</td><td class="num" style="color:var(--danger)">−$346.53</td></tr>
               <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 04</td><td>Produbanco</td><td class="num" style="color:var(--danger)">−$508.73</td></tr>
               <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 08</td><td>PacifiCard Mastercard</td><td class="num" style="color:var(--danger)">−$438.59</td></tr>
               <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 15</td><td>Banco Guayaquil</td><td class="num" style="color:var(--danger)">−$311.93</td></tr>
               <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 30</td><td>Banco Pichincha PRECISO</td><td class="num" style="color:var(--danger)">−$222.73</td></tr>
               <tr><td colspan="4" style="font-size:.7rem;font-weight:600;color:var(--text-faint);background:var(--bg-surface);padding:5px 6px;letter-spacing:.06em;">📊 PROYECTADO AL FIN DE MES</td></tr>
-              <tr style="border-top:2px solid var(--border);"><td></td><td class="bold">Saldo bruto junio</td><td class="num bold" style="color:var(--accent)">+$2,426.67</td></tr>
+              <tr style="border-top:2px solid var(--border);"><td></td><td class="bold">Saldo bruto junio</td><td class="num bold" style="color:var(--accent)">+$1,256.49</td></tr>
               <tr><td colspan="4" style="font-size:.7rem;font-weight:600;color:var(--text-faint);background:var(--bg-surface);padding:5px 6px;letter-spacing:.06em;">💸 DISTRIBUCIÓN RECOMENDADA</td></tr>
               <tr><td></td><td style="font-size:.78rem;">🏦 Ahorro (Esc. A)</td><td class="num" style="color:var(--accent);font-size:.78rem;">−$334.00</td></tr>
               <tr><td></td><td style="font-size:.78rem;">📈 Inversi&#xF3;n (Esc. A)</td><td class="num" style="color:var(--blue);font-size:.78rem;">−$200.00</td></tr>
-              <tr style="border-top:2px solid var(--accent);"><td></td><td class="bold" style="color:var(--accent);">💰 Colchón que arranca Julio</td><td class="num bold" style="color:var(--accent);">+$1,892.67</td><td style="font-size:.7rem;color:var(--text-faint);">FCF neto de Junio</td></tr>
+              <tr style="border-top:2px solid var(--accent);"><td></td><td class="bold" style="color:var(--accent);">💰 Colchón que arranca Julio</td><td class="num bold" style="color:var(--accent);">+$722.49</td><td style="font-size:.7rem;color:var(--text-faint);">tras ahorro + inversión</td></tr>
             </tbody>
           </table>
 
@@ -709,27 +713,28 @@ td.bold{font-weight:600;}
       </div>
       <div class="col">
         <div class="card">
-          <div class="card-title">Semana tipo Junio</div>
+          <div class="card-title">Semana tipo Junio — mínimo humano</div>
           <table>
             <thead><tr><th>Semana</th><th class="num">Bolsa</th></tr></thead>
             <tbody>
-              <tr><td>Sem 1 (1–7)</td><td class="num" style="color:var(--warn)">$39.21</td></tr>
-              <tr><td>Sem 2 (8–14)</td><td class="num" style="color:var(--accent)">$167.99</td></tr>
-              <tr><td>Sem 3 (15–21)</td><td class="num" style="color:var(--accent)">$167.99</td></tr>
-              <tr><td>Sem 4 (22–30)</td><td class="num" style="color:var(--accent)">$167.99</td></tr>
+              <tr><td>Sem 1 (1–7)</td><td class="num" style="color:var(--accent)">$140.00</td></tr>
+              <tr><td>Sem 2 (8–14)</td><td class="num" style="color:var(--accent)">$140.00</td></tr>
+              <tr><td>Sem 3 (15–21)</td><td class="num" style="color:var(--accent)">$140.00</td></tr>
+              <tr><td>Sem 4 (22–30)</td><td class="num" style="color:var(--accent)">$180.00</td></tr>
             </tbody>
           </table>
         </div>
         <div class="card">
           <div class="card-title">Distribución sueldo Junio</div>
           <div style="display:flex;flex-direction:column;gap:8px;font-size:.8rem;margin-top:4px;">
-            <div style="display:flex;justify-content:space-between;"><span>Fijos (día 1–4)</span><span>$1,738.52</span></div>
-            <div style="display:flex;justify-content:space-between;"><span>Tarjetas (día 8, 15)</span><span>$808.59</span></div>
+            <div style="display:flex;justify-content:space-between;"><span>Fijos (día 1–4 + Humana)</span><span>$2,400.14</span></div>
+            <div style="display:flex;justify-content:space-between;"><span>Tarjetas (día 8, 15)</span><span>$750.52</span></div>
             <div style="display:flex;justify-content:space-between;"><span>Pichincha (día 30)</span><span>$222.73</span></div>
             <div style="display:flex;justify-content:space-between;"><span>Alimentación (día 1)</span><span>$400</span></div>
             <div style="display:flex;justify-content:space-between;"><span>→ Ahorro</span><span style="color:var(--accent)">$334</span></div>
             <div style="display:flex;justify-content:space-between;"><span>→ Inversión</span><span style="color:var(--blue)">$200</span></div>
-            <div style="display:flex;justify-content:space-between;font-weight:600;"><span>→ Libre</span><span style="color:var(--warn)">$149.36</span></div>
+            <div style="display:flex;justify-content:space-between;font-weight:600;"><span>→ Colchón usado</span><span style="color:var(--warn)">−$207.39</span></div>
+            <div style="display:flex;justify-content:space-between;font-size:.72rem;color:var(--text-muted);"><span>Final tras ahorro/inv.</span><span style="color:var(--accent)">$722.49</span></div>
           </div>
         </div>
       </div>
@@ -745,24 +750,25 @@ td.bold{font-weight:600;}
           <table>
             <thead><tr><th style="width:60px">Fecha</th><th>Concepto</th><th class="num">Monto</th></tr></thead>
             <tbody>
-              <tr style="background:rgba(16,185,129,0.07);"><td></td><td style="font-size:.78rem;color:var(--accent);font-weight:600;">💰 Saldo inicial — Colchón de Junio</td><td class="num" style="color:var(--accent);font-weight:600;">+$1,892.67</td><td style="font-size:.68rem;color:var(--text-faint);">arrastrado</td></tr>
+              <tr style="background:rgba(16,185,129,0.07);"><td></td><td style="font-size:.78rem;color:var(--accent);font-weight:600;">💰 Saldo inicial — Colchón de Junio</td><td class="num" style="color:var(--accent);font-weight:600;">+$722.49</td><td style="font-size:.68rem;color:var(--text-faint);">arrastrado</td></tr>
               <tr><td colspan="4" style="font-size:.7rem;font-weight:600;color:var(--text-faint);background:var(--bg-surface);padding:5px 6px;letter-spacing:.06em;">⏳ INGRESOS PENDIENTES</td></tr>
               <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 28</td><td>Sueldo estimado</td><td class="num" style="color:var(--accent)">+$4,100.00</td></tr>
               <tr><td colspan="4" style="font-size:.7rem;font-weight:600;color:var(--text-faint);background:var(--bg-surface);padding:5px 6px;letter-spacing:.06em;">⏳ GASTOS PENDIENTES (todo el mes)</td></tr>
               <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 01</td><td>Arriendo</td><td class="num" style="color:var(--danger)">−$600.00</td></tr>
               <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 04</td><td>Banco del Austro <small style="color:var(--text-faint)">(mínimo estimado)</small></td><td class="num" style="color:var(--danger)">−$629.79</td></tr>
               <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 01</td><td>Alimentaci&#xF3;n / Tipti</td><td class="num" style="color:var(--danger)">−$400.00</td></tr>
+              <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 02</td><td>Humana S.A. <small style="color:var(--text-faint)">(seguro salud recurrente)</small></td><td class="num" style="color:var(--danger)">−$315.09</td></tr>
               <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 02</td><td>Diners Club</td><td class="num" style="color:var(--danger)">−$346.53</td></tr>
               <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 04</td><td>Produbanco</td><td class="num" style="color:var(--danger)">−$508.73</td></tr>
               <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 08</td><td>PacifiCard Mastercard</td><td class="num" style="color:var(--danger)">−$438.59</td></tr>
               <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 15</td><td>Banco Guayaquil</td><td class="num" style="color:var(--danger)">−$311.93</td></tr>
               <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 30</td><td>Banco Pichincha PRECISO</td><td class="num" style="color:var(--danger)">−$222.73</td></tr>
               <tr><td colspan="4" style="font-size:.7rem;font-weight:600;color:var(--text-faint);background:var(--bg-surface);padding:5px 6px;letter-spacing:.06em;">📊 PROYECTADO AL FIN DE MES</td></tr>
-              <tr style="border-top:2px solid var(--border);"><td></td><td class="bold">Saldo bruto julio</td><td class="num bold" style="color:var(--accent)">+$2,534.37</td></tr>
+              <tr style="border-top:2px solid var(--border);"><td></td><td class="bold">Saldo bruto julio</td><td class="num bold" style="color:var(--accent)">+$1,049.10</td></tr>
               <tr><td colspan="4" style="font-size:.7rem;font-weight:600;color:var(--text-faint);background:var(--bg-surface);padding:5px 6px;letter-spacing:.06em;">💸 DISTRIBUCIÓN RECOMENDADA</td></tr>
               <tr><td></td><td style="font-size:.78rem;">🏦 Ahorro (Esc. A)</td><td class="num" style="color:var(--accent);font-size:.78rem;">−$334.00</td></tr>
               <tr><td></td><td style="font-size:.78rem;">📈 Inversi&#xF3;n (Esc. A)</td><td class="num" style="color:var(--blue);font-size:.78rem;">−$200.00</td></tr>
-              <tr style="border-top:2px solid var(--accent);"><td></td><td class="bold" style="color:var(--accent);">💰 Colchón que arranca Agosto</td><td class="num bold" style="color:var(--accent);">+$2,000.37</td><td style="font-size:.7rem;color:var(--text-faint);">FCF neto de Julio</td></tr>
+              <tr style="border-top:2px solid var(--accent);"><td></td><td class="bold" style="color:var(--accent);">💰 Colchón que arranca Agosto</td><td class="num bold" style="color:var(--accent);">+$515.10</td><td style="font-size:.7rem;color:var(--text-faint);">tras ahorro + inversión</td></tr>
             </tbody>
           </table>
 
@@ -771,14 +777,14 @@ td.bold{font-weight:600;}
       </div>
       <div class="col">
         <div class="card">
-          <div class="card-title">Semana tipo Julio</div>
+          <div class="card-title">Semana tipo Julio — mínimo humano</div>
           <table>
             <thead><tr><th>Semana</th><th class="num">Bolsa</th></tr></thead>
             <tbody>
-              <tr><td>Sem 1</td><td class="num" style="color:var(--warn)">$39.21</td></tr>
-              <tr><td>Sem 2</td><td class="num" style="color:var(--accent)">$170.49</td></tr>
-              <tr><td>Sem 3</td><td class="num" style="color:var(--accent)">$170.49</td></tr>
-              <tr><td>Sem 4</td><td class="num" style="color:var(--accent)">$170.49</td></tr>
+              <tr><td>Sem 1</td><td class="num" style="color:var(--accent)">$140.00</td></tr>
+              <tr><td>Sem 2</td><td class="num" style="color:var(--accent)">$140.00</td></tr>
+              <tr><td>Sem 3</td><td class="num" style="color:var(--accent)">$140.00</td></tr>
+              <tr><td>Sem 4</td><td class="num" style="color:var(--accent)">$140.00</td></tr>
             </tbody>
           </table>
         </div>
@@ -786,10 +792,10 @@ td.bold{font-weight:600;}
           <div class="card-title">Hoja de ruta 6 meses</div>
           <div class="roadmap">
             <div class="rm-step"><div class="rm-num">1</div><div>Abril: cubrir Guayaquil (15/04). Extra $400 recibido ✓.</div></div>
-            <div class="rm-step"><div class="rm-num">2</div><div>Mayo: cubrir Austro mínimo $629.79 y aplicar provisión $1,800 al rotativo. No nuevas deudas.</div></div>
-            <div class="rm-step"><div class="rm-num">3</div><div>Junio: primer mes estable con $4,100. Reiniciar ahorro sistemático.</div></div>
-            <div class="rm-step"><div class="rm-num">4</div><div>Jul–Ago: aportar $334/mes ahorro + $200 inversión sin falta.</div></div>
-            <div class="rm-step"><div class="rm-num">5</div><div>Ago: mantener mínimos de tarjetas sin diferidos nuevos.</div></div>
+            <div class="rm-step"><div class="rm-num">2</div><div>Mayo: cubrir Austro mínimo $629.79, preservar $20/día y partir el extra $1,800 al rotativo.</div></div>
+            <div class="rm-step"><div class="rm-num">3</div><div>Junio: sueldo $4,100 con Humana $315.09 ya recurrente; revisar ahorro si el colchón baja.</div></div>
+            <div class="rm-step"><div class="rm-num">4</div><div>Jul–Ago: sostener mínimo humano antes que ahorro/inversión.</div></div>
+            <div class="rm-step"><div class="rm-num">5</div><div>Ago: mantener diferidos Austro al día; no convertirlos en prioridad de ataque.</div></div>
             <div class="rm-step"><div class="rm-num">6</div><div>Sep: si Austro baja de zona roja, volver a atacar PacifiCard rotativo ($3,514).</div></div>
           </div>
         </div>
@@ -806,24 +812,25 @@ td.bold{font-weight:600;}
           <table>
             <thead><tr><th style="width:60px">Fecha</th><th>Concepto</th><th class="num">Monto</th></tr></thead>
             <tbody>
-              <tr style="background:rgba(16,185,129,0.07);"><td></td><td style="font-size:.78rem;color:var(--accent);font-weight:600;">💰 Saldo inicial — Colchón de Julio</td><td class="num" style="color:var(--accent);font-weight:600;">+$2,000.37</td><td style="font-size:.68rem;color:var(--text-faint);">arrastrado</td></tr>
+              <tr style="background:rgba(16,185,129,0.07);"><td></td><td style="font-size:.78rem;color:var(--accent);font-weight:600;">💰 Saldo inicial — Colchón de Julio</td><td class="num" style="color:var(--accent);font-weight:600;">+$515.10</td><td style="font-size:.68rem;color:var(--text-faint);">arrastrado</td></tr>
               <tr><td colspan="4" style="font-size:.7rem;font-weight:600;color:var(--text-faint);background:var(--bg-surface);padding:5px 6px;letter-spacing:.06em;">⏳ INGRESOS PENDIENTES</td></tr>
               <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 28</td><td>Sueldo estimado</td><td class="num" style="color:var(--accent)">+$4,100.00</td></tr>
               <tr><td colspan="4" style="font-size:.7rem;font-weight:600;color:var(--text-faint);background:var(--bg-surface);padding:5px 6px;letter-spacing:.06em;">⏳ GASTOS PENDIENTES (todo el mes)</td></tr>
               <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 01</td><td>Arriendo</td><td class="num" style="color:var(--danger)">−$600.00</td></tr>
               <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 04</td><td>Banco del Austro <small style="color:var(--text-faint)">(mínimo estimado)</small></td><td class="num" style="color:var(--danger)">−$629.79</td></tr>
               <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 01</td><td>Alimentaci&#xF3;n / Tipti</td><td class="num" style="color:var(--danger)">−$400.00</td></tr>
+              <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 02</td><td>Humana S.A. <small style="color:var(--text-faint)">(seguro salud recurrente)</small></td><td class="num" style="color:var(--danger)">−$315.09</td></tr>
               <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 02</td><td>Diners Club</td><td class="num" style="color:var(--danger)">−$346.53</td></tr>
               <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 04</td><td>Produbanco</td><td class="num" style="color:var(--danger)">−$508.73</td></tr>
               <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 08</td><td>PacifiCard Mastercard</td><td class="num" style="color:var(--danger)">−$438.59</td></tr>
               <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 15</td><td>Banco Guayaquil</td><td class="num" style="color:var(--danger)">−$311.93</td></tr>
               <tr><td style="color:var(--text-muted);font-size:.72rem;">D&#xED;a 30</td><td>Banco Pichincha PRECISO</td><td class="num" style="color:var(--danger)">−$222.73</td></tr>
               <tr><td colspan="4" style="font-size:.7rem;font-weight:600;color:var(--text-faint);background:var(--bg-surface);padding:5px 6px;letter-spacing:.06em;">📊 PROYECTADO AL FIN DE MES</td></tr>
-              <tr style="border-top:2px solid var(--border);"><td></td><td class="bold">Saldo bruto agosto</td><td class="num bold" style="color:var(--accent)">+$2,642.07</td></tr>
+              <tr style="border-top:2px solid var(--border);"><td></td><td class="bold">Saldo bruto agosto</td><td class="num bold" style="color:var(--accent)">+$841.71</td></tr>
               <tr><td colspan="4" style="font-size:.7rem;font-weight:600;color:var(--text-faint);background:var(--bg-surface);padding:5px 6px;letter-spacing:.06em;">💸 DISTRIBUCIÓN RECOMENDADA</td></tr>
               <tr><td></td><td style="font-size:.78rem;">🏦 Ahorro (Esc. A)</td><td class="num" style="color:var(--accent);font-size:.78rem;">−$334.00</td></tr>
               <tr><td></td><td style="font-size:.78rem;">📈 Inversi&#xF3;n (Esc. A)</td><td class="num" style="color:var(--blue);font-size:.78rem;">−$200.00</td></tr>
-              <tr style="border-top:2px solid var(--accent);"><td></td><td class="bold" style="color:var(--accent);">💰 Colchón que arranca Septiembre</td><td class="num bold" style="color:var(--accent);">+$2,108.07</td><td style="font-size:.7rem;color:var(--text-faint);">FCF neto de Agosto</td></tr>
+              <tr style="border-top:2px solid var(--accent);"><td></td><td class="bold" style="color:var(--accent);">💰 Colchón que arranca Septiembre</td><td class="num bold" style="color:var(--accent);">+$307.71</td><td style="font-size:.7rem;color:var(--text-faint);">tras ahorro + inversión</td></tr>
             </tbody>
           </table>
 
@@ -832,27 +839,27 @@ td.bold{font-weight:600;}
       </div>
       <div class="col">
         <div class="card">
-          <div class="card-title">Semana tipo Agosto</div>
+          <div class="card-title">Semana tipo Agosto — mínimo humano</div>
           <table>
             <thead><tr><th>Semana</th><th class="num">Bolsa</th></tr></thead>
             <tbody>
-              <tr><td>Sem 1</td><td class="num" style="color:var(--warn)">$39.21</td></tr>
-              <tr><td>Sem 2</td><td class="num" style="color:var(--accent)">$172.99</td></tr>
-              <tr><td>Sem 3</td><td class="num" style="color:var(--accent)">$172.99</td></tr>
-              <tr><td>Sem 4</td><td class="num" style="color:var(--accent)">$172.99</td></tr>
+              <tr><td>Sem 1</td><td class="num" style="color:var(--accent)">$140.00</td></tr>
+              <tr><td>Sem 2</td><td class="num" style="color:var(--accent)">$140.00</td></tr>
+              <tr><td>Sem 3</td><td class="num" style="color:var(--accent)">$140.00</td></tr>
+              <tr><td>Sem 4</td><td class="num" style="color:var(--accent)">$140.00</td></tr>
             </tbody>
           </table>
         </div>
         <div class="card">
           <div class="card-title">8 consejos financieros</div>
           <div style="display:flex;flex-direction:column;gap:6px;margin-top:4px;">
-            <div class="tip"><span class="tip-icon">💰</span><span>Paga el mínimo de todas las deudas y el máximo a Banco del Austro rotativo (estrategia avalancha actualizada).</span></div>
-            <div class="tip"><span class="tip-icon">📉</span><span>Evita consumos en tarjetas durante Mayo — solo paga lo pendiente.</span></div>
+            <div class="tip"><span class="tip-icon">💰</span><span>Paga mínimos y dirige extra sólo al rotativo Austro; los diferidos quedan como cuotas programadas.</span></div>
+            <div class="tip"><span class="tip-icon">📉</span><span>Evita consumos nuevos fuera de Humana; el seguro ya queda presupuestado como recurrente.</span></div>
             <div class="tip"><span class="tip-icon">🔁</span><span>Automatiza el depósito a inversión el día 28 (mismo día que el sueldo).</span></div>
             <div class="tip"><span class="tip-icon">📦</span><span>Usa la cuenta corriente como tránsito, no como ahorro.</span></div>
             <div class="tip"><span class="tip-icon">🧾</span><span>Revisa los estados de cuenta 2 días antes del corte para evitar sorpresas.</span></div>
             <div class="tip"><span class="tip-icon">🎯</span><span>Meta inmediata: bajar Austro rotativo de $10,695.84; luego retomar PacifiCard.</span></div>
-            <div class="tip"><span class="tip-icon">🌱</span><span>Con ahorro de $334/mes, en un año tendrás $5,008 acumulado.</span></div>
+            <div class="tip"><span class="tip-icon">🌱</span><span>Si el colchón baja de $500, pausa inversión antes de tocar el gasto humano mínimo.</span></div>
             <div class="tip"><span class="tip-icon">⚡</span><span>En Agosto considera cancelar Diners si el diferido baja a menos de $200.</span></div>
           </div>
         </div>
@@ -876,14 +883,16 @@ td.bold{font-weight:600;}
             <thead><tr><th>Mes</th><th class="num">Bolsa/sem</th><th class="num">Diario</th><th>Estado</th></tr></thead>
             <tbody>
               <tr><td>Abril (10 días hasta sueldo)*</td><td class="num" style="color:var(--accent)">$406.00</td><td class="num" style="color:var(--accent)">$58.00</td><td><span class="badge badge-green">OK</span></td></tr>
-              <tr><td>Mayo Sem 1</td><td class="num" style="color:var(--danger)">$0</td><td class="num" style="color:var(--danger)">$0</td><td><span class="badge badge-red">CRÍTICO</span></td></tr>
-              <tr><td>Mayo Sem 2–4</td><td class="num" style="color:var(--warn)">$56</td><td class="num" style="color:var(--warn)">$8</td><td><span class="badge badge-yellow">Ajuste</span></td></tr>
-              <tr><td>Junio</td><td class="num">$167.99</td><td class="num">$24.00</td><td><span class="badge badge-green">OK</span></td></tr>
-              <tr><td>Julio</td><td class="num">$170.49</td><td class="num">$24.36</td><td><span class="badge badge-green">OK</span></td></tr>
-              <tr><td>Agosto</td><td class="num">$172.99</td><td class="num">$24.71</td><td><span class="badge badge-green">OK</span></td></tr>
+              <tr><td>Mayo Sem 1</td><td class="num" style="color:var(--accent)">$140</td><td class="num" style="color:var(--accent)">$20</td><td><span class="badge badge-green">Mínimo</span></td></tr>
+              <tr><td>Mayo Sem 2</td><td class="num" style="color:var(--accent)">$140</td><td class="num" style="color:var(--accent)">$20</td><td><span class="badge badge-green">Mínimo</span></td></tr>
+              <tr><td>Mayo Sem 3</td><td class="num" style="color:var(--accent)">$140</td><td class="num" style="color:var(--accent)">$20</td><td><span class="badge badge-green">Mínimo</span></td></tr>
+              <tr><td>Mayo Sem 4</td><td class="num" style="color:var(--accent)">$120</td><td class="num" style="color:var(--accent)">$20</td><td><span class="badge badge-green">Mínimo</span></td></tr>
+              <tr><td>Junio</td><td class="num">$140</td><td class="num">$20</td><td><span class="badge badge-yellow">Ajuste</span></td></tr>
+              <tr><td>Julio</td><td class="num">$140</td><td class="num">$20</td><td><span class="badge badge-yellow">Ajuste</span></td></tr>
+              <tr><td>Agosto</td><td class="num">$140</td><td class="num">$20</td><td><span class="badge badge-yellow">Ajuste</span></td></tr>
             </tbody>
           </table>
-          <div style="font-size:.7rem;color:var(--text-muted);margin-top:6px;">* Abril: corriente disponible $580 ÷ 10 días (18–27 abr, hasta el sueldo) = $58.00/día · $406.00/sem. El colchón bruto de $4,143.27 arranca Mayo e incluye reserva Austro.</div>
+          <div style="font-size:.7rem;color:var(--text-muted);margin-top:6px;">* Abril: corriente disponible $580 ÷ 10 días (18–27 abr, hasta el sueldo) = $58.00/día · $406.00/sem. Desde Mayo, $20/día es el piso humano mínimo; por eso el extra Austro se parte y ya no deja la semana 1 negativa.</div>
         </div>
         <div class="card">
           <div class="card-title">Sobres de alimentación sugeridos</div>
@@ -936,7 +945,9 @@ td.bold{font-weight:600;}
             <tr><td>Total a pagar</td><td class="num" style="color:var(--danger)">$10,695.84</td></tr>
             <tr><td>Saldo diferido</td><td class="num">$4,597.44</td></tr>
             <tr><td>Mínimo</td><td class="num">$629.79</td></tr>
+            <tr><td>Humana S.A.</td><td class="num" style="color:var(--warn)">$315.09/mes</td></tr>
           </table>
+          <div style="font-size:.7rem;color:var(--text-muted);margin-top:6px;">Diferidos activos: DIFIERALOOOOO 05/08 cuota $85.64 saldo $250.38; DIFIERALOOOOO 07/36 cuota $180.89 saldo $4,347.06. No atacar con extra: prioridad real es rotativo.</div>
           <div class="prog-wrap">
             <div class="prog-label"><span>Utilización de cupo</span><span>93.8%</span></div>
             <div class="prog-bar"><div class="prog-fill prog-red" style="width:93.8%"></div></div>
@@ -992,11 +1003,12 @@ td.bold{font-weight:600;}
           <tbody>
             <tr><td>Produbanco préstamo</td><td class="num">$30,009</td><td class="num">$508.73</td><td><span class="badge badge-neutral">Fijo</span></td></tr>
             <tr><td>Banco del Austro</td><td class="num">$15,301.77</td><td class="num">$629.79</td><td><span class="badge badge-red">Prioridad #1</span></td></tr>
+            <tr><td>Humana seguro salud (Austro)</td><td class="num">Recurrente</td><td class="num">$315.09</td><td><span class="badge badge-neutral">Fijo salud</span></td></tr>
             <tr><td>PacifiCard (rotativo)</td><td class="num">$3,514.26</td><td class="num">$438.59</td><td><span class="badge badge-red">Prioridad #2</span></td></tr>
             <tr><td>Banco Guayaquil</td><td class="num">$4,784.68</td><td class="num">$311.93</td><td><span class="badge badge-yellow">Prioridad #3</span></td></tr>
             <tr><td>Banco Pichincha</td><td class="num">~$7,500</td><td class="num">$222.73</td><td><span class="badge badge-neutral">Fijo</span></td></tr>
             <tr><td>Diners Club (diferidos)</td><td class="num">$11,492.49</td><td class="num">$346.53</td><td><span class="badge badge-yellow">Prioridad #4</span></td></tr>
-            <tr style="border-top:2px solid var(--border)"><td class="bold">TOTAL</td><td class="num bold" style="color:var(--danger)">~$72,602</td><td class="num bold">$2,458.30</td><td></td></tr>
+            <tr style="border-top:2px solid var(--border)"><td class="bold">TOTAL</td><td class="num bold" style="color:var(--danger)">~$72,602</td><td class="num bold">$2,773.39</td><td></td></tr>
           </tbody>
         </table>
       </div>
@@ -1131,14 +1143,14 @@ new Chart(document.getElementById('chartFlujo'), {
       },
       {
         label: 'Gastos totales',
-        data: [4731.4, 3528.05, 3408.05, 3408.05, 3408.05],
+        data: [4731.4, 6113.39, 3773.39, 3773.39, 3773.39],
         backgroundColor: 'rgba(239,68,68,0.45)',
         borderColor: '#ef4444', borderWidth: 1.5, borderRadius: 4
       },
       {
         type: 'line',
         label: 'Saldo',
-        data: [568.6, 0, 821.74, 821.74, 821.74],
+        data: [4143.27, 929.88, 722.49, 515.10, 307.71],
         borderColor: '#38bdf8', borderWidth: 2.5, tension: 0.35,
         pointBackgroundColor: ctx => ctx.parsed.y < 0 ? '#ef4444' : '#22c55e',
         pointRadius: 5, fill: false,
@@ -1178,9 +1190,9 @@ new Chart(document.getElementById('chartAbril'), {
 new Chart(document.getElementById('chartMayo'), {
   type: 'bar',
   data: {
-    labels: ['Ingreso','Arriendo','Austro','Produbanco','Pichincha','Diners','PacifiCard','Guayaquil','Alimentación','DÉFICIT'],
+    labels: ['Ingreso','Arriendo','Austro','Humana','Produbanco','Pichincha','Diners','PacifiCard','Guayaquil','Alimentación','Humano','Extra Austro'],
     datasets: [{
-      data: [2900, -600, -629.79, -508.73, -222.73, -346.53, -438.59, -370, -400, -628.78],
+      data: [2900, -600, -629.79, -315.09, -508.73, -222.73, -346.53, -438.59, -311.93, -400, -540, -1800],
       backgroundColor: d => d.raw >= 0 ? 'rgba(34,197,94,0.7)' : 'rgba(239,68,68,0.6)',
       borderColor: d => d.raw >= 0 ? '#22c55e' : '#ef4444',
       borderWidth: 1.5, borderRadius: 3
@@ -1193,10 +1205,10 @@ new Chart(document.getElementById('chartMayo'), {
 new Chart(document.getElementById('chartJunio'), {
   type: 'doughnut',
   data: {
-    labels: ['Fijos','Tarjetas','Alimentación','Libre','→Ahorro','→Inversión'],
+    labels: ['Fijos','Tarjetas','Pichincha','Alimentación','→Ahorro','→Inversión','Colchón usado'],
     datasets: [{
-      data: [1961.52, 1155.12, 400, 149.36, 334, 200],
-      backgroundColor: ['#38bdf8','#ef4444','#facc15','#94a3b8','#22c55e','#a78bfa'],
+      data: [2400.14, 750.52, 222.73, 400, 334, 200, 207.39],
+      backgroundColor: ['#38bdf8','#ef4444','#a78bfa','#facc15','#22c55e','#a78bfa','#f97316'],
       borderWidth:0
     }]
   },
@@ -1236,7 +1248,7 @@ new Chart(document.getElementById('chartSemanal'), {
     labels: ['Abr Sem3','Abr Sem4','May Sem1','May Sem2','May Sem3','May Sem4','Jun','Jul','Ago'],
     datasets: [{
       label: 'Bolsa semanal',
-      data: [232, 348, 0, 56, 37, 70, 167.99, 170.49, 172.99],
+      data: [232, 348, 140, 140, 140, 120, 140, 140, 140],
       backgroundColor: d => d.raw === 0 ? '#ef4444' : d.raw < 100 ? '#facc15' : '#22c55e',
       borderRadius: 5
     }]
